@@ -1,17 +1,104 @@
 /**
+ * Simple RGBA class.
+ * 
+ * @param red   	red channel
+ * @param green 	green channel
+ * @param blue  	blue channel
+ * @param alpha 	alpha channel (0-1)
+ */
+function Rgba(red, green, blue, alpha) {
+	this.red = Math.floor(red);
+	this.green = Math.floor(green);
+	this.blue = Math.floor(blue);
+	this.alpha = alpha;
+
+	/**
+	 * Gets the hex representation of this colour
+	 */
+	this.ToHex = function() {
+		return '#' + this.red.toString(16)
+					 + this.green.toString(16)
+					 + this.blue.toString(16);
+	}
+
+	/**
+	 * Print this colour as an RGBA value.
+	 * 
+	 * @return 	like rgba(255, 255, 255, 1);
+	 */
+	this.GetRgbaPrint = function() {
+		return "rgba(" + this.red 
+									 + ","
+									 + this.green
+									 + ","
+									 + this.blue
+									 + ","
+									 + this.alpha
+									 + ")"; 
+	}
+
+	/**
+	 * Print this colour as an RGB value.
+	 * 
+	 * @return 	like rgb(255, 255, 255);
+	 */
+	this.GetRgbPrint = function() {
+		return "rgb(" + this.red 
+									 + ","
+									 + this.green
+									 + ","
+									 + this.blue
+									 + ")"; 
+	}
+}
+
+/**
+ * Mix two colours.
+ * 
+ * @param original 		first colour
+ * @param mixer    		second colour
+ */
+Rgba.GetMixedColour = function(original, mixer) {
+	return new Rgba((original.red + mixer.red) / 2,
+									(original.green + mixer.green) / 2,
+									(original.blue + mixer.blue) / 2,
+									(original.alpha + mixer.alpha) / 2);
+}
+
+/**
+ * Get a random RGBA colour.
+ * 
+ * @param alpha 		0-1 alpha channel
+ */
+Rgba.GetRandomColour = function(alpha = 1) {
+	return new Rgba(Math.random() * 255,
+									Math.random() * 255,
+									Math.random() * 255,
+									alpha);
+}
+
+/**
+ * Get a random pastel colour, made by mixing a regular colour
+ * with a white.
+ */
+Rgba.GetRandomPastel = function() {
+	var white = new Rgba(255, 255, 255, 1);
+	return Rgba.GetMixedColour(Rgba.GetRandomColour(), white);
+}
+
+/**
  * Creates a star object.
  * 
  * @param position    initial x and y location
  */
 function Star(position) {
-	//const BASE_COLOUR = '#595A52';
-	const BASE_COLOUR = GetRandomHexColour();
+	const BASE_COLOUR = Rgba.GetRandomPastel();
 
-	const MAX_SPEED = 2;
+	const MAX_SPEED = 3;
 	const MAX_RADIUS = 32;
 
 	const MIN_RADIUS = 2;
-	const MIN_SPEED = 1.5;
+	const MIN_SPEED = 1;
 
 	this.colour = BASE_COLOUR;
 	this.radius = MIN_RADIUS;
@@ -44,7 +131,7 @@ function Star(position) {
 	this.Draw = function() {
 		context.beginPath();
 		context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI, false);
-		context.fillStyle = this.colour;
+		context.fillStyle = this.colour.GetRgbPrint();
 		context.fill();
 	}
 }
@@ -108,14 +195,19 @@ function StarManager(maxCount) {
 			
 			if (dist <= MAX_DIST_MOUSE_EFFECT) {
 				var closeness = 1 - (dist / MAX_DIST_MOUSE_EFFECT);
+				var rgba = new Rgba(star.colour.red, 
+														 star.colour.green,
+														 star.colour.blue,
+														 closeness);
+
 				LineBetween(star.position, 
 										currentMousePos,
-										HexToRgba(star.colour, 1 - (dist / MAX_DIST_MOUSE_EFFECT)), 		// Closer = more opaque
+										rgba.GetRgbaPrint(), 																						// Closer = more opaque
 										Math.max(closeness * MAX_LINE_THICKNESS, MIN_LINE_THICKNESS));	// Closer = thicker
 			}			
 		});
 	}
-	
+
 	/**
 	 * Update all Star functionality
 	 */
@@ -239,33 +331,6 @@ function LineBetween(a, b, colour, thickness) {
 }
 
 /**
- * Converts a given hex colour and alpha channel (0-1) 
- * to an equivalent RGBA colour.
- * 
- * @param hex   hex colour to convert
- * @param alpha alpha channel, 0-1
- */
-function HexToRgba(hex, alpha = 1) {
-	hex = hex.replace("#", "");
-	alpha = ClampInt(alpha, 0, 1);
-
-	// Convert the base-16 colour values into the 
-	// equivalent base 10 counterparts.
-	var red = parseInt(hex.substring(0, 2), 16); 
-	var green = parseInt(hex.substring(2, 4), 16); 
-	var blue = parseInt(hex.substring(4, 6), 16); 
-
-	return "rgba(" + red 
-								 + ","
-								 + green
-								 + ","
-								 + blue
-								 + ","
-								 + alpha
-								 + ")"; 
-}
-
-/**
  * Clamp a given integer between two numbers, inclusive.
  * 
  * @param value 	number to clamp
@@ -284,19 +349,6 @@ function ClampInt(value, min, max) {
  */
 function RandBetween(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-/**
- * Generates a random hex colour
- */
-function GetRandomHexColour() {
-	var red = RandBetween(0, 255);
-	var green = RandBetween(0, 255);
-	var blue = RandBetween(0, 255);
-
-	return '#' + red.toString(16)
-						 + green.toString(16)
-						 + blue.toString(16);
 }
 
 /*************EXECUTION*************/
