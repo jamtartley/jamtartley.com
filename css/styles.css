@@ -7,11 +7,11 @@ html, body {
 
 body {
 	background:#232D36;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#232D36), to(#354C4F));
-	background-image: -webkit-linear-gradient(top, #232D36, #354C4F);
-	background-image: -moz-linear-gradient(top, #232D36, #354C4F);
-	background-image: -ms-linear-gradient(top, #232D36, #354C4F);
-	background-image: -o-linear-gradient(top, #232D36, #354C4F);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#366484), to(#B77046));
+	background-image: -webkit-linear-gradient(top, #366484, #B77046);
+	background-image: -moz-linear-gradient(top, #366484, #B77046);
+	background-image: -ms-linear-gradient(top, #366484, #B77046);
+	background-image: -o-linear-gradient(top, #366484, #B77046);
 }
 
 #star-canvas {
