@@ -3,8 +3,16 @@
  * @param {object} position    x and y locations
  */
 function Star(position) {
-	const MAX_SPEED = 3;
+	const BASE_COLOUR = '#595A52';
 
+	const MAX_SPEED = 2;
+	const MAX_RADIUS = 64;
+	const MAX_DIST_MOUSE_EFFECT = 128;
+
+	const MIN_RADIUS = 2;
+
+	this.colour = BASE_COLOUR;
+	this.radius = MIN_RADIUS;
 	this.position = position;
 	this.speed = Math.random() * MAX_SPEED;
 
@@ -21,18 +29,38 @@ function Star(position) {
 		if (IsInsideWindow(this.position) == false) {
 			KillStar(this);
 		}
+
+		var dist = DistBetween(currentMousePos, this.position);
+
+		if (dist <= MAX_DIST_MOUSE_EFFECT) {
+			var closeness = 1 - (dist / MAX_DIST_MOUSE_EFFECT);
+			this.radius = Math.max(closeness * MAX_RADIUS, MIN_RADIUS);			
+		} else {
+			this.radius = MIN_RADIUS;
+		}
 	}
 
 	/**
 	 * Draws this star to the canvas
 	 */
 	this.Draw = function() {
-		const RADIUS = 1;
+		const MIN_LINE_THICKNESS = 1;
+		const MAX_LINE_THICKNESS = 8;
 
 		context.beginPath();
-		context.arc(this.position.x, this.position.y, RADIUS, 0, 2 * Math.PI, false);
-		context.fillStyle = '#DFD58F';
+		context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI, false);
+		context.fillStyle = this.colour;
 		context.fill();
+
+		var dist = DistBetween(currentMousePos, this.position);
+		
+		if (dist <= MAX_DIST_MOUSE_EFFECT) {
+			var closeness = 1 - (dist / MAX_DIST_MOUSE_EFFECT);
+			LineBetween(this.position, 
+									currentMousePos,
+									this.colour, 
+									Math.max(closeness * MAX_LINE_THICKNESS, MIN_LINE_THICKNESS));
+		}
 	}
 }
 
@@ -40,8 +68,21 @@ function Star(position) {
  * Any initialisation happens here
  */
 function Init() {
-	setInterval(Update, 10);
+	const MILLIS_BETWEEN_UPDATE = 16;
+
+  canvas.addEventListener("mousemove", MouseMove, false);
+	setInterval(Update, MILLIS_BETWEEN_UPDATE);
 	Resize();
+}
+
+/**
+ * Listener function for mouse movement.
+ * 
+ * @param e 	mouse location
+ */
+function MouseMove(e) {
+    currentMousePos.x = e.layerX;
+    currentMousePos.y = e.layerY;
 }
 
 /**
@@ -58,6 +99,7 @@ function Resize() {
 function Update() {
     context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
+    Resize();
     UpdateCanvas();
     DrawCanvas();
 }
@@ -116,21 +158,54 @@ function KillStar(star) {
  * @param randomY    should this star have a random starting y or start at the bottom of the screen?
  */
 function AddNewStar(randomY = true) {
-	stars.push(new Star( { x: Math.random() * window.innerWidth, 
-			               y: randomY ? Math.random() * window.innerHeight 
-			                          : 0 } ));
+	stars.push(new Star({ x: Math.random() * window.innerWidth, 
+			               		y: randomY ? Math.random() * window.innerHeight 
+			                          	 : 0 } ));
+}
+
+/**
+ * Euclidean distance between two points.
+ * 
+ * @param a		first location
+ * @param b		second location
+ */
+function DistBetween(a, b) {
+	var deltaX = b.x - a.x;
+	var deltaY = b.y - a.y;
+	return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+
+/**
+ * Draw a line between two points.
+ * 
+ * @param a         first location
+ * @param b         second location
+ * @param colour    line colour
+ * @param thickness line thickness (px)
+ */
+function LineBetween(a, b, colour, thickness) {
+	context.beginPath();
+	context.moveTo(a.x, a.y);
+	context.lineTo(b.x, b.y);
+	context.strokeStyle = colour;
+	context.lineWidth = thickness;
+	context.stroke();
 }
 
 /*************EXEXUTION*************/
 
-const MAX_STAR_COUNT = 500;
+const MAX_STAR_COUNT = 256;
 
 var canvas = document.getElementById("star-canvas");
+var currentMousePos = {
+  x: 0,
+  y: 0
+};
 
 if (canvas && canvas.getContext) {
-    Init();
+  Init();
 
-    var context = canvas.getContext("2d");
+  var context = canvas.getContext("2d");
 	var stars = [];
 
 	for (var i = 0; i < MAX_STAR_COUNT; i++) {
