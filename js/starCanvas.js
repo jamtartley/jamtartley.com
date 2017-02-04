@@ -95,9 +95,9 @@ function Star(position) {
 	const BASE_COLOUR = Rgba.GetRandomPastel();
 
 	const MAX_SPEED = 3;
-	const MAX_RADIUS = 32;
+	const MAX_RADIUS = 64;
 
-	const MIN_RADIUS = 2;
+	const MIN_RADIUS = 1;
 	const MIN_SPEED = 1;
 
 	this.colour = BASE_COLOUR;
@@ -188,7 +188,7 @@ function StarManager(maxCount) {
 	 */
 	this.DrawConnections = function() {
 		const MIN_LINE_THICKNESS = 1;
-		const MAX_LINE_THICKNESS = 4;
+		const MAX_LINE_THICKNESS = 8;
 
 		this.stars.forEach(function(star) {
 			var dist = DistBetween(currentMousePos, star.position);
