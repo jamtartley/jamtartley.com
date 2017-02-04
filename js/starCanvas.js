@@ -1,12 +1,13 @@
 /**
- * Creates a star object
- * @param {object} position    x and y locations
+ * Creates a star object.
+ * 
+ * @param position    initial x and y location
  */
 function Star(position) {
 	const BASE_COLOUR = '#595A52';
 
 	const MAX_SPEED = 2;
-	const MAX_RADIUS = 64;
+	const MAX_RADIUS = 32;
 	const MAX_DIST_MOUSE_EFFECT = 128;
 
 	const MIN_RADIUS = 2;
@@ -170,9 +171,9 @@ function AddNewStar(randomY = true) {
  * @param b		second location
  */
 function DistBetween(a, b) {
-	var deltaX = b.x - a.x;
-	var deltaY = b.y - a.y;
-	return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+	var deltaXSquared = Math.pow(b.x - a.x, 2);
+	var deltaYSquared = Math.pow(b.y - a.y, 2);
+	return Math.sqrt(deltaXSquared + deltaYSquared);
 }
 
 /**
@@ -192,7 +193,7 @@ function LineBetween(a, b, colour, thickness) {
 	context.stroke();
 }
 
-/*************EXEXUTION*************/
+/*************EXECUTION*************/
 
 const MAX_STAR_COUNT = 256;
 
