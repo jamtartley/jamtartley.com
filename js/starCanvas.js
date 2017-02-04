@@ -4,18 +4,19 @@
  * @param position    initial x and y location
  */
 function Star(position) {
-	const BASE_COLOUR = '#595A52';
+	//const BASE_COLOUR = '#595A52';
+	const BASE_COLOUR = GetRandomHexColour();
 
 	const MAX_SPEED = 2;
 	const MAX_RADIUS = 32;
-	const MAX_DIST_MOUSE_EFFECT = 128;
 
 	const MIN_RADIUS = 2;
+	const MIN_SPEED = 1.5;
 
 	this.colour = BASE_COLOUR;
 	this.radius = MIN_RADIUS;
 	this.position = position;
-	this.speed = Math.random() * MAX_SPEED;
+	this.speed = RandBetween(MIN_SPEED, MAX_SPEED);
 
 	/**
 	 * Updates this star's position on the canvas.
@@ -26,10 +27,6 @@ function Star(position) {
 		const MAX_X_DRIFT = 1;
 		
 		this.position.y += this.speed;
-
-		if (IsInsideWindow(this.position) == false) {
-			KillStar(this);
-		}
 
 		var dist = DistBetween(currentMousePos, this.position);
 
@@ -45,23 +42,103 @@ function Star(position) {
 	 * Draws this star to the canvas
 	 */
 	this.Draw = function() {
-		const MIN_LINE_THICKNESS = 1;
-		const MAX_LINE_THICKNESS = 8;
-
 		context.beginPath();
 		context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI, false);
 		context.fillStyle = this.colour;
 		context.fill();
+	}
+}
 
-		var dist = DistBetween(currentMousePos, this.position);
-		
-		if (dist <= MAX_DIST_MOUSE_EFFECT) {
-			var closeness = 1 - (dist / MAX_DIST_MOUSE_EFFECT);
-			LineBetween(this.position, 
-									currentMousePos,
-									this.colour, 
-									Math.max(closeness * MAX_LINE_THICKNESS, MIN_LINE_THICKNESS));
+/**
+ * A Star Manager object handles the creation and killing of Star objects.
+ * Also tells each individual Star to update/draw.
+ * 
+ * @param maxCount 	maximum number of stars to display at once
+ */
+function StarManager(maxCount) {
+	this.maxCount = maxCount;
+	this.stars = [];
+
+	/**
+	 * Initialise set of stars
+	 */
+	this.Init = function() {
+		for (var i = 0; i < this.maxCount; i++) {
+			this.AddNewStar();
 		}
+	}
+
+	/**
+	 * Adds a new star to the set.
+	 * 
+	 * @param randomY    should this star have a random starting y or start at the bottom of the screen?
+	 */
+	this.AddNewStar = function(randomY = true) {
+		this.stars.push(new Star({ x: Math.random() * window.innerWidth, 
+				               				 y: randomY ? Math.random() * window.innerHeight 
+				                          	      : 0 } ));
+	}
+
+	/**
+	 * Kills a star that has moved off-screen
+	 * and replaces with a new one.
+	 * 
+	 * @param star    star to kill
+	 */
+	this.KillStar = function(star) {
+		var index = this.stars.indexOf(star);
+
+		// If star exists (it should!) remove it
+		if (index > -1) {
+			this.stars.splice(index, 1);
+		}
+
+		this.AddNewStar(false);
+	}
+
+	/**
+	 * Draw connecting lines between nearby stars and mouse position
+	 */
+	this.DrawConnections = function() {
+		const MIN_LINE_THICKNESS = 1;
+		const MAX_LINE_THICKNESS = 4;
+
+		this.stars.forEach(function(star) {
+			var dist = DistBetween(currentMousePos, star.position);
+			
+			if (dist <= MAX_DIST_MOUSE_EFFECT) {
+				var closeness = 1 - (dist / MAX_DIST_MOUSE_EFFECT);
+				LineBetween(star.position, 
+										currentMousePos,
+										HexToRgba(star.colour, 1 - (dist / MAX_DIST_MOUSE_EFFECT)), 		// Closer = more opaque
+										Math.max(closeness * MAX_LINE_THICKNESS, MIN_LINE_THICKNESS));	// Closer = thicker
+			}			
+		});
+	}
+	
+	/**
+	 * Update all Star functionality
+	 */
+	this.Update = function() {
+		var manager = this;
+
+		this.stars.forEach(function(star) {
+			star.Update();
+			if (IsInsideWindow(star.position) == false) {
+				manager.KillStar(star);
+			}
+		});
+	}
+
+	/**
+	 * Draw all stars to the canvas
+	 */
+	this.Draw = function() {
+		this.DrawConnections();
+
+		this.stars.forEach(function(star) {
+			star.Draw();
+		});
 	}
 }
 
@@ -109,18 +186,14 @@ function Update() {
  * Update all objects to draw on the canvas
  */
 function UpdateCanvas() {
-	stars.forEach(function(star) {
-		star.Update();
-	})
+	starManager.Update();
 }
 
 /**
  * Draw all objects to the canvas
  */
 function DrawCanvas() {
-	stars.forEach(function(star) {
-		star.Draw();
-	})
+	starManager.Draw();
 }
 
 /**
@@ -134,34 +207,6 @@ function IsInsideWindow(position) {
 	    && position.y <= window.innerHeight 
 	    && position.x >= 0
 	    && position.y >= 0;
-}
-
-/**
- * Kills a star that has moved off-screen
- * and replaces with a new one.
- * 
- * @param star    star to kill
- */
-function KillStar(star) {
-	var index = stars.indexOf(star);
-
-	// If star exists (it should!) remove it
-	if (index > -1) {
-		stars.splice(index, 1);
-	}
-
-	AddNewStar(false);
-}
-
-/**
- * Adds a new star to the set.
- * 
- * @param randomY    should this star have a random starting y or start at the bottom of the screen?
- */
-function AddNewStar(randomY = true) {
-	stars.push(new Star({ x: Math.random() * window.innerWidth, 
-			               		y: randomY ? Math.random() * window.innerHeight 
-			                          	 : 0 } ));
 }
 
 /**
@@ -193,23 +238,82 @@ function LineBetween(a, b, colour, thickness) {
 	context.stroke();
 }
 
+/**
+ * Converts a given hex colour and alpha channel (0-1) 
+ * to an equivalent RGBA colour.
+ * 
+ * @param hex   hex colour to convert
+ * @param alpha alpha channel, 0-1
+ */
+function HexToRgba(hex, alpha = 1) {
+	hex = hex.replace("#", "");
+	alpha = ClampInt(alpha, 0, 1);
+
+	// Convert the base-16 colour values into the 
+	// equivalent base 10 counterparts.
+	var red = parseInt(hex.substring(0, 2), 16); 
+	var green = parseInt(hex.substring(2, 4), 16); 
+	var blue = parseInt(hex.substring(4, 6), 16); 
+
+	return "rgba(" + red 
+								 + ","
+								 + green
+								 + ","
+								 + blue
+								 + ","
+								 + alpha
+								 + ")"; 
+}
+
+/**
+ * Clamp a given integer between two numbers, inclusive.
+ * 
+ * @param value 	number to clamp
+ * @param min   	minimum value
+ * @param max   	maximum value
+ */
+function ClampInt(value, min, max) {
+	return Math.min(Math.max(value, min), max);
+}
+
+/**
+ * Generate a random number between two values, inclusive.
+ * 
+ * @param min 	minimum value
+ * @param max 	maximum value
+ */
+function RandBetween(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/**
+ * Generates a random hex colour
+ */
+function GetRandomHexColour() {
+	var red = RandBetween(0, 255);
+	var green = RandBetween(0, 255);
+	var blue = RandBetween(0, 255);
+
+	return '#' + red.toString(16)
+						 + green.toString(16)
+						 + blue.toString(16);
+}
+
 /*************EXECUTION*************/
 
 const MAX_STAR_COUNT = 256;
+const MAX_DIST_MOUSE_EFFECT = 128;
 
 var canvas = document.getElementById("star-canvas");
+var context; 
 var currentMousePos = {
   x: 0,
   y: 0
 };
+var starManager = new StarManager(MAX_STAR_COUNT);
 
 if (canvas && canvas.getContext) {
   Init();
-
-  var context = canvas.getContext("2d");
-	var stars = [];
-
-	for (var i = 0; i < MAX_STAR_COUNT; i++) {
-		AddNewStar();
-	}
+  context = canvas.getContext("2d");
+	starManager.Init();
 }
