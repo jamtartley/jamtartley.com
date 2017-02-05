@@ -94,8 +94,8 @@ Rgba.GetRandomPastel = function() {
 function Star(position) {
 	const BASE_COLOUR = Rgba.GetRandomPastel();
 
-	const MAX_SPEED = 3;
-	const MAX_RADIUS = 64;
+	const MAX_SPEED = 2;
+	const MAX_RADIUS = 32;
 
 	const MIN_RADIUS = 1;
 	const MIN_SPEED = 1;
@@ -186,10 +186,7 @@ function StarManager(maxCount) {
 	/**
 	 * Draw connecting lines between nearby stars and mouse position
 	 */
-	this.DrawConnections = function() {
-		const MIN_LINE_THICKNESS = 1;
-		const MAX_LINE_THICKNESS = 8;
-
+	this.DrawMouseConnection = function() {
 		this.stars.forEach(function(star) {
 			var dist = DistBetween(currentMousePos, star.position);
 			
@@ -202,9 +199,31 @@ function StarManager(maxCount) {
 
 				LineBetween(star.position, 
 										currentMousePos,
-										rgba.GetRgbaPrint(), 																						// Closer = more opaque
-										Math.max(closeness * MAX_LINE_THICKNESS, MIN_LINE_THICKNESS));	// Closer = thicker
+										rgba.GetRgbaPrint());	// Closer = more opaque
 			}			
+		});
+	}
+
+	this.DrawLineConnections = function() {
+		var manager = this;
+
+		// TODO: this is pretty poorly performant (exponential time complexity),
+		// need to implement quadtree to prune unnecessary checks
+		this.stars.forEach(function(star) {
+			manager.stars.forEach(function(other) {
+				var dist = DistBetween(star.position, other.position);
+
+				if (dist <= MAX_DIST_LINE_CONNECTION && star != other) {
+					var closeness = 1 - (dist / MAX_DIST_LINE_CONNECTION);
+
+					CurveBetween(star.position,
+					            other.position,
+					            new Rgba(star.colour.red, 
+					            				 star.colour.green,
+					            				 star.colour.blue, 
+					            				 closeness).GetRgbaPrint());
+				}
+			});
 		});
 	}
 
@@ -226,7 +245,8 @@ function StarManager(maxCount) {
 	 * Draw all stars to the canvas
 	 */
 	this.Draw = function() {
-		this.DrawConnections();
+		this.DrawMouseConnection();
+		this.DrawLineConnections();
 
 		this.stars.forEach(function(star) {
 			star.Draw();
@@ -321,10 +341,32 @@ function DistBetween(a, b) {
  * @param colour    line colour
  * @param thickness line thickness (px)
  */
-function LineBetween(a, b, colour, thickness) {
+function LineBetween(a, b, colour, thickness = 1) {
 	context.beginPath();
 	context.moveTo(a.x, a.y);
 	context.lineTo(b.x, b.y);
+	context.strokeStyle = colour;
+	context.lineWidth = thickness;
+	context.stroke();
+}
+
+/**
+ * Draw a curve between two points.
+ * 
+ * @param a         first location
+ * @param b         second location
+ * @param colour    line colour
+ * @param thickness line thickness (px)
+ */
+function CurveBetween(a, b, colour, thickness = 1) {
+	// Choose control points based on screen position of star to 
+	// ensure that curve is pointing towards edge of screen
+	var controlX = a.x <= window.innerWidth / 2 ? Math.min(a.x, b.x) : Math.max(a.x, b.x);
+	var controlY = a.y <= window.innerHeight / 2 ? Math.min(a.y, b.y) : Math.max(a.y, b.y);
+
+	context.beginPath();
+	context.moveTo(a.x, a.y);
+	context.quadraticCurveTo(controlX, controlY, b.x, b.y);
 	context.strokeStyle = colour;
 	context.lineWidth = thickness;
 	context.stroke();
@@ -353,8 +395,9 @@ function RandBetween(min, max) {
 
 /*************EXECUTION*************/
 
-const MAX_STAR_COUNT = 256;
+const MAX_STAR_COUNT = 64;
 const MAX_DIST_MOUSE_EFFECT = 128;
+const MAX_DIST_LINE_CONNECTION = 128;
 
 var canvas = document.getElementById("star-canvas");
 var context; 
