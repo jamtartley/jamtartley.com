@@ -2,10 +2,37 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
+
+}
+
+h1 {
+	margin: 30px;
+	font-size: 3em;
+	font-family: josefin-slab-bold;
+	color: #FFFFFF;
+}
+
+p {
+	margin: 0;
+	font-size: 1.5em;
+	font-family: josefin-slab-regular;
+	color: #FFFFFF;
+}
+
+section {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#star-section {
 	background:#232D36;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#366484), to(#B77046));
 	background-image: -webkit-linear-gradient(top, #366484, #B77046);
@@ -15,5 +42,26 @@ body {
 }
 
 #star-canvas {
-	height: 100%;
+
+}
+
+#about {
+	position: absolute;
+	width: auto;
+	height: auto;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -150px;
+	text-align: center;
+}
+
+@font-face {
+	font-family: josefin-slab-regular;
+	src: url('../fonts/josefin-slab-regular.ttf');
+}
+
+@font-face {
+	font-family: josefin-slab-bold;
+	src: url('../fonts/josefin-slab-bold.ttf');
 }
