@@ -216,7 +216,7 @@ function StarManager(maxCount) {
 				if (dist <= MAX_DIST_LINE_CONNECTION && star != other) {
 					var closeness = 1 - (dist / MAX_DIST_LINE_CONNECTION);
 
-					CurveBetween(star.position,
+					LineBetween(star.position,
 					            other.position,
 					            new Rgba(star.colour.red, 
 					            				 star.colour.green,
