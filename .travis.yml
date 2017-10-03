@@ -17,3 +17,4 @@ deploy:
   acl: ''
   on:
     repo: jamtartley/jamtartley.com
+    branch: dev
