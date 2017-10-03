@@ -11,7 +11,7 @@ body {
 
 h1 {
 	margin: 30px;
-	font-size: 3em;
+	font-size: 4em;
 	font-family: josefin-slab-bold;
 	color: #FFFFFF;
 }
@@ -28,14 +28,10 @@ img {
 	height: auto;
 }
 
-section {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
 #star-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2A2A2A), to(#363A69));
 	background-image: -webkit-linear-gradient(top, #2A2A2A, #363A69);
 	background-image: -moz-linear-gradient(top, #2A2A2A, #363A69);
@@ -44,17 +40,11 @@ section {
 }
 
 #star-canvas {
-
 }
 
 #about {
-	position: absolute;
-	width: auto;
-	height: auto;
-	top: 50%;
-	left: 50%;
-	margin-top: -150px;
-	margin-left: -150px;
+    position: absolute;
+    z-index: 1;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.7);
 }
