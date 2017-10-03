@@ -17,5 +17,5 @@ deploy:
   acl: 'bucket_owner_full_control'
   on:
     repo: jamtartley/jamtartley.com
-    branch: dev
+    branch: master
 script: ./run_build.sh
