@@ -18,3 +18,4 @@ deploy:
   on:
     repo: jamtartley/jamtartley.com
     branch: dev
+script: ./run_build.sh
