@@ -14,7 +14,7 @@ deploy:
     secure: CJW3xA2jPrp9mTEF0SVp0Hs0XDMHS35XLZmSwwSzp8i4gS14IfdM5o8vb/sFqk+SZzpaP0eAuqVN/zkEhTTthQsuCeKAc5mwR2zdWB8jAyhe2azhj7nGfJPd433WHzP2D9RJdHWNW5QKQq1lBIdQTvMzI4Z13UKqXijvuM5Hd1gqhk3aoD2zEqqD1TDLEyG1QwnzaDgL2MChlzknE7XUojHG3VcAuJT9/Vjy9yPVoFSMB5JkD7eFPLuJKN2bwxEGnuFRfsiPp1moKNIu+ieFSelqI4syNNk2K8yZ9vCaej8SeEJWYS75NckI9Lq2aAITCY2wq58w9xoAYMbOMkQRMjs3zWr2dT1p330qt0ey8ZcgUtYkV1iQakohZS/ZJl5XR2X0N1mCwxcutZ4d4JesOWnbHhvUS6y9jfNeJW9ouXCEt7ki7f4g8+HBWwuw1ZN1oigC1G9n92HYLhT6r+4q7dJmyDRpitRdf1+GWV18QA8137zK/QsbpVhCh+6ULTx5Rg9VLNcwdlqVGtuR8rMXeZQJfY2kKs4pwzdfpIx9OmvYDSt16B6kXK/7x3uW0hVnThkf8NEObSbS1njyEiiz07sKSNAftMQ2BJztSklcSEsMXrLqqJJ4DCtBZZpkjrPYZ+42mnW1ZCEnhTLrMxGyPatsmJjl9oJJqwpDmEXb+OQ=
   bucket: jamtartley.com
   region: eu-west-2
-  acl: ''
+  acl: 'bucket_owner_full_control'
   on:
     repo: jamtartley/jamtartley.com
     branch: dev
