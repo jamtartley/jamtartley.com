@@ -15,7 +15,7 @@ function Rgba(red, green, blue, alpha) {
 	/**
 	 * Gets the hex representation of this colour
 	 */
-	this.ToHex = function() {
+	this.toHex = function() {
 		return '#' + this.red.toString(16)
 					 + this.green.toString(16)
 					 + this.blue.toString(16);
@@ -26,7 +26,7 @@ function Rgba(red, green, blue, alpha) {
 	 * 
 	 * @return 	like rgba(255, 255, 255, 1);
 	 */
-	this.GetRgbaPrint = function() {
+	this.getRgbaPrint = function() {
 		return "rgba(" + this.red 
 									 + ","
 									 + this.green
@@ -42,7 +42,7 @@ function Rgba(red, green, blue, alpha) {
 	 * 
 	 * @return 	like rgb(255, 255, 255);
 	 */
-	this.GetRgbPrint = function() {
+	this.getRgbPrint = function() {
 		return "rgb(" + this.red 
 									 + ","
 									 + this.green
@@ -58,7 +58,7 @@ function Rgba(red, green, blue, alpha) {
  * @param original 		first colour
  * @param mixer    		second colour
  */
-Rgba.GetMixedColour = function(original, mixer) {
+Rgba.getMixedColour = function(original, mixer) {
 	return new Rgba((original.red + mixer.red) / 2,
 									(original.green + mixer.green) / 2,
 									(original.blue + mixer.blue) / 2,
@@ -70,7 +70,7 @@ Rgba.GetMixedColour = function(original, mixer) {
  * 
  * @param alpha 		0-1 alpha channel
  */
-Rgba.GetRandomColour = function(alpha = 1) {
+Rgba.getRandomColour = function(alpha = 1) {
 	return new Rgba(Math.random() * 255,
 									Math.random() * 255,
 									Math.random() * 255,
@@ -81,9 +81,9 @@ Rgba.GetRandomColour = function(alpha = 1) {
  * Get a random pastel colour, made by mixing a regular colour
  * with a white.
  */
-Rgba.GetRandomPastel = function() {
+Rgba.getRandomPastel = function() {
 	var white = new Rgba(255, 255, 255, 1);
-	return Rgba.GetMixedColour(Rgba.GetRandomColour(), white);
+	return Rgba.getMixedColour(Rgba.getRandomColour(), white);
 }
 
 /**
@@ -92,7 +92,7 @@ Rgba.GetRandomPastel = function() {
  * @param position    initial x and y location
  */
 function Star(position) {
-	const BASE_COLOUR = Rgba.GetRandomPastel();
+	const BASE_COLOUR = Rgba.getRandomPastel();
 
 	const MAX_SPEED = 2;
 	const MAX_RADIUS = 32;
@@ -103,19 +103,19 @@ function Star(position) {
 	this.colour = BASE_COLOUR;
 	this.radius = MIN_RADIUS;
 	this.position = position;
-	this.speed = RandBetween(MIN_SPEED, MAX_SPEED);
+	this.speed = randBetween(MIN_SPEED, MAX_SPEED);
 
 	/**
 	 * Updates this star's position on the canvas.
 	 * Adds a random drift so that movement seems more natural.
 	 */
-	this.Update = function() {
+	this.update = function() {
 		const MAX_Y_DRIFT = 1;
 		const MAX_X_DRIFT = 1;
 		
 		this.position.y += this.speed;
 
-		var dist = DistBetween(currentMousePos, this.position);
+		var dist = distBetween(currentMousePos, this.position);
 
 		if (dist <= MAX_DIST_MOUSE_EFFECT) {
 			var closeness = 1 - (dist / MAX_DIST_MOUSE_EFFECT);
@@ -128,10 +128,10 @@ function Star(position) {
 	/**
 	 * Draws this star to the canvas
 	 */
-	this.Draw = function() {
+	this.draw = function() {
 		context.beginPath();
 		context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI, false);
-		context.fillStyle = this.colour.GetRgbPrint();
+		context.fillStyle = this.colour.getRgbPrint();
 		context.fill();
 	}
 }
@@ -149,18 +149,18 @@ function StarManager(maxCount) {
 	/**
 	 * Initialise set of stars
 	 */
-	this.Init = function() {
+	this.init = function() {
 		for (var i = 0; i < this.maxCount; i++) {
-			this.AddNewStar();
+			this.addNewStar();
 		}
 	}
 
 	/**
 	 * Adds a new star to the set.
 	 * 
-	 * @param randomY    should this star have a random starting y or start at the bottom of the screen?
+	 * @param randomY    should this star have a random starting y or start at the top of the screen?
 	 */
-	this.AddNewStar = function(randomY = true) {
+	this.addNewStar = function(randomY = true) {
 		this.stars.push(new Star({ x: Math.random() * window.innerWidth, 
 				               				 y: randomY ? Math.random() * window.innerHeight 
 				                          	      : 0 } ));
@@ -172,7 +172,7 @@ function StarManager(maxCount) {
 	 * 
 	 * @param star    star to kill
 	 */
-	this.KillStar = function(star) {
+	this.killStar = function(star) {
 		var index = this.stars.indexOf(star);
 
 		// If star exists (it should!) remove it
@@ -180,15 +180,15 @@ function StarManager(maxCount) {
 			this.stars.splice(index, 1);
 		}
 
-		this.AddNewStar(false);
+		this.addNewStar(false);
 	}
 
 	/**
 	 * Draw connecting lines between nearby stars and mouse position
 	 */
-	this.DrawMouseConnection = function() {
+	this.drawMouseConnection = function() {
 		this.stars.forEach(function(star) {
-			var dist = DistBetween(currentMousePos, star.position);
+			var dist = distBetween(currentMousePos, star.position);
 			
 			if (dist <= MAX_DIST_MOUSE_EFFECT) {
 				var closeness = 1 - (dist / MAX_DIST_MOUSE_EFFECT);
@@ -197,31 +197,31 @@ function StarManager(maxCount) {
 														 star.colour.blue,
 														 closeness);
 
-				LineBetween(star.position, 
+				lineBetween(star.position, 
 										currentMousePos,
-										rgba.GetRgbaPrint());	// Closer = more opaque
+										rgba.getRgbaPrint());	// Closer = more opaque
 			}			
 		});
 	}
 
-	this.DrawLineConnections = function() {
+	this.drawLineConnections = function() {
 		var manager = this;
 
 		// TODO: this is pretty poorly performant (exponential time complexity),
 		// need to implement quadtree to prune unnecessary checks
 		this.stars.forEach(function(star) {
 			manager.stars.forEach(function(other) {
-				var dist = DistBetween(star.position, other.position);
+				var dist = distBetween(star.position, other.position);
 
 				if (dist <= MAX_DIST_LINE_CONNECTION && star != other) {
 					var closeness = 1 - (dist / MAX_DIST_LINE_CONNECTION);
 
-					LineBetween(star.position,
+					lineBetween(star.position,
 					            other.position,
 					            new Rgba(star.colour.red, 
 					            				 star.colour.green,
 					            				 star.colour.blue, 
-					            				 closeness).GetRgbaPrint());
+					            				 closeness).getRgbaPrint());
 				}
 			});
 		});
@@ -230,13 +230,13 @@ function StarManager(maxCount) {
 	/**
 	 * Update all Star functionality
 	 */
-	this.Update = function() {
+	this.update = function() {
 		var manager = this;
 
 		this.stars.forEach(function(star) {
-			star.Update();
-			if (IsInsideWindow(star.position) == false) {
-				manager.KillStar(star);
+			star.update();
+			if (isInsideWindow(star.position) == false) {
+				manager.killStar(star);
 			}
 		});
 	}
@@ -244,12 +244,12 @@ function StarManager(maxCount) {
 	/**
 	 * Draw all stars to the canvas
 	 */
-	this.Draw = function() {
-		this.DrawMouseConnection();
-		this.DrawLineConnections();
+	this.draw = function() {
+		this.drawMouseConnection();
+		this.drawLineConnections();
 
 		this.stars.forEach(function(star) {
-			star.Draw();
+			star.draw();
 		});
 	}
 }
@@ -257,12 +257,12 @@ function StarManager(maxCount) {
 /**
  * Any initialisation happens here
  */
-function Init() {
-	const MILLIS_BETWEEN_UPDATE = 16;
+function init() {
+    const MILLIS_BETWEEN_UPDATE = 16;
 
-  canvas.addEventListener("mousemove", MouseMove, false);
-	setInterval(Update, MILLIS_BETWEEN_UPDATE);
-	Resize();
+    canvas.addEventListener("mousemove", mouseMove, false);
+    setInterval(update, MILLIS_BETWEEN_UPDATE);
+    resize();
 }
 
 /**
@@ -270,7 +270,7 @@ function Init() {
  * 
  * @param e 	mouse location
  */
-function MouseMove(e) {
+function mouseMove(e) {
     currentMousePos.x = e.layerX;
     currentMousePos.y = e.layerY;
 }
@@ -278,7 +278,7 @@ function MouseMove(e) {
 /**
  * Resize canvas to fit window size
  */
-function Resize() {
+function resize() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 }
@@ -286,26 +286,26 @@ function Resize() {
 /**
  * Logic timer has ticked
  */
-function Update() {
+function update() {
     context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-    Resize();
-    UpdateCanvas();
-    DrawCanvas();
+    resize();
+    updateCanvas();
+    drawCanvas();
 }
 
 /**
  * Update all objects to draw on the canvas
  */
-function UpdateCanvas() {
-	starManager.Update();
+function updateCanvas() {
+	starManager.update();
 }
 
 /**
  * Draw all objects to the canvas
  */
-function DrawCanvas() {
-	starManager.Draw();
+function drawCanvas() {
+	starManager.draw();
 }
 
 /**
@@ -314,7 +314,7 @@ function DrawCanvas() {
  * 
  * @param position    location to check
  */
-function IsInsideWindow(position) {
+function isInsideWindow(position) {
 	return position.x <= window.innerWidth 
 	    && position.y <= window.innerHeight 
 	    && position.x >= 0
@@ -327,7 +327,7 @@ function IsInsideWindow(position) {
  * @param a		first location
  * @param b		second location
  */
-function DistBetween(a, b) {
+function distBetween(a, b) {
 	var deltaXSquared = Math.pow(b.x - a.x, 2);
 	var deltaYSquared = Math.pow(b.y - a.y, 2);
 	return Math.sqrt(deltaXSquared + deltaYSquared);
@@ -341,7 +341,7 @@ function DistBetween(a, b) {
  * @param colour    line colour
  * @param thickness line thickness (px)
  */
-function LineBetween(a, b, colour, thickness = 1) {
+function lineBetween(a, b, colour, thickness = 1) {
 	context.beginPath();
 	context.moveTo(a.x, a.y);
 	context.lineTo(b.x, b.y);
@@ -358,7 +358,7 @@ function LineBetween(a, b, colour, thickness = 1) {
  * @param colour    line colour
  * @param thickness line thickness (px)
  */
-function CurveBetween(a, b, colour, thickness = 1) {
+function curveBetween(a, b, colour, thickness = 1) {
 	// Choose control points based on screen position of star to 
 	// ensure that curve is pointing towards edge of screen
 	var controlX = a.x <= window.innerWidth / 2 ? Math.min(a.x, b.x) : Math.max(a.x, b.x);
@@ -379,7 +379,7 @@ function CurveBetween(a, b, colour, thickness = 1) {
  * @param min   	minimum value
  * @param max   	maximum value
  */
-function ClampInt(value, min, max) {
+function clampInt(value, min, max) {
 	return Math.min(Math.max(value, min), max);
 }
 
@@ -389,7 +389,7 @@ function ClampInt(value, min, max) {
  * @param min 	minimum value
  * @param max 	maximum value
  */
-function RandBetween(min, max) {
+function randBetween(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -408,7 +408,7 @@ var currentMousePos = {
 var starManager = new StarManager(MAX_STAR_COUNT);
 
 if (canvas && canvas.getContext) {
-  Init();
-  context = canvas.getContext("2d");
-	starManager.Init();
+    init();
+    context = canvas.getContext("2d");
+    starManager.init();
 }
