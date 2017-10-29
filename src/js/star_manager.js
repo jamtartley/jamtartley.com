@@ -21,7 +21,7 @@ class StarManager {
             x: Math.random() * window.innerWidth, 
             y: randomY ? Math.random() * window.innerHeight : 0 
         };
-        this.stars.push(new Star(pos));
+        this.stars.push(new Star(pos, new Rgba(255, 255, 255, 255)));
     }
 
     killStar(star) {

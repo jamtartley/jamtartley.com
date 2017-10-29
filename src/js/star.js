@@ -2,14 +2,13 @@ import * as Utils from "./utils";
 import Rgba from "./rgba";
 
 class Star {
-    constructor(position) {
-        const BASE_COLOUR = Rgba.getRandomPastel();
+    constructor(position, colour) {
         const MAX_SPEED = 2;
         const MAX_RADIUS = 32;
         const MIN_RADIUS = 1;
         const MIN_SPEED = 1;
 
-        this.colour = BASE_COLOUR;
+        this.colour = colour;
         this.minRadius = MIN_RADIUS;
         this.maxRadius = MAX_RADIUS;
         this.radius = MIN_RADIUS;
