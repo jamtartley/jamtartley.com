@@ -19,8 +19,10 @@ class Branch {
         
     }
 
-    progress(count) {
-        if (this.len <= 32) {
+    getChildren(spawnCount) {
+        const minLenToSpawn = 32;
+
+        if (this.len <= minLenToSpawn) {
             // We are an end branch
             this.isFinished = true;
             this.leaf = new Leaf(this.end);
@@ -29,10 +31,9 @@ class Branch {
 
         this.isFinished = true;
 
-        const spawnCount = 2;
         const minAngle = this.angle - Math.PI / 3;
         const maxAngle = this.angle + Math.PI / 3;
-        const minLength = this.len / 1.75;
+        const minLength = this.len / 2.5;
         const maxLength = this.len;
 
         let branches = [];
