@@ -4,8 +4,10 @@ import Vector2D from "./vector_2d";
 class TreeManager {
     constructor(treeCount) {
         this.trees = [];
+        this.framesBetweenGrow = 2;
+        this.currentFrames = 0;
 
-        const widthFillFactor = 0.75;
+        const widthFillFactor = 1;
         const totalWidth = window.innerWidth * widthFillFactor;
         const treeWidth = totalWidth / treeCount;
 
@@ -16,8 +18,14 @@ class TreeManager {
     }
 
     update() {
-        for (let tree of this.trees) {
-            tree.progress();
+        this.currentFrames++;
+
+        if (this.currentFrames >= this.framesBetweenGrow) {
+            for (let tree of this.trees) {
+                tree.progress();
+            }
+
+            this.currentFrames = 0;
         }
     }
 
