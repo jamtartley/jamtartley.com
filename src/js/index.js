@@ -24,6 +24,13 @@ function mouseDown(e) {
 function resize() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
+
+    if (canvas.width != prevWidth || canvas.height != prevHeight) {
+        treeManager = new TreeManager(TREE_COUNT);
+    }
+
+    prevWidth = canvas.width;
+    prevHeight = canvas.height;
 }
 
 function update() {
@@ -35,18 +42,19 @@ function update() {
 }
 
 function updateCanvas() {
-	//starManager.update(currentMousePos);
-    //treeManager.update();
+    //starManager.update(currentMousePos);
+    treeManager.update();
 }
 
 function drawCanvas() {
-	//starManager.draw(context);
+    //starManager.draw(context);
     treeManager.draw(context);
 }
 
-const MAX_STAR_COUNT = 64;
-const MAX_DIST_MOUSE_EFFECT = 128;
-const MAX_DIST_LINE_CONNECTION = 128;
+const MAX_STAR_COUNT = 16;
+const MAX_DIST_MOUSE_EFFECT = 256;
+const MAX_DIST_LINE_CONNECTION = 256;
+const TREE_COUNT = 4;
 
 var canvas = document.getElementById("star-canvas");
 var context; 
@@ -54,8 +62,10 @@ var currentMousePos = {
   x: 0,
   y: 0
 };
+var prevWidth;
+var prevHeight;
 var starManager = new StarManager(MAX_STAR_COUNT, MAX_DIST_LINE_CONNECTION, MAX_DIST_MOUSE_EFFECT);
-var treeManager = new TreeManager(4);
+var treeManager;
 
 if (canvas && canvas.getContext) {
     init();

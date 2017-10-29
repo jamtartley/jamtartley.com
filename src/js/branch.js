@@ -14,20 +14,32 @@ class Branch {
     }
 
     progress(count) {
-        if (this.len <= 4) {
+        if (this.len <= 16) {
+            this.isFinished = true;
             return [];
         }
 
         this.isFinished = true;
 
-        let leftAngle = this.angle - Utils.getRandFloat(Math.PI / 6, Math.PI / 3);
-        let rightAngle = this.angle + Utils.getRandFloat(Math.PI / 6, Math.PI / 3);
+        const spawnCount = 2;
+        const minAngle = this.angle - Math.PI / 3;
+        const maxAngle = this.angle + Math.PI / 3;
+        const minLength = this.len / 2;
+        const maxLength = this.len;
 
-        return [new Branch(this.end, this.len * (2 / 3), leftAngle), new Branch(this.end, this.len * (2 / 3), rightAngle)];
+        let branches = [];
+
+        for (let i = 0; i < spawnCount; i++) {
+            let angle = Utils.getRandFloat(minAngle, maxAngle);
+            let length = Utils.getRandFloat(minLength, maxLength);
+            branches.push(new Branch(this.end, length, angle));
+        }
+
+        return branches;
     }
 
     draw(context) {
-        Utils.lineBetween(context, this.start, this.end, "white", 1);
+        Utils.lineBetween(context, this.start, this.end, "white", this.len / 20);
     }
 }
 
