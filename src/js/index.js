@@ -1,11 +1,13 @@
 import Rgba from "./rgba";
 import Star from "./star";
 import StarManager from "./star_manager";
+import TreeManager from "./tree_manager";
 
 function init() {
     const MILLIS_BETWEEN_UPDATE = 16;
 
     canvas.addEventListener("mousemove", mouseMove, false);
+    canvas.addEventListener("mousedown", mouseDown, false);
     setInterval(update, MILLIS_BETWEEN_UPDATE);
     resize();
 }
@@ -13,6 +15,10 @@ function init() {
 function mouseMove(e) {
     currentMousePos.x = e.layerX;
     currentMousePos.y = e.layerY;
+}
+
+function mouseDown(e) {
+    treeManager.update();
 }
 
 function resize() {
@@ -29,11 +35,13 @@ function update() {
 }
 
 function updateCanvas() {
-	starManager.update(currentMousePos);
+	//starManager.update(currentMousePos);
+    //treeManager.update();
 }
 
 function drawCanvas() {
-	starManager.draw(context);
+	//starManager.draw(context);
+    treeManager.draw(context);
 }
 
 const MAX_STAR_COUNT = 64;
@@ -47,6 +55,7 @@ var currentMousePos = {
   y: 0
 };
 var starManager = new StarManager(MAX_STAR_COUNT, MAX_DIST_LINE_CONNECTION, MAX_DIST_MOUSE_EFFECT);
+var treeManager = new TreeManager(1);
 
 if (canvas && canvas.getContext) {
     init();

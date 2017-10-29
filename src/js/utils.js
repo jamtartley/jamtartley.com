@@ -11,6 +11,10 @@ export function distBetween(a, b) {
 	return Math.sqrt(deltaXSquared + deltaYSquared);
 }
 
+export function toRadians(degrees) {
+    return degrees * (Math.PI / 180);
+}
+
 export function lineBetween(context, a, b, colour, thickness = 1) {
 	context.beginPath();
 	context.moveTo(a.x, a.y);
