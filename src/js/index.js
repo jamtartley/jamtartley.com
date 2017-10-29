@@ -26,6 +26,7 @@ function resize() {
 	canvas.height = window.innerHeight;
 
     if (canvas.width != prevWidth || canvas.height != prevHeight) {
+        starManager = new StarManager(MAX_STAR_COUNT, MAX_DIST_LINE_CONNECTION, MAX_DIST_MOUSE_EFFECT);
         treeManager = new TreeManager(TREE_COUNT);
     }
 
@@ -42,19 +43,19 @@ function update() {
 }
 
 function updateCanvas() {
-    //starManager.update(currentMousePos);
+    starManager.update(currentMousePos);
     treeManager.update();
 }
 
 function drawCanvas() {
-    //starManager.draw(context);
+    starManager.draw(context);
     treeManager.draw(context);
 }
 
 const MAX_STAR_COUNT = 16;
-const MAX_DIST_MOUSE_EFFECT = 256;
+const MAX_DIST_MOUSE_EFFECT = 512;
 const MAX_DIST_LINE_CONNECTION = 256;
-const TREE_COUNT = 4;
+const TREE_COUNT = 2;
 
 var canvas = document.getElementById("star-canvas");
 var context; 
@@ -64,11 +65,10 @@ var currentMousePos = {
 };
 var prevWidth;
 var prevHeight;
-var starManager = new StarManager(MAX_STAR_COUNT, MAX_DIST_LINE_CONNECTION, MAX_DIST_MOUSE_EFFECT);
+var starManager;
 var treeManager;
 
 if (canvas && canvas.getContext) {
     init();
     context = canvas.getContext("2d");
-    starManager.init();
 }

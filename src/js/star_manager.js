@@ -8,9 +8,7 @@ class StarManager {
         this.maxDistLineConnection = maxDistLineConnection;
         this.maxDistMouseEffect = maxDistMouseEffect;
         this.stars = [];
-    }
 
-    init() {
         for (let i = 0; i < this.maxCount; i++) {
             this.addNewStar();
         }
@@ -21,7 +19,7 @@ class StarManager {
             x: Math.random() * window.innerWidth, 
             y: randomY ? Math.random() * window.innerHeight : 0 
         };
-        this.stars.push(new Star(pos, new Rgba(255, 255, 255, 255)));
+        this.stars.push(new Star(pos, new Rgba(255, 255, 230, 255)));
     }
 
     killStar(star) {
@@ -87,8 +85,8 @@ class StarManager {
     }
 
     draw(context) {
-        this.drawMouseConnection(context);
-        this.drawLineConnections(context);
+        //this.drawMouseConnection(context);
+        //this.drawLineConnections(context);
 
         for (let star of this.stars) {
             star.draw(context);

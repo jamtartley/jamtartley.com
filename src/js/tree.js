@@ -7,7 +7,7 @@ class Tree {
         const maxRootSize = 128;
 
         this.branches = [];
-        this.branches.push(new Branch(pos, Utils.randBetween(minRootSize, maxRootSize), 0));
+        this.branches.push(new Branch(pos, Utils.getRandInt(minRootSize, maxRootSize), 0));
     }
 
     progress() {

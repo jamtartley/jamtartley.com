@@ -1,4 +1,5 @@
 import * as Utils from "./utils";
+import Leaf from "./leaf";
 import Vector2D from "./vector_2d";
 
 class Branch {
@@ -6,6 +7,7 @@ class Branch {
         this.start = start;
         this.len = len;
         this.angle = angle;
+        this.leaf = null;
         this.isFinished = false;
 
         let endX = start.x - (len * Math.sin(angle));
@@ -13,9 +15,15 @@ class Branch {
         this.end = new Vector2D(endX, endY);
     }
 
+    addLeaves() {
+        
+    }
+
     progress(count) {
-        if (this.len <= 16) {
+        if (this.len <= 32) {
+            // We are an end branch
             this.isFinished = true;
+            this.leaf = new Leaf(this.end);
             return [];
         }
 
@@ -24,7 +32,7 @@ class Branch {
         const spawnCount = 2;
         const minAngle = this.angle - Math.PI / 3;
         const maxAngle = this.angle + Math.PI / 3;
-        const minLength = this.len / 2;
+        const minLength = this.len / 1.75;
         const maxLength = this.len;
 
         let branches = [];
@@ -40,6 +48,9 @@ class Branch {
 
     draw(context) {
         Utils.lineBetween(context, this.start, this.end, "white", this.len / 20);
+        if (this.leaf !== null) {
+            this.leaf.draw(context);
+        }
     }
 }
 
