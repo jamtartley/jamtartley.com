@@ -1,31 +1,46 @@
+@import "./colours.less";
+@import "./sizes.less";
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    color: @text-normal;
     overflow: hidden;
-    background: #323232;
+    font-family: 'Lato', sans-serif;
+    background: @background;
 }
 
 h1 {
-    margin: 30px;
-    font-size: 4em;
-    font-family: josefin-slab-bold;
-    color: #FFFFFF;
+    font-size: 3em;
+    color: @text-accent;
 }
 
 p {
-    margin: 20px;
-    font-size: 1.5em;
-    font-family: josefin-slab-regular;
-    color: #FFFFFF;
+    font-size: 1em;
+    padding: 0;
+
+    .feature {
+        color: @text-accent;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 }
 
-img {
-    width: 150px;
-    height: auto;
+hr {
+    width: 20%;
 }
 
-#star-section {
+a {
+    color: @text-accent;
+    font-size: 1.2em;
+    text-decoration: none;
+    pointer-events: all;
+}
+
+#hero {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,52 +49,8 @@ img {
 #about {
     position: absolute;
     z-index: 1;
+    padding: @size-medium;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
-
-    h1 {
-        position: relative;
-        top: 100px;
-        transition: transform .5s ease;
-    }
-
-    hr {
-        position: relative; 
-        width: 0;
-        top: 0;
-        opacity: 0;
-        transition: width .5s ease, transform .5s ease, opacity .5s ease;
-    }
-
-    p {
-        position: relative;
-        opacity: 0;
-        top: 0;
-        transition: transform .5s ease, opacity .5s ease;
-    }
-
-    &:hover {
-        h1 {
-            transform: translate3d(0, -100px, 0);
-        }
-        hr {
-            width: 50%;
-            transform: translate3d(0, -20px, 0);
-            opacity: 1;
-        }
-        p {
-            transform: translate3d(0, -20px, 0);
-            opacity: 1;
-        }
-    }
-}
-
-@font-face {
-    font-family: josefin-slab-regular;
-    src: url('../fonts/josefin-slab-regular.ttf');
-}
-
-@font-face {
-    font-family: josefin-slab-bold;
-    src: url('../fonts/josefin-slab-bold.ttf');
+    background: @text-background;
+    pointer-events: none;
 }

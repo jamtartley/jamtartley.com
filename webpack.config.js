@@ -31,13 +31,6 @@ module.exports = {
                     loader: "less-loader"
                 }]
             },
-            {
-                test: /\.(ttf)$/,
-                loader: 'file-loader',
-                options: {
-                    name: 'fonts/[name].[ext]'
-                }
-            }
         ]
     },
     watch: true
