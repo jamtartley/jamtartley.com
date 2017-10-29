@@ -1,9 +1,13 @@
+import * as Utils from "./utils";
 import Branch from "./branch";
 
 class Tree {
     constructor(pos) {
+        const minRootSize = 50;
+        const maxRootSize = 100;
+
         this.branches = [];
-        this.branches.push(new Branch(pos, 200, 0));
+        this.branches.push(new Branch(pos, Utils.randBetween(minRootSize, maxRootSize), 0));
     }
 
     progress() {

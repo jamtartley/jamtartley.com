@@ -14,13 +14,16 @@ class Branch {
     }
 
     progress(count) {
-        if (this.len <= 2) {
+        if (this.len <= 4) {
             return [];
         }
 
         this.isFinished = true;
 
-        return [new Branch(this.end, this.len * (2 / 3), this.angle - Math.PI / 6), new Branch(this.end, this.len * (2 / 3), this.angle + Math.PI / 6)];
+        let leftAngle = this.angle - Utils.getRandFloat(Math.PI / 6, Math.PI / 3);
+        let rightAngle = this.angle + Utils.getRandFloat(Math.PI / 6, Math.PI / 3);
+
+        return [new Branch(this.end, this.len * (2 / 3), leftAngle), new Branch(this.end, this.len * (2 / 3), rightAngle)];
     }
 
     draw(context) {

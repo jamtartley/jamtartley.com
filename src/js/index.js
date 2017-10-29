@@ -55,7 +55,7 @@ var currentMousePos = {
   y: 0
 };
 var starManager = new StarManager(MAX_STAR_COUNT, MAX_DIST_LINE_CONNECTION, MAX_DIST_MOUSE_EFFECT);
-var treeManager = new TreeManager(1);
+var treeManager = new TreeManager(4);
 
 if (canvas && canvas.getContext) {
     init();
