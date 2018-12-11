@@ -63,12 +63,17 @@ div {
     }
 }
 
+iframe {
+    pointer-events: all;
+}
+
 hr {
     border: @size-border solid @background-item;
 }
 
 #homepage-container {
     background: url("../../dist/images/background_main.png") no-repeat center;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,6 +102,7 @@ hr {
 
 #color-crunch-container {
     background: url("../../dist/images/background_color_crunch.png") no-repeat center;
+    background-size: cover;
 }
 
 .hero {
