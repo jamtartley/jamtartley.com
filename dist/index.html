@@ -2,29 +2,26 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-
         <title>Sam Hartley - London-based full-stack developer</title>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.js"></script>
     </head>
     <body>
-        <div id="hero">
-            <canvas id="star-canvas">Oh no! You can't see the cool canvas :(</canvas>
-            <div id="about">
-                <h1>Sam Hartley</h1>
-                <hr/>
-                <p>Primary interest is the effect of</p> 
-                <p>
-                    <span class="feature">haptic feedback</span>
-                    and 
-                    <span class="feature">visual design</span>
-                </p>
-                <p>on the retention and engagement of users</p>
-                <hr/>
-                <a href="https://github.com/jamtartley" target="_blank">Github</a>
-                <hr/>
-                <p>Developer in Twickenham, London</p>
+        <div id="fullpage">
+            <div id="homepage-container" class="section">
+                <canvas id="homepage-canvas">Oh no! You can't see the cool canvas :(</canvas>
+                <div class="hero">
+                </div>
+                <img id="scroll-down" src="images/chevron_down.svg"/>
+            </div>
+            <div id="color-crunch-container" class="section">
+                <canvas id="color-crunch-canvas">Oh no! You can't see the cool canvas :(</canvas>
+                <div class="hero">
+                </div>
             </div>
         </div>
-        <script src="bundle.js"></script>
     </body>
+
+    <script src="bundle.js"></script>
 </html>

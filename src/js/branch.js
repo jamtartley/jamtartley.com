@@ -26,7 +26,7 @@ class Branch {
 
         const minAngle = this.angle - Math.PI / 3;
         const maxAngle = this.angle + Math.PI / 3;
-        const minLength = this.len / 2.5;
+        const minLength = this.len / 2;
         const maxLength = this.len;
 
         let branches = [];
