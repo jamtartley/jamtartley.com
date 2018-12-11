@@ -1,3 +1,4 @@
+@import "./animations.less";
 @import "./colours.less";
 @import "./sizes.less";
 @import "./jquery.fullPage.css";
@@ -6,33 +7,17 @@
 @cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 @form-curve: cubic-bezier(0.64, 0.09, 0.08, 1);
 
-@size-border: 1px;
-@size-xsmall: 4px;
-@size-small: 8px;
-@size-medium: 16px;
-@size-large: 32px;
-@size-xlarge: 64px;
-@size-xxlarge: 128px;
-@size-max-form: 800px;
-
-@dark: rgb(25, 25, 25);
-@light: #FFF;
-@accent: rgb(237, 143, 54);
-@accent-text: rgb(20, 20, 20);
-@error: rgb(229, 67, 85);
-@placeholder-text: rgb(80, 80, 80);
-
 * {
     text-align: center;
 }
 
 html, body {
+    background: rgba(49, 22, 67, 0.8);
     margin: 0;
     padding: 0;
     user-select: none;
-    background: @dark;
     font-family: 'Lato', sans-serif;
-    color: @dark;
+    color: @text-light;
 }
 
 strong {
@@ -40,7 +25,21 @@ strong {
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 4em;
+    text-transform: uppercase;
+    line-height: 0;
+}
+
+h2 {
+    font-size: 2em;
+    font-style: italic;
+    text-transform: uppercase;
+    line-height: 0;
+}
+
+h3 {
+    font-size: 0.8em;
+    text-transform: uppercase;
     line-height: 0;
 }
 
@@ -49,25 +48,30 @@ p {
 }
 
 a {
+    font-size: 1.25em;
     pointer-events: all;
     cursor: pointer;
     text-decoration: none;
+    color: @text-accent;
 }
 
-hr {
-    border: @size-border solid @dark;
-}
-
-.container(@color) {
+div {
     &.active {
         hr {
-            border-color: @color;
+            .animation(grow-out 0.5s @cubic both 0.5s);
         }
     }
 }
 
+hr {
+    border: @size-border solid @background-item;
+}
+
 #homepage-container {
     background: url("../../dist/images/background_main.png") no-repeat center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     #scroll-down {
         position: absolute;
@@ -77,6 +81,13 @@ hr {
         height: auto;
         margin: 0 0 @size-medium -@size-medium;
         cursor: pointer;
+    }
+
+    #about {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .hero {
@@ -104,6 +115,12 @@ hr {
     -webkit-transform: translate3d(0,0,0);
     -ms-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
+}
+
+.feature {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5em;
 }
 
 .image-container {

@@ -1,4 +1,5 @@
 import * as Utils from "./utils";
+import Rgba from "./rgba";
 import Vector2D from "./vector_2d";
 
 class Branch {
@@ -7,6 +8,7 @@ class Branch {
         this.len = len;
         this.angle = angle;
         this.isFinished = false;
+        this.colour = new Rgba(255, 255, 255, 0.1).getRgbaPrint();
 
         let endX = start.x - (len * Math.sin(angle));
         let endY = start.y - (len * Math.cos(angle));
@@ -41,7 +43,7 @@ class Branch {
     }
 
     draw(context) {
-        Utils.lineBetween(context, this.start, this.end, "white", this.len / 20);
+        Utils.lineBetween(context, this.start, this.end, this.colour, this.len / 20);
     }
 }
 
