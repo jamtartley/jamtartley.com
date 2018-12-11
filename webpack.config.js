@@ -37,6 +37,16 @@ module.exports = {
                     loader: "less-loader"
                 }]
             },
+            {
+                test: /\.(eot|png|jp(e*)g|svg|ttf|woff|woff2)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        limit: 8000,
+                        name: 'images/[name].[ext]'
+                    }
+                }]
+            },
         ]
     },
     watch: true

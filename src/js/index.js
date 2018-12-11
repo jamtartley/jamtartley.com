@@ -22,8 +22,8 @@ function mouseDown(e) {
 }
 
 function resize() {
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     if (canvas.width != prevWidth || canvas.height != prevHeight) {
         starManager = new StarManager(MAX_STAR_COUNT, MAX_DIST_LINE_CONNECTION, MAX_DIST_MOUSE_EFFECT);

@@ -1,5 +1,4 @@
 import * as Utils from "./utils";
-import Leaf from "./leaf";
 import Vector2D from "./vector_2d";
 
 class Branch {
@@ -7,16 +6,11 @@ class Branch {
         this.start = start;
         this.len = len;
         this.angle = angle;
-        this.leaf = null;
         this.isFinished = false;
 
         let endX = start.x - (len * Math.sin(angle));
         let endY = start.y - (len * Math.cos(angle));
         this.end = new Vector2D(endX, endY);
-    }
-
-    addLeaves() {
-        
     }
 
     getChildren(spawnCount) {
@@ -25,7 +19,6 @@ class Branch {
         if (this.len <= minLenToSpawn) {
             // We are an end branch
             this.isFinished = true;
-            this.leaf = new Leaf(this.end);
             return [];
         }
 
@@ -49,9 +42,6 @@ class Branch {
 
     draw(context) {
         Utils.lineBetween(context, this.start, this.end, "white", this.len / 20);
-        if (this.leaf !== null) {
-            this.leaf.draw(context);
-        }
     }
 }
 
