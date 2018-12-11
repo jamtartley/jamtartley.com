@@ -1,14 +1,18 @@
 export function isInsideWindow(position) {
-	return position.x <= window.innerWidth 
-	    && position.y <= window.innerHeight 
-	    && position.x >= 0
-	    && position.y >= 0;
+    return position.x <= window.innerWidth
+        && position.y <= window.innerHeight
+        && position.x >= 0
+        && position.y >= 0;
+}
+
+export function isInsideViewport(el) {
+    return el[0].classList.contains("active");
 }
 
 export function distBetween(a, b) {
-	var deltaXSquared = Math.pow(b.x - a.x, 2);
-	var deltaYSquared = Math.pow(b.y - a.y, 2);
-	return Math.sqrt(deltaXSquared + deltaYSquared);
+    var deltaXSquared = Math.pow(b.x - a.x, 2);
+    var deltaYSquared = Math.pow(b.y - a.y, 2);
+    return Math.sqrt(deltaXSquared + deltaYSquared);
 }
 
 export function toRadians(degrees) {
@@ -16,16 +20,16 @@ export function toRadians(degrees) {
 }
 
 export function lineBetween(context, a, b, colour, thickness = 1) {
-	context.beginPath();
-	context.moveTo(a.x, a.y);
-	context.lineTo(b.x, b.y);
-	context.strokeStyle = colour;
-	context.lineWidth = thickness;
-	context.stroke();
+    context.beginPath();
+    context.moveTo(a.x, a.y);
+    context.lineTo(b.x, b.y);
+    context.strokeStyle = colour;
+    context.lineWidth = thickness;
+    context.stroke();
 }
 
 export function clampInt(value, min, max) {
-	return Math.min(Math.max(value, min), max);
+    return Math.min(Math.max(value, min), max);
 }
 
 export function getRandFloat(min, max) {
@@ -33,5 +37,9 @@ export function getRandFloat(min, max) {
 }
 
 export function getRandInt(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function lerp(a, b, t) {
+    return a + (b - a) * t;
 }

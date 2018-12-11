@@ -1,19 +1,21 @@
 import * as Utils from "./utils";
 import Rgba from "./rgba";
 
+const MIN_SIZE = 1;
+
 class Star {
-    constructor(position, colour) {
+    constructor(position, colour, imageNumber) {
         const MIN_SPEED = 0.2;
         const MAX_SPEED = 0.4;
-        const MIN_RADIUS = 1;
-        const MAX_RADIUS = 32;
+        const MIN_FULL_SIZE = 4;
+        const MAX_FULL_SIZE = 64;
 
         this.colour = colour;
-        this.minRadius = MIN_RADIUS;
-        this.maxRadius = MAX_RADIUS;
-        this.radius = MIN_RADIUS;
+        this.size = MIN_SIZE;
+        this.fullSize = Utils.getRandInt(MIN_FULL_SIZE, MAX_FULL_SIZE);
         this.position = position;
         this.speed = Utils.getRandInt(MIN_SPEED, MAX_SPEED);
+        this.imageNumber = imageNumber;
     }
 
     update(currentMousePos, maxDistMouseEffect) {
@@ -23,17 +25,19 @@ class Star {
 
         if (dist <= maxDistMouseEffect) {
             let closeness = 1 - (dist / maxDistMouseEffect);
-            this.radius = Math.max(closeness * this.maxRadius, this.minRadius);			
+            this.size = Utils.lerp(MIN_SIZE, this.fullSize, closeness);
         } else {
-            this.radius = this.minRadius;
+            this.size = MIN_SIZE;
         }
     }
 
     draw(context) {
-        context.beginPath();
-        context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI, false);
-        context.fillStyle = this.colour.getRgbPrint();
-        context.fill();
+        let img = new Image();
+        img.src = "images/tiles/tile_" + this.imageNumber + ".png";
+
+        let x = this.position.x - (this.size / 2);
+        let y = this.position.y - (this.size / 2);
+        context.drawImage(img, x, y, this.size, this.size);
     }
 }
 

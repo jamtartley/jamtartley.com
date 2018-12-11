@@ -3,8 +3,8 @@ import Branch from "./branch";
 
 class Tree {
     constructor(pos) {
-        const minRootSize = 64;
-        const maxRootSize = 160;
+        const minRootSize = 96;
+        const maxRootSize = 128;
 
         this.branches = [];
         this.branches.push(new Branch(pos, Utils.getRandInt(minRootSize, maxRootSize), 0));
@@ -18,7 +18,6 @@ class Tree {
                 continue;
             }
 
-            //let newBranches = branch.getChildren(2);
             let newBranches = branch.getChildren(Utils.getRandInt(2, 3));
 
             for (let newBranch of newBranches) {
