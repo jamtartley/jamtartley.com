@@ -8,11 +8,11 @@
 @form-curve: cubic-bezier(0.64, 0.09, 0.08, 1);
 
 * {
-    text-align: center;
+    text-align: left;
 }
 
 html, body {
-    background: rgba(49, 22, 67, 0.8);
+    background: rgb(49, 22, 67);
     margin: 0;
     padding: 0;
     user-select: none;
@@ -110,6 +110,23 @@ hr {
 
     * {
         margin: @size-small;
+    }
+}
+
+#privacy-container {
+    background: url("../../dist/images/background_main.png") no-repeat center;
+    background-size: cover;
+
+    a {
+        font-size: 1em;
+    }
+}
+
+#privacy-content {
+    max-width: 50%;
+
+    h1 {
+        margin-bottom: @size-xlarge;
     }
 }
 
