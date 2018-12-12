@@ -6,8 +6,8 @@ const MIN_SIZE = 1;
 class Star {
     constructor(position, colour, imageNumber) {
         const MIN_SPEED = 0.2;
-        const MAX_SPEED = 0.4;
-        const MIN_FULL_SIZE = 4;
+        const MAX_SPEED = 1;
+        const MIN_FULL_SIZE = 64;
         const MAX_FULL_SIZE = 128;
 
         this.colour = colour;

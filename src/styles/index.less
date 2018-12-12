@@ -78,23 +78,6 @@ hr {
     justify-content: center;
     align-items: center;
 
-    #scroll-down {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: @size-large;
-        height: auto;
-        margin: 0 0 @size-medium -@size-medium;
-        cursor: pointer;
-    }
-
-    #about {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
     .hero {
         padding: @size-xlarge;
     }
@@ -103,6 +86,31 @@ hr {
 #color-crunch-container {
     background: url("../../dist/images/background_color_crunch.png") no-repeat center;
     background-size: cover;
+}
+
+#scroll-down {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: @size-large;
+    height: auto;
+    margin: 0 0 @size-medium -@size-medium;
+    cursor: pointer;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#about-links {
+    display: flex;
+
+    * {
+        margin: @size-small;
+    }
 }
 
 .hero {
