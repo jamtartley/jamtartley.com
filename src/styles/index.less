@@ -69,6 +69,7 @@ iframe {
 
 hr {
     border: @size-border solid @background-item;
+    margin: @size-large;
 }
 
 #homepage-container {
@@ -107,9 +108,11 @@ hr {
 
 #about-links {
     display: flex;
+    flex-direction: column;
 
     * {
         margin: @size-small;
+        text-align: center;
     }
 }
 
@@ -159,7 +162,6 @@ hr {
     flex-direction: column;
     align-items: center;
     flex: 10;
-    text-align: center;
     justify-content: center;
 
     /* Needed to prevent images showing at max resolution on Firefox */
