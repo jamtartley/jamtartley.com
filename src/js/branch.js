@@ -8,7 +8,7 @@ class Branch {
         this.len = len;
         this.angle = angle;
         this.isFinished = false;
-        this.colour = new Rgba(255, 255, 255, 0.1).getRgbaPrint();
+        this.colour = new Rgba(255, 255, 255, 0.2).getRgbaPrint();
 
         let endX = start.x - (len * Math.sin(angle));
         let endY = start.y - (len * Math.cos(angle));
