@@ -14,6 +14,7 @@ html, body {
     margin: 0;
     font-family: 'Jaywalker', 'monospace', sans-serif;
     overflow-x: hidden;
+    text-align: center;
 }
 
 h1 {
@@ -41,6 +42,7 @@ a {
 }
 
 hr {
+    margin: @size-large auto;
     width: 70%;
     color: @text-primary;
 }
@@ -63,18 +65,19 @@ hr {
 #main-info {
     display: flex;
     flex-direction: column;
-    text-align: center;
     justify-content: center;
     align-items: center;
 }
 
 #main-image {
-    text-align: center;
-
     img {
         width: auto;
         height: 100vh;
     }
+}
+
+#privacy-container {
+    padding: @size-large;
 }
 
 .letter {
