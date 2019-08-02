@@ -1,224 +1,57 @@
-@import "./animations.less";
 @import "./colours.less";
 @import "./sizes.less";
-@import "./jquery.fullPage.css";
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 @cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 @form-curve: cubic-bezier(0.64, 0.09, 0.08, 1);
 
-* {
-    text-align: left;
+@font-face {
+    font-family: Jaywalker;
+    src: url("../../src/fonts/Jaywalker-Regular.otf") format("opentype");
 }
 
 html, body {
-    background: rgb(49, 22, 67);
     margin: 0;
-    padding: 0;
     user-select: none;
-    font-family: 'Lato', sans-serif;
-    color: @text-light;
-}
-
-strong {
-    text-transform: uppercase;
+    font-family: 'Jaywalker', 'monospace', sans-serif;
+    background: @background;
 }
 
 h1 {
-    font-size: 4em;
-    text-transform: uppercase;
-    line-height: 0;
-}
-
-h2 {
-    font-size: 2em;
-    font-style: italic;
-    text-transform: uppercase;
-    line-height: 0;
-}
-
-h3 {
-    font-size: 0.8em;
-    text-transform: uppercase;
-    line-height: 0;
+    font-size: 10em;
+    color: @text-primary;
 }
 
 p {
-    font-size: 1.25em;
+    font-size: 2em;
+    color: @text-secondary;
 }
 
 a {
-    font-size: 1.25em;
-    pointer-events: all;
-    cursor: pointer;
-    text-decoration: none;
-    color: @text-accent;
+    color: @text-link;
 }
 
-div {
-    &.active {
-        hr {
-            .animation(grow-out 0.5s @cubic both 0.5s);
-        }
+#content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+    &> div {
+        flex: 1;
+    }
+
+    @media all and (max-width: 1100px) {
+        flex-direction: column;
     }
 }
 
-iframe {
-    pointer-events: all;
+#main-info {
+    text-align: center;
 }
 
-hr {
-    border: @size-border solid @background-item;
-    margin: @size-large;
-}
-
-#homepage-container {
-    background: url("../../dist/images/background_main.png") no-repeat center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .hero {
-        padding: @size-xlarge;
-    }
-}
-
-#color-crunch-container {
-    background: url("../../dist/images/background_color_crunch.png") no-repeat center;
-    background-size: cover;
-}
-
-#scroll-down {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: @size-large;
-    height: auto;
-    margin: 0 0 @size-medium -@size-medium;
-    cursor: pointer;
-}
-
-#about {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#about-links {
-    display: flex;
-    flex-direction: column;
-
-    * {
-        margin: @size-small;
-        text-align: center;
-    }
-}
-
-#privacy-container {
-    background: url("../../dist/images/background_main.png") no-repeat center;
-    background-size: cover;
-
-    a {
-        font-size: 1em;
-    }
-}
-
-#privacy-content {
-    max-width: 50%;
-
-    h1 {
-        margin-bottom: @size-xlarge;
-    }
-}
-
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    pointer-events: none;
-    padding: @size-large;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    /* Fix disappearing content on scroll back to this element with fullpage.js */
-    -webkit-transform: translate3d(0,0,0);
-    -ms-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-}
-
-.feature {
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 1.5em;
-}
-
-.image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 10;
-    justify-content: center;
-
-    /* Needed to prevent images showing at max resolution on Firefox */
-    overflow: hidden;
-
+#main-image {
     img {
-        max-height: 100%;
+        width: 100%;
+        height: auto;
     }
-}
-
-.info-container {
-    width: 50%;
-    flex: 1 1 auto;
-    padding: @size-medium;
-}
-
-.title-container {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.badge-container {
-    display: flex;
-    align-items: center;
-    flex: 1 1 auto;
-
-    img {
-        margin: 0 @size-medium;
-        pointer-events: all;
-        transition: transform 0.3s ease;
-
-        @media (max-width: 960px) {
-            width: 20vw;
-        }
-
-        @media (min-width: 961px) and (max-width: 1920px) {
-            width: 15vw;
-        }
-
-        @media (min-width: 1921px) {
-            width: 12vw;
-        }
-
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
-}
-
-.tagline {
-    font-style: italic;
-    font-size: 1.5em;
-}
-
-.touch {
-    pointer-events: all;
 }
