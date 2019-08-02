@@ -21,6 +21,7 @@ h1 {
     font-size: 10em;
     color: @text-primary;
     margin: @size-medium 0;
+    text-shadow: @size-small @size-small @shadow-light;
 
     @media all and (max-width: @break-text) {
         font-size: 6em;
@@ -31,6 +32,7 @@ p {
     font-size: 2em;
     color: @text-secondary;
     margin: @size-small 0;
+    text-shadow: @size-xsmall @size-xsmall @shadow-dark;
 
     @media all and (max-width: @break-text) {
         font-size: 1.5em;
@@ -39,6 +41,9 @@ p {
 
 a {
     color: @text-link;
+    font-size: 1.3em;
+    font-style: italic;
+    text-shadow: @size-xsmall @size-xsmall @shadow-dark;
 }
 
 hr {
