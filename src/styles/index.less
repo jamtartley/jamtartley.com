@@ -1,8 +1,8 @@
 @import "./colours.less";
 @import "./sizes.less";
 
-@cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-@form-curve: cubic-bezier(0.64, 0.09, 0.08, 1);
+@mobile: 1100px;
+@break-text: 1800px;
 
 @font-face {
     font-family: Jaywalker;
@@ -11,19 +11,29 @@
 
 html, body {
     margin: 0;
-    user-select: none;
     font-family: 'Jaywalker', 'monospace', sans-serif;
+    overflow-x: hidden;
     background: @background;
 }
 
 h1 {
     font-size: 10em;
     color: @text-primary;
+    margin: @size-medium 0;
+
+    @media all and (max-width: @break-text) {
+        font-size: 6em;
+    }
 }
 
 p {
     font-size: 2em;
     color: @text-secondary;
+    margin: @size-small 0;
+
+    @media all and (max-width: @break-text) {
+        font-size: 1.5em;
+    }
 }
 
 a {
@@ -40,18 +50,24 @@ a {
         flex: 1;
     }
 
-    @media all and (max-width: 1100px) {
+    @media all and (max-width: @mobile) {
         flex-direction: column;
     }
 }
 
 #main-info {
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #main-image {
+    text-align: center;
+
     img {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100vh;
     }
 }
