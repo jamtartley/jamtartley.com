@@ -1,5 +1,6 @@
 @import "./colours.less";
 @import "./sizes.less";
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 @mobile: 1100px;
 @break-text: 1800px;
@@ -13,7 +14,6 @@ html, body {
     margin: 0;
     font-family: 'Jaywalker', 'monospace', sans-serif;
     overflow-x: hidden;
-    background: @background;
 }
 
 h1 {
@@ -38,6 +38,11 @@ p {
 
 a {
     color: @text-link;
+}
+
+hr {
+    width: 70%;
+    color: @text-primary;
 }
 
 #content {
@@ -70,4 +75,8 @@ a {
         width: auto;
         height: 100vh;
     }
+}
+
+.letter {
+    position: relative;
 }
