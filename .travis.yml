@@ -9,7 +9,8 @@ cache:
 notifications:
     email: false
     irc:
-        skip_join: true
+        use_notice: true
+        skip_join: false
         on_success: always
         on_failure: always
         channels:
