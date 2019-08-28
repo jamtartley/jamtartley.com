@@ -1,41 +1,49 @@
 language: node_js
 node_js:
-    - node
+- node
 install:
-    - npm install
+- npm install -g travis-ci-cloudfront-invalidation
+- npm install
 cache:
-    directories:
-        - node_modules
+  directories:
+  - node_modules
+env:
+  global:
+  - secure: TKayEfi98xAwd8C5Auogbk7IcAzfkwZqYGibJhpnclLkt2fKAssKGhW4aB2l1vvH9BA0DM1FJCbuDNKOASR6xI32pfW6GhjphAcop0URSgTrrOKwtqqzMrUSyygst9DhbhKtcc5+bNZ9VazzGuvJnPJ0LkUkHD0WoyE4Kt7/PsvQ0uiJZTLirOt3JX93r8ju0Cf35svq32hQl0DFTp5ePYL3BgQpuE6g24jjbt9Cfg0g4YYXRyeD5c2GTn3sZawoxz6bhDWGEpPdYxhUNjT3WIGG69BiQmYGHc4GuL2B7+d8W9UKV0noCRTVw+dkajlDbUDu0MVYU5yd5RSrC3q3kvf31BmWVDvp4I1B27RDDsXSlysmBXXwRc9raeSKbYceIcdH84HYOePhr5Lmd+BRoeVUkAB1pmlfBiDlQ5pYE+fgoeOoZxZv6c71xPICa/Rk2h0F3R8NgvjABfSMMMDsBKEAwAujH5NQF5Q6q+ElZuoCCjW0CceVZtW5Ww+IhE59jhkJugACvWFZgWUzWjxy4ISi0YPq0F4kAaONFSGohUJitkGWs33mKZ2e5/PtOqPhC7Esd844xodo/WkeXdolsMNIGJ+1/5g9sZl+6ozDFF92DaPuozjBAxnc5YmccyMegxD8TY+GCoLbdkfJPn41/lzpE3LGAOeTtTIiHE/2WOo=
+  - secure: auXGpn9nwvUDgPFnR8nxJLv25/gCy5LKSuh9sx23JzOmWHFzWcX2tdhbIdK9pdzsLXHeLXxObrRftK0XbrSpn+Av/5cQYmyykU0toOSS7JsOoVNZfUSCqFUXJYZSe7EZPj9lJ+GgPExXj8vI1xdYneF6uOWkheBnY/HOHiAHFDOPs8i8vNy3DOeJqYlaOgMMNEOFDNBRXBqzzO2mdFdOgQucMTVYj67ITQvuRn3HjSyEuAmWAbd01sUXYTrECWQYeqPfcIG2Ju85xPzERkGIdgnwnti0H36OG3vA6V0wKL8CynvFljC1TPzGi5D1cizbEMQScbbZ2nmvJ7QkGEpUYQJlRwGjLIIHOG7k1fUEFDPU/HZh0xikHz2KGOTzmZfKUOJtNxJLId4tNtQRO5tFczVUTY53DVMy+N2n8cvvHyebeR4cLCsJ8aFV6QiXo/AawhgqVZYtL1oqdHLeqNRhUg8IDCiFOUE+fK9zSjJhQx+EdawFk8yTpAZWpnxok1A06iqrYD6AsT9wAKXdWWANJNyuwXrKzW86aXJ3FEtQLdNhKFk91xpxcZYT9kXeH1mcAG6bOfYpUczG5+Li38tbXNfhH2aliD5GLm8lPuKrJgikiGX5RRvGx4srw4CIGA7FjqrD5y4AY1RgK1/B5+sizz0y44cR0LvtksUyT17JGrI=
+  - secure: sswEHbKcya8fMs6KwDgceZvdhDla6tj2H0Sdqvf03FIorrqGJNNHFfo7QosWwH6ngOa8pv73gEOi2k699r3CCukqDdRh6PfiGPCmNYP2YMDsd+gnkzeGXLqfWMGyxboQkarIIVSMsK+1AJvle6q2hSTFEakt9f5bLHZ9YXI8frOmk+7YVRwO+v/HYpsHq7z+2lW58Feqpi2PQcyI79Q8Vuq1RdYulq3iZ0OSPvs7apgoeGvOEjWHFIIVZjB5tL8jyIRJ3S59uT14+vmrs4AIAUc5FtW8MR/Jj+Av5ReYCVg+6uxwTbIH/Nw7A7kromrQ/Iddlxo0Nea7EmeNS55Upysac4Ra4GgCpkX0u9xO9EmKodmnaNhmXxvvTMFb+wwpaGLiLZ8GIdnJd4JxJm1CgjYSmYU7iNjgok+YI/pDD6Vc8dZY5/TTVDt04Y7I1r8pDIsDh7Sbzu4aWAM/US+PhBWSiP/7dS2wSZOtHQ0LxAArHMmB76oBom4wb5GuMC0r8v6yWCMJA9/6FZWP+Rhd0WGAwRugg5Ap+SNQIWQHVAuWqgbSEkl1B4vPo7VymgAOse7QJ3+KKFoB9rMsA+H8hHJEe6hHizYKSLwm8jR3SkceJrjnQpUPSJQ060EXAjF6eNjMFUFnXYaE5cvhesaCr5+zr1dsmh15ZY+IglMQ/Bk=
 notifications:
-    email: false
-    irc:
-        use_notice: true
-        skip_join: false
-        on_success: always
-        on_failure: always
-        template:
-            - "%{author} pushed to the repo %{repository_slug} on the %{branch} branch. %{message}"
-            - "======================="
-            - "%{commit_message}"
-            - "======================="
-            - "Code diff: %{compare_url}"
-            - "Travis build log: %{build_url}"
-        channels:
-            secure: Hn6zp44LcblNsIS5ihJRvSJcdB6nTkgctKQEsbhgHTY8USX4CoRa2kgomrg+PTg1gnIRVCbzUrk3XOUzywn5siV8NS14zCRUUxyktgS7vPyh/0lzh9wMcFfmFWTev58qRj438D6UCjtsOlUwVF3uZVawh3DQYe0PEYzCK3nNSE6+gpT+XJWrQFu+QUyHeHDINlhvVXtEvogVa4YWcWlbl+Dc/aHBrPMo3hF255rCD/5mRoIoM3H2AONf1eOfh0z08brKAzjwJKgiFCSU8/MHBCw+IvLa6rwjqYToHudhFeq8FTb+Pyk+ZCLJuBzKb9mvrOzLvdNJ5Re4w3gPbBlvDFoqI8bTCWLhRrQyJ9GtHw0p8HdVBYm2GPiXUPmFd87yED0nBJZ5WQ9xEN1N2C8zLkhBhNR5aEG9utYbevYyIHKdr2X6Wt1kWa2wzyn6s8xOecFDg7Ygbuijvn0ZXmeRldj+UHMcQkFqv6QoeC0BG5VZncERrOeIOk6IZoqAO0cNQfzu5mLUZXJSL+hJvswZPgW9nq+fq9LsfXWJi/dNxnW/dBmguxOYKaiVs/ZGafSTfL+tJq6J7aF7TXR7xyxQUBp8VFFBYLKYROIMQLN1RYuM0xhE4O3eImKCXhHkPihYlDgybQGEL+QCiuDf5tDMLDmr6HAZIr+ZHF3ZleIGIH8=
+  email: false
+  irc:
+    use_notice: true
+    skip_join: false
+    on_success: always
+    on_failure: always
+    template:
+    - "%{author} pushed to the repo %{repository_slug} on the %{branch} branch. %{message}"
+    - "======================="
+    - "%{commit_message}"
+    - "======================="
+    - 'Code diff: %{compare_url}'
+    - 'Travis build log: %{build_url}'
+    channels:
+      secure: Hn6zp44LcblNsIS5ihJRvSJcdB6nTkgctKQEsbhgHTY8USX4CoRa2kgomrg+PTg1gnIRVCbzUrk3XOUzywn5siV8NS14zCRUUxyktgS7vPyh/0lzh9wMcFfmFWTev58qRj438D6UCjtsOlUwVF3uZVawh3DQYe0PEYzCK3nNSE6+gpT+XJWrQFu+QUyHeHDINlhvVXtEvogVa4YWcWlbl+Dc/aHBrPMo3hF255rCD/5mRoIoM3H2AONf1eOfh0z08brKAzjwJKgiFCSU8/MHBCw+IvLa6rwjqYToHudhFeq8FTb+Pyk+ZCLJuBzKb9mvrOzLvdNJ5Re4w3gPbBlvDFoqI8bTCWLhRrQyJ9GtHw0p8HdVBYm2GPiXUPmFd87yED0nBJZ5WQ9xEN1N2C8zLkhBhNR5aEG9utYbevYyIHKdr2X6Wt1kWa2wzyn6s8xOecFDg7Ygbuijvn0ZXmeRldj+UHMcQkFqv6QoeC0BG5VZncERrOeIOk6IZoqAO0cNQfzu5mLUZXJSL+hJvswZPgW9nq+fq9LsfXWJi/dNxnW/dBmguxOYKaiVs/ZGafSTfL+tJq6J7aF7TXR7xyxQUBp8VFFBYLKYROIMQLN1RYuM0xhE4O3eImKCXhHkPihYlDgybQGEL+QCiuDf5tDMLDmr6HAZIr+ZHF3ZleIGIH8=
 git:
-    depth: false
+  depth: false
 before_deploy:
-    - npm run prod
+- npm run prod
 deploy:
-    provider: s3
-    access_key_id: AKIA2Y645FQNBLTWCVOU
-    secret_access_key:
-        secure: MvYMUA+nJM4jvkpheCAUQLpFxXV+JVQ5diXtG9yUAHyBqvzxpAZRVeuYdyqxhw/1LHr1supLjPccLnTydeUuPRhnzHTI+C4D8T5uXNLJD2tKCg/gXla9uFJIUP9abFhlfU+VCwTTfDgBI0/XZw+wRxjMV/Az2RLpkLBxthN/htFslFn2Sft6W236GuDOzCYnxE4PqsPmHQblsvQTIS+fpquuyWBjXRl38TQcJ2erbTw3q1TNtEGDT7cFdgjANWTZXSAxrBbxvnkjWe5TTXUjKYWMpPphMG1K9SRK2G2uGURf1afoeYFYiLQXV7Tj2W2MpbfFx8s3DxoIwzxK9ceqEAspGCUb3cFjZKQUIggfnJ7NubXxRwCQ22HWyLJNE1qVyfcz0fCZ3Kd0Vyo4lM3NJvnpGe6i2MY9rAtn9WO9T2rA5egBXIGYxWRZYHMv/qY40kufXD9YFTOLwqnyVIebp5QRCvXgH2TD2BE2CZLZJ4ZjSnsGoSspMsJ01i4UtkZ1dOg/w4Yfo8WQmYPEFkwpoFkFom6M2c52zugOdDE3QjUERyJbTv5rtVGUify8T5n/4JZNSZjQDYsie7Oy9KT+ivonuSGJyH+NmOF/udfcoY3xxRsVIPkTy65isTcOYdxdMhHzqHYma0Dz8Uaxmq6QFmhMTdS1cuUQbQA3s0sfKjQ=
-    bucket: jamtartley-com
-    local-dir: dist
-    acl: public_read
-    region: eu-west-2
-    skip_cleanup: true
-    on:
-        repo: jamtartley/jamtartley.com
-        branch: master
+  provider: s3
+  access_key_id: AKIA2Y645FQNEZILADOX
+  secret_access_key:
+    secure: cFtvq8s2LZsfyfyK3pkE183G29RyBi7EqjI/CRWuhC0HLdTP4cwisMPeS1QZ2xDS66sPZagAJSQHoqxqKMwnZZclI0p2uCYG7IeRz0jwnvIBXG0Yt+0hkdndUok2WpMFGCihjPB3g0DiDqTn4WKo/b9OLQeL1ivHEB/l9L+wUV2IfbRjg0ZCZW4krzBJFzvftr0tzOE+lI/qaNOsFQyRpN+xYL/AqaPqkz1l8nwpEcT6VEVs4vHl6Mc0Jd3WtBt+3ogjry8pELV7tOqBxOAcbOsC4DV9NaVZTgeDUpX1TAbhkCakIZxSNhAO/Ga3Cyz6AIriovfsUnHkOVCDYl4o15nLXF9iEktXqB9BzgyzEA7Pi3n5n/YA+WAN9l3XlOgWtru+Hl8YIe3aSBApDeGZIbhufHZTHaT/rzzdJRhbqHOtfo5vqZSix44Erubr+uaq0TCVMjpKnbT6UZuqMIiwRuZVasm+vRpN/XpXrGuoL7muAJfB3weiuZE5wquvUuweWL51dFWkuxvzHkWdP7Zj4MCLQtNjdB7Q+vJSJi8Y0SUKJXjpHJxlzBC0yUzA13nRSCwMA44uf85c6UsVvDMr6DoWv28vXong+WUADupY0fe5zjP6jGKQ+hZzTjvVPLc7XtTVsIBB53EpXc2gddpm2TeKNfpOHRnosdPdHAYG0z8=
+  bucket: jamtartley-com
+  local-dir: dist
+  region: eu-west-2
+  skip_cleanup: true
+  acl: public_read
+  on:
+    repo: jamtartley/jamtartley.com
+    branch: master
+after_deploy:
+- travis-ci-cloudfront-invalidation -a $AWS_ACCESS_KEY -s $AWS_SECRET_KEY -c $AWS_CLOUDFRONT_DIST_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST
