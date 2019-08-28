@@ -14,9 +14,10 @@ notifications:
         on_success: always
         on_failure: always
         template:
-            - "'%{commit_message}'"
             - "%{author} pushed to the repo %{repository_slug} on the %{branch} branch. %{message}"
-            - "============================================================================================"
+            - "======================="
+            - "%{commit_message}"
+            - "======================="
             - "Code diff: %{compare_url}"
             - "Travis build log: %{build_url}"
         channels:

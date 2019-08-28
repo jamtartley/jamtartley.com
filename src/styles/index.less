@@ -86,6 +86,86 @@ hr {
     }
 }
 
+#color-crunch-container {
+    display: flex;
+    flex-direction: column;
+    background: url("../../dist/images/background_color_crunch.png") no-repeat center;
+    background-size: cover;
+    align-items: center;
+    padding: @size-large;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* Fix disappearing content on scroll back to this element with fullpage.js */
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
 #privacy-container {
     padding: @size-large;
+}
+
+.info-container {
+    width: 50%;
+    flex: 1 1 auto;
+    padding: @size-large;
+}
+
+.title-container {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 10;
+    justify-content: center;
+
+    /* Needed to prevent images showing at max resolution on Firefox */
+    overflow: hidden;
+
+    img {
+        max-height: 100%;
+    }
+}
+
+.badge-container {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+
+    img {
+        margin: 0 @size-medium;
+        pointer-events: all;
+        transition: transform 0.3s ease;
+
+        @media (max-width: 960px) {
+            width: 20vw;
+        }
+
+        @media (min-width: 961px) and (max-width: 1920px) {
+            width: 15vw;
+        }
+
+        @media (min-width: 1921px) {
+            width: 12vw;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.tagline {
+    font-style: italic;
 }
