@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+    - 6.9.1
+before_script:
+    - npm run prod
+install:
+    - npm install
+notifications:
+    email: false
+git:
+    depth: 3
+deploy:
+    provider: s3
+    access_key_id: AKIA2Y645FQNBLTWCVOU
+    secret_access_key:
+        secure: MvYMUA+nJM4jvkpheCAUQLpFxXV+JVQ5diXtG9yUAHyBqvzxpAZRVeuYdyqxhw/1LHr1supLjPccLnTydeUuPRhnzHTI+C4D8T5uXNLJD2tKCg/gXla9uFJIUP9abFhlfU+VCwTTfDgBI0/XZw+wRxjMV/Az2RLpkLBxthN/htFslFn2Sft6W236GuDOzCYnxE4PqsPmHQblsvQTIS+fpquuyWBjXRl38TQcJ2erbTw3q1TNtEGDT7cFdgjANWTZXSAxrBbxvnkjWe5TTXUjKYWMpPphMG1K9SRK2G2uGURf1afoeYFYiLQXV7Tj2W2MpbfFx8s3DxoIwzxK9ceqEAspGCUb3cFjZKQUIggfnJ7NubXxRwCQ22HWyLJNE1qVyfcz0fCZ3Kd0Vyo4lM3NJvnpGe6i2MY9rAtn9WO9T2rA5egBXIGYxWRZYHMv/qY40kufXD9YFTOLwqnyVIebp5QRCvXgH2TD2BE2CZLZJ4ZjSnsGoSspMsJ01i4UtkZ1dOg/w4Yfo8WQmYPEFkwpoFkFom6M2c52zugOdDE3QjUERyJbTv5rtVGUify8T5n/4JZNSZjQDYsie7Oy9KT+ivonuSGJyH+NmOF/udfcoY3xxRsVIPkTy65isTcOYdxdMhHzqHYma0Dz8Uaxmq6QFmhMTdS1cuUQbQA3s0sfKjQ=
+    bucket: jamtartley-com
+    local-dir: dist
+    acl: public_read
+    on:
+        repo: jamtartley/jamtartley.com
+        branch: master
