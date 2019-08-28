@@ -1,14 +1,14 @@
 language: node_js
 node_js:
     - 6.9.1
-before_script:
-    - npm run prod
 install:
     - npm install
 notifications:
     email: false
 git:
     depth: 3
+before_deploy:
+    - npm run prod
 deploy:
     provider: s3
     access_key_id: AKIA2Y645FQNBLTWCVOU
@@ -17,6 +17,8 @@ deploy:
     bucket: jamtartley-com
     local-dir: dist
     acl: public_read
+    region: eu-west-2
+    skip_cleanup: true
     on:
         repo: jamtartley/jamtartley.com
         branch: master
