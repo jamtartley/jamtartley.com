@@ -3,7 +3,7 @@
 @size-small: 8px;
 @size-medium: 16px;
 @size-large: 32px;
-@mobile: 1300px;
+@mobile: 1200px;
 @decrease-font-size: 1800px;
 
 // Colours
@@ -14,20 +14,20 @@
 @shadow-light: rgba(0, 0, 0, 0.2);
 @shadow-dark: rgba(0, 0, 0, 0.5);
 
-@font-face {
-    font-family: Jaywalker;
-    src: url("../../src/fonts/Jaywalker-Regular.otf") format("opentype");
+* {
+    text-transform: lowercase;
 }
 
 html, body {
     margin: 0;
-    font-family: 'Jaywalker', 'monospace', sans-serif;
+    padding: @size-medium;
+    font-family: monospace, sans-serif;
     overflow-x: hidden;
     text-align: center;
 }
 
 h1 {
-    font-size: 10em;
+    font-size: 8em;
     color: @text-primary;
     margin: @size-medium 0;
     text-shadow: @size-small @size-small @shadow-light;
@@ -38,20 +38,16 @@ h1 {
 }
 
 p {
-    font-size: 2em;
+    font-size: 1.4em;
     color: @text-secondary;
     margin: @size-small 0;
-    text-shadow: @size-xsmall @size-xsmall @shadow-dark;
-
-    @media all and (max-width: @decrease-font-size) {
-        font-size: 1.4em;
-    }
 }
 
 a {
     color: @text-link;
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-style: italic;
+    text-decoration: none;
     text-shadow: @size-xsmall @size-xsmall @shadow-dark;
 }
 
@@ -92,8 +88,4 @@ hr {
 
 #privacy-container {
     padding: @size-large;
-}
-
-.letter {
-    position: relative;
 }
