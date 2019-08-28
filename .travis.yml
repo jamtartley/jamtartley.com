@@ -1,12 +1,15 @@
 language: node_js
 node_js:
-    - 6.9.1
+    - node
 install:
     - npm install
+cache:
+    directories:
+        - node_modules
 notifications:
     email: false
 git:
-    depth: 3
+    depth: false
 before_deploy:
     - npm run prod
 deploy:
