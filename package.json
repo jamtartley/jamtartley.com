@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "prod": "webpack -p",
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "prod": "webpack --config webpack.prod.js",
     "test": "echo \"test command here\""
   },
   "keywords": [],
@@ -23,7 +23,8 @@
     "style-loader": "^0.19.0",
     "url-loader": "^1.1.2",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.11.5"
+    "webpack-dev-server": "^2.11.5",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "npm": "^6.10.2"
