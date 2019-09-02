@@ -8,7 +8,6 @@ module.exports = merge(common, {
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
-        stats: "errors-only",
-        open: true
+        stats: "errors-only"
     },
 });
