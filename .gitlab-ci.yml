@@ -1,0 +1,37 @@
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - ./node_modules
+
+build:
+  stage: build
+  image: node:13-alpine
+  before_script:
+    - npm i --loglevel=silent --prefer-offline
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - ./build
+
+test:
+  stage: test
+  image: node:13-alpine
+  script:
+    - npm run test:ci
+
+deploy:
+  stage: deploy
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  script:
+    - aws s3 rm s3://{BUCKET_NAME} --recursive
+    - aws s3 cp ./build s3://${BUCKET_NAME} --recursive
+    - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID}  --paths "/*"
+  rules:
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+      when: never
