@@ -64,7 +64,7 @@ export const AppItem: FC<IAppItemProps> = ({
 
 export const Projects: FC = () => {
   return (
-    <Terminal header="Projects">
+    <Terminal header="personal_projects">
       <TerminalItem command="ls apps/">
         {apps.map((app, idx) => (
           <AppItem key={idx} app={app} />

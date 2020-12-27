@@ -1,3 +1,3 @@
 export default {
-  MOBILE: "768px",
+  TABLET: "992px",
 };

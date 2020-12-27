@@ -24,7 +24,7 @@ const App: FC = () => {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route>
+          <Route path="*">
             <ErrorPage />
           </Route>
         </Switch>

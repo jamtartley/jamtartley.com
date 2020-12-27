@@ -23,11 +23,6 @@ interface ILinkOutputItemProps {
 
 const LinkOutputWrapper = styled.a`
   color: ${colours.PINK};
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 export const LinkOutputItem: FC<ILinkOutputItemProps> = ({ text, link = text, shouldOpenNewWindow }) => {
