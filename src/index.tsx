@@ -3,7 +3,7 @@ import "./index.css";
 import React, { FC } from "react";
 
 import ReactDOM from "react-dom";
-import { UnderConstruction } from "./pages/UnderConstruction";
+import { UnderConstruction } from "./pages/UnderConstruction/UnderConstruction";
 import reportWebVitals from "./reportWebVitals";
 
 const App: FC = () => {
