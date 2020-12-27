@@ -18,6 +18,7 @@ export const TextOutputItem: FC<ITextOutputItemProps> = ({ text }) => {
 interface ILinkOutputItemProps {
   text: string;
   link?: string;
+  shouldOpenNewWindow?: boolean;
 }
 
 const LinkOutputWrapper = styled.a`
@@ -29,10 +30,12 @@ const LinkOutputWrapper = styled.a`
   }
 `;
 
-export const LinkOutputItem: FC<ILinkOutputItemProps> = ({ text, link = text }) => {
+export const LinkOutputItem: FC<ILinkOutputItemProps> = ({ text, link = text, shouldOpenNewWindow }) => {
   return (
     <OutputItemWrapper>
-      <LinkOutputWrapper href={link}>{text}</LinkOutputWrapper>
+      <LinkOutputWrapper href={link} target={`${shouldOpenNewWindow && "blank"}`}>
+        {text}
+      </LinkOutputWrapper>
     </OutputItemWrapper>
   );
 };

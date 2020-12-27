@@ -1,6 +1,7 @@
 import { LinkOutputItem, TextOutputItem } from "../Terminal/TerminalOutputItem";
 import React, { FC } from "react";
 
+import { Terminal } from "../Terminal/Terminal";
 import { TerminalItem } from "../Terminal/TerminalItem";
 
 const WhoAmI: FC = () => {
@@ -37,11 +38,11 @@ const ContactInfo: FC = () => {
 
 export const PersonalInfo: FC = () => {
   return (
-    <>
+    <Terminal>
       <WhoAmI />
       <WhatAmI />
       <WhereAmI />
       <ContactInfo />
-    </>
+    </Terminal>
   );
 };

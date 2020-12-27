@@ -4,22 +4,32 @@ import colours, { accentColours } from "../../colours";
 import { getRandomElement } from "../../utils";
 import styled from "styled-components";
 
-const borderColour = getRandomElement(Object.values(accentColours));
-const shadowColour = `${borderColour}55`;
+interface IWrapperProps {
+  borderColour: string;
+  shadowColour: string;
+}
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<IWrapperProps>`
   overflow: auto;
   background: ${colours.BACKGROUND_LIGHT};
   color: ${colours.FOREGROUND};
-  border: 2px solid ${borderColour};
+  border: 2px solid ${props => props.borderColour};
   font-size: 20px;
   font-family: monospace;
-  box-shadow: -4px 4px 1px 0 ${shadowColour};
+  box-shadow: -4px 4px 1px 0 ${props => props.shadowColour};
   margin: 20px;
   padding: 8px;
   flex: 1;
 `;
 
 export const Terminal: FC = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+  const alphaChannel = "44";
+  const borderColour = getRandomElement(Object.values(accentColours));
+  const shadowColour = `${borderColour}${alphaChannel}`;
+
+  return (
+    <Wrapper borderColour={borderColour} shadowColour={shadowColour}>
+      {children}
+    </Wrapper>
+  );
 };
