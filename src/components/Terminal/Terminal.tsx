@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import colours from "../colours";
+import colours from "../../colours";
 import styled from "styled-components";
 
 export const Terminal: FC = ({ children }) => {
@@ -9,7 +9,7 @@ export const Terminal: FC = ({ children }) => {
     background: ${colours.BACKGROUND_LIGHT};
     color: ${colours.FOREGROUND};
     border: 2px solid ${colours.CYAN};
-    font-size: 14px;
+    font-size: 20px;
     font-family: monospace;
     box-shadow: -4px 4px 2px 0 ${colours.PINK};
     white-space: pre-wrap;
