@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
+  width: 100%;
 
   @media (max-width: ${sizes.MOBILE}) {
     flex-direction: column;
@@ -20,8 +21,7 @@ interface ISectionGroupWrapperProps {
 
 const SectionGroupWrapper = styled.div<ISectionGroupWrapperProps>`
   display: flex;
-  height: 100%;
-  width: 100%;
+  flex-grow: 1;
   flex-direction: ${props => props.direction || "row"};
 `;
 
