@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   margin-bottom: 30px;
 `;
 
-export const TerminalBlock: FC<ITerminalPromptProps> = ({ command, children }) => {
+export const TerminalItem: FC<ITerminalPromptProps> = ({ command, children }) => {
   return (
     <Wrapper>
       <TerminalPrompt command={command} />

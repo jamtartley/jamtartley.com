@@ -1,37 +1,37 @@
 import { LinkOutputItem, TextOutputItem } from "../Terminal/TerminalOutputItem";
 import React, { FC } from "react";
 
-import { TerminalBlock } from "../Terminal/TerminalBlock";
+import { TerminalItem } from "../Terminal/TerminalItem";
 
 const WhoAmI: FC = () => {
   return (
-    <TerminalBlock command="whoami">
+    <TerminalItem command="whoami">
       <TextOutputItem text="Sam Hartley" />
-    </TerminalBlock>
+    </TerminalItem>
   );
 };
 
 const WhatAmI: FC = () => {
   return (
-    <TerminalBlock command="whatami">
+    <TerminalItem command="whatami">
       <TextOutputItem text="Software developer - web | mobile | games" />
-    </TerminalBlock>
+    </TerminalItem>
   );
 };
 
 const WhereAmI: FC = () => {
   return (
-    <TerminalBlock command="whereami">
+    <TerminalItem command="whereami">
       <TextOutputItem text="/UK/London/Wimbledon" />
-    </TerminalBlock>
+    </TerminalItem>
   );
 };
 
 const ContactInfo: FC = () => {
   return (
-    <TerminalBlock command="contact">
+    <TerminalItem command="contact">
       <LinkOutputItem text="sam@jamtartley.com" link={"mailto:sam@jamtartley.com"} />
-    </TerminalBlock>
+    </TerminalItem>
   );
 };
 
