@@ -7,15 +7,21 @@ const WhoAmI: FC = () => {
   return (
     <TerminalBlock command="whoami">
       <TextOutputItem text="Sam Hartley" />
-      <TextOutputItem text="Software developer" />
-      <TextOutputItem text="Web | mobile | games" />
+    </TerminalBlock>
+  );
+};
+
+const WhatAmI: FC = () => {
+  return (
+    <TerminalBlock command="whatami">
+      <TextOutputItem text="Software developer - web | mobile | games" />
     </TerminalBlock>
   );
 };
 
 const WhereAmI: FC = () => {
   return (
-    <TerminalBlock command="find . -name $(whoami --name-only)">
+    <TerminalBlock command="whereami">
       <TextOutputItem text="/UK/London/Wimbledon" />
     </TerminalBlock>
   );
@@ -33,6 +39,7 @@ export const PersonalInfo: FC = () => {
   return (
     <>
       <WhoAmI />
+      <WhatAmI />
       <WhereAmI />
       <ContactInfo />
     </>

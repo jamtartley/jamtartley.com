@@ -16,7 +16,7 @@ test("City renders correctly", () => {
   expect(screen.getByText(/London/)).toBeInTheDocument();
 });
 
-test("Email set correctly", () => {
+test("Email link works correctly", () => {
   const email = "sam@jamtartley.com";
   expect(screen.getByText(email).closest("a")).toHaveAttribute("href", `mailto:${email}`);
 });

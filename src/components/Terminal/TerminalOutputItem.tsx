@@ -6,10 +6,6 @@ import styled from "styled-components";
 const OutputItemWrapper = styled.div`
   color: ${colours.FOREGROUND};
   padding-left: 10px;
-
-  a {
-    color: ${colours.FOREGROUND};
-  }
 `;
 
 interface ITextOutputItemProps {
@@ -26,8 +22,11 @@ interface ILinkOutputItemProps {
 }
 
 const LinkOutputWrapper = styled.a`
+  color: ${colours.PINK};
+  text-decoration: none;
+
   &:hover {
-    color: ${colours.PINK};
+    text-decoration: underline;
   }
 `;
 
