@@ -1,8 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+
+import React, { FC } from "react";
+
+import ReactDOM from "react-dom";
+import { UnderConstruction } from "./pages/UnderConstruction";
 import reportWebVitals from "./reportWebVitals";
+
+const App: FC = () => {
+  return <UnderConstruction />;
+};
 
 ReactDOM.render(
   <React.StrictMode>
