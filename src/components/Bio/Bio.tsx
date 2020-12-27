@@ -52,7 +52,7 @@ const ContactInfo: FC = () => {
   );
 };
 
-export const PersonalInfo: FC = () => {
+export const Bio: FC = () => {
   return (
     <Terminal header="bio">
       <WhoAmI />
