@@ -6,7 +6,7 @@ import { TerminalItem } from "../Terminal/TerminalItem";
 
 export const Avatar: FC = () => {
   return (
-    <Terminal>
+    <Terminal header="Avatar">
       <TerminalItem command="sxiv sam.png">
         <ImageOutputItem imageLocation="sam.png" />
       </TerminalItem>

@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 export const ErrorPage: FC = () => {
   return (
     <Wrapper>
-      <Terminal>
+      <Terminal header="Lost?">
         <Error />
       </Terminal>
     </Wrapper>
