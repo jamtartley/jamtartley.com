@@ -7,7 +7,6 @@ export interface ITerminalPromptProps {
   command: string;
 }
 
-const Wrapper = styled.p``;
 const PromptArrow = styled.span`
   color: ${colours.PINK};
 `;
@@ -17,10 +16,10 @@ const PromptMarker = styled.span`
 
 export const TerminalPrompt: FC<ITerminalPromptProps> = ({ command }) => {
   return (
-    <Wrapper>
+    <>
       <PromptArrow>&gt; </PromptArrow>
       <PromptMarker>$ </PromptMarker>
       {command}
-    </Wrapper>
+    </>
   );
 };

@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
 
 export const TerminalBlock: FC<ITerminalPromptProps> = ({ command, children }) => {
