@@ -4,6 +4,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  max-height: 100%;
   margin-bottom: 30px;
 `;
 

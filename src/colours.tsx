@@ -1,5 +1,4 @@
 export const accentColours = {
-  BLUE: "#6272a4",
   CYAN: "#8be9fd",
   GREEN: "#50fa7b",
   ORANGE: "#ffb86c",
@@ -10,8 +9,8 @@ export const accentColours = {
 };
 
 export default {
-  BACKGROUND: "#282a36",
   FOREGROUND: "#f8f8f2",
-  BACKGROUND_LIGHT: "#44475a",
+  BACKGROUND: "#44475a",
+  TERMINAL_BACKGROUND: "#282a36",
   ...accentColours,
 };

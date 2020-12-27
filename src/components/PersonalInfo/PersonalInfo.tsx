@@ -14,7 +14,7 @@ const WhoAmI: FC = () => {
 
 const WhatAmI: FC = () => {
   return (
-    <TerminalItem command="whatami">
+    <TerminalItem command="describe">
       <TextOutputItem text="Software developer - web | mobile | games" />
     </TerminalItem>
   );
@@ -22,7 +22,7 @@ const WhatAmI: FC = () => {
 
 const WhereAmI: FC = () => {
   return (
-    <TerminalItem command="whereami">
+    <TerminalItem command="locate">
       <TextOutputItem text="/UK/London/Wimbledon" />
     </TerminalItem>
   );
