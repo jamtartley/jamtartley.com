@@ -1,7 +1,9 @@
 import "./index.css";
 
 import React, { FC } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
+import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { HomePage } from "./pages/HomePage/HomePage";
 import ReactDOM from "react-dom";
 import colours from "./colours";
@@ -16,9 +18,18 @@ const Wrapper = styled.div`
 
 const App: FC = () => {
   return (
-    <Wrapper>
-      <HomePage />
-    </Wrapper>
+    <Router>
+      <Switch>
+        <Wrapper>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="*">
+            <ErrorPage />
+          </Route>
+        </Wrapper>
+      </Switch>
+    </Router>
   );
 };
 

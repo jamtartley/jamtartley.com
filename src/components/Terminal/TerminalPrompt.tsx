@@ -8,6 +8,9 @@ export interface ITerminalPromptProps {
 }
 
 const Wrapper = styled.p``;
+const PromptArrow = styled.span`
+  color: ${colours.PINK};
+`;
 const PromptMarker = styled.span`
   color: ${colours.GREEN};
 `;
@@ -15,7 +18,8 @@ const PromptMarker = styled.span`
 export const TerminalPrompt: FC<ITerminalPromptProps> = ({ command }) => {
   return (
     <Wrapper>
-      &gt; <PromptMarker>$ </PromptMarker>
+      <PromptArrow>&gt; </PromptArrow>
+      <PromptMarker>$ </PromptMarker>
       {command}
     </Wrapper>
   );

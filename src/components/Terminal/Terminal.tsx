@@ -10,9 +10,8 @@ const Wrapper = styled.div`
   border: 2px solid ${colours.CYAN};
   font-size: 20px;
   font-family: monospace;
-  box-shadow: -4px 4px 2px 0 ${colours.PINK};
-  outline: 0;
-  margin: 8px;
+  box-shadow: -2px 2px 2px 0 ${colours.CYAN}88;
+  margin: 20px;
   padding: 8px;
   flex: 1;
 `;
