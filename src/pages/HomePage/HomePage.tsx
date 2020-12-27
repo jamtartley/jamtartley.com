@@ -8,7 +8,6 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
-  height: 100%;
 
   @media (max-width: ${sizes.MOBILE}) {
     flex-direction: column;
