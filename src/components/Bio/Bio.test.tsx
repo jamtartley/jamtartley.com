@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 
+import { Bio } from "./Bio";
 import { MemoryRouter } from "react-router-dom";
-import { PersonalInfo } from "./PersonalInfo";
 import React from "react";
 
 beforeEach(() => {
-  render(<PersonalInfo />, { wrapper: MemoryRouter });
+  render(<Bio />, { wrapper: MemoryRouter });
 });
 
 test("Name is capitalised correctly", () => {
