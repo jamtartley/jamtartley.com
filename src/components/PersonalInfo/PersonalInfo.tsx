@@ -14,7 +14,7 @@ const WhoAmI: FC = () => {
 
 const WhatAmI: FC = () => {
   return (
-    <TerminalItem command="cat about">
+    <TerminalItem command="cat bio/about">
       <TextOutputItem text="Software developer - web | mobile | games" />
     </TerminalItem>
   );
@@ -24,6 +24,14 @@ const WhereAmI: FC = () => {
   return (
     <TerminalItem command="find /earth -name $(whoami)">
       <TextOutputItem text="/UK/London/Wimbledon" />
+    </TerminalItem>
+  );
+};
+
+const Technology: FC = () => {
+  return (
+    <TerminalItem command="cat bio/tech">
+      <TextOutputItem text="Node | React | React Native | GraphQL | C# | Unity3D | *nix | SRE" />
     </TerminalItem>
   );
 };
@@ -38,7 +46,7 @@ const CV: FC = () => {
 
 const ContactInfo: FC = () => {
   return (
-    <TerminalItem command="cat email">
+    <TerminalItem command="cat bio/email">
       <LinkOutputItem text="sam@jamtartley.com" link={"mailto:sam@jamtartley.com"} />
     </TerminalItem>
   );
@@ -46,10 +54,11 @@ const ContactInfo: FC = () => {
 
 export const PersonalInfo: FC = () => {
   return (
-    <Terminal header="Bio">
+    <Terminal header="bio">
       <WhoAmI />
       <WhatAmI />
       <WhereAmI />
+      <Technology />
       <CV />
       <ContactInfo />
     </Terminal>

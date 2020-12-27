@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
 
-  @media (max-width: ${sizes.MOBILE}) {
+  @media (max-width: ${sizes.TABLET}) {
     flex-direction: column;
   }
 `;
@@ -21,7 +21,7 @@ interface ISectionGroupWrapperProps {
 
 const SectionGroupWrapper = styled.div<ISectionGroupWrapperProps>`
   display: flex;
-  flex-grow: 1;
+  flex: 1;
   flex-direction: ${props => props.direction || "row"};
 `;
 

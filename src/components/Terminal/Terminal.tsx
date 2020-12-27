@@ -11,17 +11,16 @@ interface IWrapperProps {
 }
 
 const Wrapper = styled.div<IWrapperProps>`
-  overflow: auto;
   background: ${colours.TERMINAL_BACKGROUND};
   color: ${colours.FOREGROUND};
   border: 4px solid ${props => props.borderColour};
   font-size: 25px;
-  font-family: monospace;
+  font-family: "Inconsolata", monospace;
   box-shadow: -8px 8px 0 0 ${props => props.shadowColour};
   margin: 20px;
   flex: 1;
 
-  @media (max-width: ${sizes.MOBILE}) {
+  @media (max-width: ${sizes.TABLET}) {
     font-size: 16px;
   }
 `;
@@ -34,8 +33,13 @@ const HeaderWrapper = styled.div<{ backgroundColour: string }>`
   background: ${props => props.backgroundColour};
   padding: 20px;
   font-style: italic;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 900;
   color: ${colours.TERMINAL_BACKGROUND};
+
+  @media (max-width: ${sizes.TABLET}) {
+    font-size: 25px;
+  }
 `;
 
 interface IHeaderProps {
