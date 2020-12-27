@@ -8,13 +8,13 @@ import colours from "./colours";
 import reportWebVitals from "./reportWebVitals";
 import styled from "styled-components";
 
-const App: FC = () => {
-  const Wrapper = styled.div`
-    height: 100%;
-    width: 100%;
-    background: ${colours.BACKGROUND};
-  `;
+const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  background: ${colours.BACKGROUND};
+`;
 
+const App: FC = () => {
   return (
     <Wrapper>
       <HomePage />
