@@ -7,11 +7,12 @@ export interface ITerminalPromptProps {
   command: string;
 }
 
+const Wrapper = styled.p``;
+const PromptMarker = styled.span`
+  color: ${colours.GREEN};
+`;
+
 export const TerminalPrompt: FC<ITerminalPromptProps> = ({ command }) => {
-  const Wrapper = styled.p``;
-  const PromptMarker = styled.span`
-    color: ${colours.GREEN};
-  `;
   return (
     <Wrapper>
       &gt; <PromptMarker>$ </PromptMarker>
