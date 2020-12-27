@@ -11,25 +11,23 @@ import reportWebVitals from "./reportWebVitals";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 100%;
-  width: 100%;
   background: ${colours.BACKGROUND};
 `;
 
 const App: FC = () => {
   return (
-    <Router>
-      <Switch>
-        <Wrapper>
+    <Wrapper>
+      <Router>
+        <Switch>
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="*">
+          <Route>
             <ErrorPage />
           </Route>
-        </Wrapper>
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
+    </Wrapper>
   );
 };
 
