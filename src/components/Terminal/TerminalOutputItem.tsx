@@ -39,3 +39,16 @@ export const LinkOutputItem: FC<ILinkOutputItemProps> = ({ text, link = text, sh
     </OutputItemWrapper>
   );
 };
+
+const ImageOutputWrapper = styled.img`
+  height: 500px;
+  width: auto;
+`;
+
+interface IImageOutputItemProps {
+  imageLocation: string;
+}
+
+export const ImageOutputItem: FC<IImageOutputItemProps> = ({ imageLocation }) => {
+  return <ImageOutputWrapper src={imageLocation} />;
+};

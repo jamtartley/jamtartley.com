@@ -11,14 +11,14 @@ interface IWrapperProps {
 
 const Wrapper = styled.div<IWrapperProps>`
   overflow: auto;
-  background: ${colours.BACKGROUND_LIGHT};
+  background: ${colours.TERMINAL_BACKGROUND};
   color: ${colours.FOREGROUND};
-  border: 2px solid ${props => props.borderColour};
+  border: 4px solid ${props => props.borderColour};
   font-size: 20px;
   font-family: monospace;
   box-shadow: -4px 4px 1px 0 ${props => props.shadowColour};
   margin: 20px;
-  padding: 8px;
+  padding: 10px;
   flex: 1;
 `;
 
