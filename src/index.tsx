@@ -2,12 +2,24 @@ import "./index.css";
 
 import React, { FC } from "react";
 
+import { HomePage } from "./pages/HomePage/HomePage";
 import ReactDOM from "react-dom";
-import { UnderConstruction } from "./pages/UnderConstruction/UnderConstruction";
+import colours from "./colours";
 import reportWebVitals from "./reportWebVitals";
+import styled from "styled-components";
 
 const App: FC = () => {
-  return <UnderConstruction />;
+  const Wrapper = styled.div`
+    height: 100%;
+    width: 100%;
+    background: ${colours.BACKGROUND};
+  `;
+
+  return (
+    <Wrapper>
+      <HomePage />
+    </Wrapper>
+  );
 };
 
 ReactDOM.render(
