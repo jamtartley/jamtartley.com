@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 
-import { Terminal } from "../../components/Terminal";
+import { PersonalInfo } from "../../components/PersonalInfo/PersonalInfo";
+import { Terminal } from "../../components/Terminal/Terminal";
 import sizes from "../../sizes";
 import styled from "styled-components";
 
@@ -16,8 +17,9 @@ export const HomePage: FC = () => {
 
   return (
     <Wrapper>
-      <Terminal>T1</Terminal>
-      <Terminal>T2</Terminal>
+      <Terminal>
+        <PersonalInfo />
+      </Terminal>
     </Wrapper>
   );
 };
