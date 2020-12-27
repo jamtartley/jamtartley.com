@@ -28,6 +28,14 @@ const WhereAmI: FC = () => {
   );
 };
 
+const CV: FC = () => {
+  return (
+    <TerminalItem command="history | grep cv">
+      <LinkOutputItem text="CV" link={"https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf"} shouldOpenNewWindow={true} />
+    </TerminalItem>
+  );
+};
+
 const ContactInfo: FC = () => {
   return (
     <TerminalItem command="contact">
@@ -42,6 +50,7 @@ export const PersonalInfo: FC = () => {
       <WhoAmI />
       <WhatAmI />
       <WhereAmI />
+      <CV />
       <ContactInfo />
     </Terminal>
   );

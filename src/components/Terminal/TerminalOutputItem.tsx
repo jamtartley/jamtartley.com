@@ -33,7 +33,7 @@ const LinkOutputWrapper = styled.a`
 export const LinkOutputItem: FC<ILinkOutputItemProps> = ({ text, link = text, shouldOpenNewWindow }) => {
   return (
     <OutputItemWrapper>
-      <LinkOutputWrapper href={link} target={`${shouldOpenNewWindow && "blank"}`}>
+      <LinkOutputWrapper href={link} target={`${shouldOpenNewWindow ? "_blank" : ""}`}>
         {text}
       </LinkOutputWrapper>
     </OutputItemWrapper>
