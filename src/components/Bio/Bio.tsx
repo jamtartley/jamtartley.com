@@ -1,4 +1,4 @@
-import { LinkOutputItem, TextOutputItem } from "../Terminal/TerminalOutputItem";
+import { ImageOutputItem, LinkOutputItem, TextOutputItem } from "../Terminal/TerminalOutputItem";
 import React, { FC } from "react";
 
 import { Terminal } from "../Terminal/Terminal";
@@ -22,7 +22,7 @@ const BioItem: FC<IBioItem> = ({ command, text, link, shouldOpenNewWindow }) => 
 };
 
 export const Bio: FC = () => {
-  const items: IBioItem[] = [
+  const textItems: IBioItem[] = [
     { command: "whoami", text: "Sam Hartley" },
     {
       command: "cat bio/about",
@@ -46,5 +46,12 @@ export const Bio: FC = () => {
     },
   ];
 
-  return <Terminal header="bio">{items.map(BioItem)}</Terminal>;
+  return (
+    <Terminal header="bio">
+      {textItems.map(BioItem)}
+      <TerminalItem command="sxiv sam.png">
+        <ImageOutputItem imageLocation="sam.png" />
+      </TerminalItem>
+    </Terminal>
+  );
 };

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 
 import { Apps } from "../../components/Projects/Apps";
-import { Avatar } from "../../components/Avatar/Avatar";
 import { Bio } from "../../components/Bio/Bio";
+import { Web } from "../../components/Projects/Web";
 import sizes from "../../sizes";
 import styled from "styled-components";
 
@@ -33,7 +33,7 @@ export const HomePage: FC = () => {
       </SectionGroupWrapper>
       <SectionGroupWrapper direction="column">
         <Apps />
-        <Avatar />
+        <Web />
       </SectionGroupWrapper>
     </Wrapper>
   );
