@@ -21,7 +21,7 @@ interface ILinkOutputItemProps {
   shouldOpenNewWindow?: boolean;
 }
 
-const LinkOutputWrapper = styled.a`
+export const LinkOutputWrapper = styled.a`
   color: ${colours.PINK};
 `;
 
