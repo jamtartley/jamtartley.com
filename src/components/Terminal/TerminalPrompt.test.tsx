@@ -17,3 +17,7 @@ test("Spaces are rendered between prompt markers", () => {
 test("Command text is rendered", () => {
   screen.getByText(/Test/);
 });
+
+test("Current working directory displayed", () => {
+  screen.getByText("~");
+});
