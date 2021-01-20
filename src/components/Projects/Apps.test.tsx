@@ -1,4 +1,4 @@
-import { AppItem, Projects } from "./Projects";
+import { AppItem, Apps } from "./Apps";
 import { render, screen } from "@testing-library/react";
 
 import { MemoryRouter } from "react-router-dom";
@@ -6,7 +6,7 @@ import React from "react";
 
 describe("Full projects tests", () => {
   beforeEach(() => {
-    render(<Projects />, { wrapper: MemoryRouter });
+    render(<Apps />, { wrapper: MemoryRouter });
   });
 
   test("All apps are mentioned", () => {
