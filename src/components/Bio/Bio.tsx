@@ -4,63 +4,47 @@ import React, { FC } from "react";
 import { Terminal } from "../Terminal/Terminal";
 import { TerminalItem } from "../Terminal/TerminalItem";
 
-const WhoAmI: FC = () => {
-  return (
-    <TerminalItem command="whoami">
-      <TextOutputItem text="Sam Hartley" />
-    </TerminalItem>
-  );
-};
+interface IBioItem {
+  command: string;
+  text: string;
+  link?: string;
+  shouldOpenNewWindow?: boolean;
+}
 
-const WhatAmI: FC = () => {
-  return (
-    <TerminalItem command="cat bio/about">
-      <TextOutputItem text="Software developer - web | mobile | games" />
-    </TerminalItem>
-  );
-};
+const BioItem: FC<IBioItem> = ({ command, text, link, shouldOpenNewWindow }) => {
+  const item = link ? <LinkOutputItem text={text} link={link} shouldOpenNewWindow={shouldOpenNewWindow} /> : <TextOutputItem text={text} />;
 
-const WhereAmI: FC = () => {
   return (
-    <TerminalItem command="find /earth -name $(whoami)">
-      <TextOutputItem text="/UK/London/Wimbledon" />
-    </TerminalItem>
-  );
-};
-
-const Technology: FC = () => {
-  return (
-    <TerminalItem command="cat bio/tech">
-      <TextOutputItem text="Node | React | React Native | GraphQL | C# | Unity3D | *nix | SRE" />
-    </TerminalItem>
-  );
-};
-
-const CV: FC = () => {
-  return (
-    <TerminalItem command="history | grep cv">
-      <LinkOutputItem text="CV" link={"https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf"} shouldOpenNewWindow={true} />
-    </TerminalItem>
-  );
-};
-
-const ContactInfo: FC = () => {
-  return (
-    <TerminalItem command="cat bio/email">
-      <LinkOutputItem text="sam@jamtartley.com" link={"mailto:sam@jamtartley.com"} />
+    <TerminalItem command={command} key={command}>
+      {item}
     </TerminalItem>
   );
 };
 
 export const Bio: FC = () => {
-  return (
-    <Terminal header="bio">
-      <WhoAmI />
-      <WhatAmI />
-      <WhereAmI />
-      <Technology />
-      <CV />
-      <ContactInfo />
-    </Terminal>
-  );
+  const items: IBioItem[] = [
+    { command: "whoami", text: "Sam Hartley" },
+    {
+      command: "cat bio/about",
+      text: "Software developer - web | mobile | games",
+    },
+    { command: "find /earth -name $(whoami)", text: "/UK/London/Wimbledon" },
+    {
+      command: "cat bio/tech",
+      text: "Node | React (+Native) | GraphQL | C# | Unity3D | *nix | DevOps",
+    },
+    {
+      command: "history | grep cv",
+      text: "CV",
+      link: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf",
+      shouldOpenNewWindow: true,
+    },
+    {
+      command: "cat bio/email",
+      text: "sam@jamtartley.com",
+      link: `mailto:sam@jamtartley.com`,
+    },
+  ];
+
+  return <Terminal header="bio">{items.map(BioItem)}</Terminal>;
 };
