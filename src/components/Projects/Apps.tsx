@@ -1,10 +1,9 @@
 import { LinkOutputItem, TextOutputItem } from "../Terminal/TerminalOutputItem";
 import React, { FC } from "react";
 
+import { HR } from "../Terminal/HR";
 import { Terminal } from "../Terminal/Terminal";
 import { TerminalItem } from "../Terminal/TerminalItem";
-import colours from "../../colours";
-import styled from "styled-components";
 
 const apps: IApp[] = [
   {
@@ -39,10 +38,6 @@ interface IAppLinks {
 interface IAppItemProps {
   app: IApp;
 }
-
-const HR = styled.hr`
-  border: 1px dashed ${colours.FOREGROUND};
-`;
 
 export const AppItem: FC<IAppItemProps> = ({
   app: {
