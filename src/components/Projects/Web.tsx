@@ -8,6 +8,7 @@ import { TerminalItem } from "../Terminal/TerminalItem";
 interface IWebItem {
   title: string;
   description: string;
+  tech: string;
   links: IWebItemLinks;
 }
 
@@ -24,6 +25,7 @@ const WebItem: FC<IWebItemProps> = ({
   item: {
     title,
     description,
+    tech,
     links: { live, source },
   },
 }) => {
@@ -31,6 +33,8 @@ const WebItem: FC<IWebItemProps> = ({
     <div>
       <HR />
       <i>{title} </i>- {description}
+      {" | "}
+      {tech}
       {" | "}
       <LinkOutputWrapper href={live} target="_blank" rel="noreferrer">
         [Link]
@@ -48,12 +52,14 @@ export const Web: FC = () => {
     {
       title: "minions_js",
       description: "Boids simulation with quadtree spatial partitioning",
+      tech: "JS/Webpack",
       links: { live: "https://minions.jamtartley.com", source: "https://gitlab.com/jamtartley/minions_js" },
     },
     {
-      title: "path_js",
-      description: "Pathfinding and maze generation visualisation",
-      links: { live: "https://path.jamtartley.com", source: "https://gitlab.com/jamtartley/path_js" },
+      title: "jamtartley.com",
+      description: "Personal webpage (you are here)",
+      tech: "React",
+      links: { live: "https://jamtartley.com", source: "https://gitlab.com/jamtartley/jamtartley-com" },
     },
   ];
 
