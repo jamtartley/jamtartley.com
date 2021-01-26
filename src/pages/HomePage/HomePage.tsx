@@ -2,6 +2,7 @@ import React, { FC } from "react";
 
 import { Apps } from "../../components/Projects/Apps";
 import { Bio } from "../../components/Bio/Bio";
+import { Misc } from "../../components/Projects/Misc";
 import { Web } from "../../components/Projects/Web";
 import sizes from "../../sizes";
 import styled from "styled-components";
@@ -34,6 +35,7 @@ export const HomePage: FC = () => {
       <SectionGroupWrapper direction="column">
         <Apps />
         <Web />
+        <Misc />
       </SectionGroupWrapper>
     </Wrapper>
   );

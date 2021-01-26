@@ -1,7 +1,7 @@
-import { LinkOutputItem, TextOutputItem } from "../Terminal/TerminalOutputItem";
 import React, { FC } from "react";
 
 import { HR } from "../Terminal/HR";
+import { LinkOutputItem } from "../Terminal/TerminalOutputItem";
 import { Terminal } from "../Terminal/Terminal";
 import { TerminalItem } from "../Terminal/TerminalItem";
 
@@ -49,7 +49,9 @@ export const AppItem: FC<IAppItemProps> = ({
   return (
     <>
       <HR />
-      <TextOutputItem text={`${title} - ${description}`} />
+      <i>{title}</i>
+      {" - "}
+      {description}
       <LinkOutputItem text="iOS" link={ios} shouldOpenNewWindow={true} />
       <LinkOutputItem text="Android" link={android} shouldOpenNewWindow={true} />
       <HR />
