@@ -29,10 +29,6 @@ describe("Apps", () => {
     render(<AppItem app={app} />, { wrapper: MemoryRouter });
   });
 
-  test("Title and description are rendered", () => {
-    expect(screen.getByText(`${app.title} - ${app.description}`)).toBeInTheDocument();
-  });
-
   test("All links work", () => {
     const { ios, android } = app.links;
     expect(screen.getByText("iOS").closest("a")).toHaveAttribute("href", ios);
