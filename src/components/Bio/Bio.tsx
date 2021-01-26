@@ -34,6 +34,12 @@ export const Bio: FC = () => {
       text: "Node | React (+Native) | GraphQL | C# | Unity3D | *nix | DevOps",
     },
     {
+      command: "cat bio/gitlab",
+      text: "Gitlab",
+      link: "https://gitlab.com/users/jamtartley/projects",
+      shouldOpenNewWindow: true,
+    },
+    {
       command: "history | grep cv",
       text: "CV",
       link: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf",
