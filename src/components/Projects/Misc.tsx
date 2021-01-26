@@ -46,6 +46,12 @@ export const Misc: FC = () => {
       language: "C++",
       source: "https://gitlab.com/jamtartley/SHEL",
     },
+    {
+      title: "dotfiles",
+      description: "Installation scripts for my linux machine",
+      language: "Shell",
+      source: "https://gitlab.com/jamtartley/dotfiles",
+    },
   ];
 
   return (
