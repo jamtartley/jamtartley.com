@@ -56,7 +56,7 @@ export const Misc: FC = () => {
 
   return (
     <Terminal header="misc">
-      <TerminalItem command="ls misc/"></TerminalItem>
+      <TerminalItem command="ls projects/misc/"></TerminalItem>
       {miscItems.map((item, idx) => (
         <MiscItem key={idx} item={item} />
       ))}
