@@ -65,7 +65,7 @@ export const Web: FC = () => {
 
   return (
     <Terminal header="web">
-      <TerminalItem command="ls web/"></TerminalItem>
+      <TerminalItem command="ls projects/web/"></TerminalItem>
       {webItems.map((item, idx) => (
         <WebItem key={idx} item={item} />
       ))}
