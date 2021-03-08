@@ -1,16 +1,16 @@
-import { Misc, MiscItems } from "./Misc";
+import { Web, WebItems } from "./Web";
 import { render, screen } from "@testing-library/react";
 
 import { MemoryRouter } from "react-router-dom";
 import React from "react";
 
-describe("[Misc]", () => {
+describe("[Web]", () => {
   beforeEach(() => {
-    render(<Misc />, { wrapper: MemoryRouter });
+    render(<Web />, { wrapper: MemoryRouter });
   });
 
-  it("displays items for every miscellaneous project", () => {
-    for (const item of MiscItems) {
+  it("displays items for every app", () => {
+    for (const item of WebItems) {
       expect(screen.getByText(item.title)).toBeInTheDocument();
     }
   });
