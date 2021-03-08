@@ -16,7 +16,7 @@ interface IMiscItemProps {
   item: IMiscItem;
 }
 
-const MiscItem: FC<IMiscItemProps> = ({ item: { title, description, language, source } }) => {
+export const MiscItem: FC<IMiscItemProps> = ({ item: { title, description, language, source } }) => {
   return (
     <div>
       <HR />
@@ -32,32 +32,32 @@ const MiscItem: FC<IMiscItemProps> = ({ item: { title, description, language, so
   );
 };
 
-export const Misc: FC = () => {
-  const miscItems: IMiscItem[] = [
-    {
-      title: "taggregator",
-      description: "Tag lines of code with prioritised issues and quickly display them for a ready-made TODO list",
-      language: "Python",
-      source: "https://gitlab.com/jamtartley/taggregator",
-    },
-    {
-      title: "SHEL",
-      description: "Simple interpreted programming language",
-      language: "C++",
-      source: "https://gitlab.com/jamtartley/SHEL",
-    },
-    {
-      title: "dotfiles",
-      description: "Installation scripts for my Linux machine",
-      language: "Shell",
-      source: "https://gitlab.com/jamtartley/dotfiles",
-    },
-  ];
+export const MiscItems: IMiscItem[] = [
+  {
+    title: "taggregator",
+    description: "Tag lines of code with prioritised issues and quickly display them for a ready-made TODO list",
+    language: "Python",
+    source: "https://gitlab.com/jamtartley/taggregator",
+  },
+  {
+    title: "SHEL",
+    description: "Simple interpreted programming language",
+    language: "C++",
+    source: "https://gitlab.com/jamtartley/SHEL",
+  },
+  {
+    title: "dotfiles",
+    description: "Installation scripts for my Linux machine",
+    language: "Shell",
+    source: "https://gitlab.com/jamtartley/dotfiles",
+  },
+];
 
+export const Misc: FC = () => {
   return (
     <Terminal header="misc">
       <TerminalItem command="ls projects/misc/"></TerminalItem>
-      {miscItems.map((item, idx) => (
+      {MiscItems.map((item, idx) => (
         <MiscItem key={idx} item={item} />
       ))}
     </Terminal>

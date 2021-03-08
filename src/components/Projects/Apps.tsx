@@ -5,7 +5,7 @@ import { LinkOutputItem } from "../Terminal/TerminalOutputItem";
 import { Terminal } from "../Terminal/Terminal";
 import { TerminalItem } from "../Terminal/TerminalItem";
 
-const apps: IApp[] = [
+export const AppItems: IApp[] = [
   {
     title: "Word Trail",
     description: "Unique daily word puzzles",
@@ -63,7 +63,7 @@ export const Apps: FC = () => {
   return (
     <Terminal header="apps">
       <TerminalItem command="ls projects/apps/">
-        {apps.map((app, idx) => (
+        {AppItems.map((app, idx) => (
           <AppItem key={idx} app={app} />
         ))}
       </TerminalItem>
