@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import colours from "../../colours";
 import styled from "styled-components";
-import { useRouteMatch } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export interface ITerminalPromptProps {
   command: string;
@@ -23,13 +23,13 @@ const PromptMarker = styled.span`
 `;
 
 export const TerminalPrompt: FC<ITerminalPromptProps> = ({ command }) => {
-  const { url } = useRouteMatch();
-  const route = url.substr(1);
-  const display = `~${route && "/"}${route}`;
+  const location = useLocation();
+  const afterSlash = location.pathname.substr(1, location.pathname.length - 1);
+  const routeToDisplay = `~${afterSlash && `/${afterSlash}`}`;
 
   return (
     <Wrapper>
-      <PromptLocation>{display} </PromptLocation>
+      <PromptLocation>{routeToDisplay} </PromptLocation>
       <PromptArrow>&gt; </PromptArrow>
       <PromptMarker>$ </PromptMarker>
       {command}

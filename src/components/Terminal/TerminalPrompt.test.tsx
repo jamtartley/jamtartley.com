@@ -1,23 +1,47 @@
+import { MemoryRouter, Router } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 
-import { MemoryRouter } from "react-router-dom";
 import React from "react";
 import { TerminalPrompt } from "./TerminalPrompt";
+import { createMemoryHistory } from "history";
 
-beforeEach(() => {
-  render(<TerminalPrompt command="Test" />, { wrapper: MemoryRouter });
-});
+describe("[TerminalPrompt]", () => {
+  describe("[homepage]", () => {
+    beforeEach(() => {
+      render(<TerminalPrompt command="Test" />, { wrapper: MemoryRouter });
+    });
 
-test("Spaces are rendered between prompt markers", () => {
-  screen.getAllByText((_, node) => {
-    return node?.textContent?.includes("> $ ");
+    it("renders prompt marker", () => {
+      screen.getAllByText((_, node) => {
+        return node?.textContent?.includes("> $ ");
+      });
+    });
+
+    it("renders given command text", () => {
+      screen.getByText(/Test/);
+    });
+
+    it("renders root URL as home directory", () => {
+      screen.getByText("~");
+    });
   });
-});
 
-test("Command text is rendered", () => {
-  screen.getByText(/Test/);
-});
+  describe("[invalid page]", () => {
+    const invalidRoute = "/invalid";
 
-test("Current working directory displayed", () => {
-  screen.getByText("~");
+    beforeEach(() => {
+      const history = createMemoryHistory();
+      history.push(invalidRoute);
+
+      render(
+        <Router history={history}>
+          <TerminalPrompt command="Test" />
+        </Router>,
+      );
+    });
+
+    it("renders other URL as nested directory", async () => {
+      screen.getByText(`~${invalidRoute}`);
+    });
+  });
 });
