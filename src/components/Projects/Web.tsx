@@ -21,7 +21,7 @@ interface IWebItemProps {
   item: IWebItem;
 }
 
-const WebItem: FC<IWebItemProps> = ({
+export const WebItem: FC<IWebItemProps> = ({
   item: {
     title,
     description,
@@ -47,26 +47,26 @@ const WebItem: FC<IWebItemProps> = ({
   );
 };
 
-export const Web: FC = () => {
-  const webItems: IWebItem[] = [
-    {
-      title: "minions_js",
-      description: "Boids simulation with quadtree spatial partitioning",
-      tech: "JS/Webpack",
-      links: { live: "https://minions.jamtartley.com", source: "https://gitlab.com/jamtartley/minions_js" },
-    },
-    {
-      title: "jamtartley.com",
-      description: "Personal webpage (you are here)",
-      tech: "React",
-      links: { live: "https://jamtartley.com", source: "https://gitlab.com/jamtartley/jamtartley-com" },
-    },
-  ];
+export const WebItems: IWebItem[] = [
+  {
+    title: "minions_js",
+    description: "Boids simulation with quadtree spatial partitioning",
+    tech: "JS/Webpack",
+    links: { live: "https://minions.jamtartley.com", source: "https://gitlab.com/jamtartley/minions_js" },
+  },
+  {
+    title: "jamtartley.com",
+    description: "Personal webpage (you are here)",
+    tech: "React",
+    links: { live: "https://jamtartley.com", source: "https://gitlab.com/jamtartley/jamtartley-com" },
+  },
+];
 
+export const Web: FC = () => {
   return (
     <Terminal header="web">
       <TerminalItem command="ls projects/web/"></TerminalItem>
-      {webItems.map((item, idx) => (
+      {WebItems.map((item, idx) => (
         <WebItem key={idx} item={item} />
       ))}
     </Terminal>
