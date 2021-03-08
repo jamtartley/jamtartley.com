@@ -1,35 +1,27 @@
+import { AppItem, AppItems } from "./Apps";
 import { render, screen } from "@testing-library/react";
 
-import { AppItem } from "./Apps";
 import { MemoryRouter } from "react-router-dom";
 import React from "react";
+import { findInTextContent } from "../../utils/testUtils";
 
 describe("[AppItem]", () => {
-  const app = {
-    title: "Word Trail",
-    description: "Unique daily word puzzles",
-    links: {
-      ios: "https://apps.apple.com/us/app/word-trail-daily-puzzles/id1539438681",
-      android: "https://play.google.com/store/apps/details?id=com.jamtartley.wordage",
-    },
-  };
+  const appItem = AppItems[0];
 
   beforeEach(() => {
-    render(<AppItem app={app} />, { wrapper: MemoryRouter });
+    render(<AppItem app={appItem} />, { wrapper: MemoryRouter });
   });
 
   it("renders app name", () => {
-    screen.getByText(app.title);
+    screen.getByText(appItem.title);
   });
 
   it("renders app description", () => {
-    screen.getAllByText((_, node) => {
-      return node?.textContent?.includes(app.description);
-    });
+    findInTextContent(appItem.description);
   });
 
   it("populates app store links", () => {
-    const { ios, android } = app.links;
+    const { ios, android } = appItem.links;
     expect(screen.getByText("iOS").closest("a")).toHaveAttribute("href", ios);
     expect(screen.getByText("Android").closest("a")).toHaveAttribute("href", android);
   });

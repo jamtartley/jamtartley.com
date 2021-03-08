@@ -4,6 +4,7 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { TerminalPrompt } from "./TerminalPrompt";
 import { createMemoryHistory } from "history";
+import { findInTextContent } from "../../utils/testUtils";
 
 describe("[TerminalPrompt]", () => {
   describe("[homepage]", () => {
@@ -12,9 +13,7 @@ describe("[TerminalPrompt]", () => {
     });
 
     it("renders prompt marker", () => {
-      screen.getAllByText((_, node) => {
-        return node?.textContent?.includes("> $ ");
-      });
+      findInTextContent("> $");
     });
 
     it("renders given command text", () => {
