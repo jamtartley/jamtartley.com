@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 
-import { Apps } from "../../components/Projects/Apps";
 import { Bio } from "../../components/Bio/Bio";
 import { Misc } from "../../components/Projects/Misc";
 import { Web } from "../../components/Projects/Web";
@@ -33,7 +32,6 @@ export const HomePage: FC = () => {
         <Bio />
       </SectionGroupWrapper>
       <SectionGroupWrapper direction="column">
-        <Apps />
         <Web />
         <Misc />
       </SectionGroupWrapper>
