@@ -26,24 +26,6 @@ provider "aws" {
   alias  = "cloudfront"
 }
 
-variable "fqdn" {
-  description = "The fully-qualified domain name of the resulting S3 website."
-  default     = "jamtartley.com"
-}
-
-variable "domain" {
-  description = "The domain name."
-  default     = "jamtartley.com"
-}
-
-variable "allowed_ips" {
-  type = list(string)
-  default = [
-    "0.0.0.0/0"
-  ]
-}
-
-# Using this module
 module "main" {
   source = "github.com/riboseinc/terraform-aws-s3-cloudfront-website"
 
@@ -122,9 +104,4 @@ resource "aws_route53_record" "www" {
   type     = "CNAME"
   records  = ["${var.fqdn}"]
   ttl      = 300
-}
-
-output "cloudfront_distribution_id" {
-  value       = module.main.cf_distribution_id
-  description = "Cloudfront distribution ID"
 }
