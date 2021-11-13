@@ -16,6 +16,6 @@ variable "allowed_ips" {
 }
 
 variable "gitlab_token" {
-	type = string
-	description = "Personal access token for Gitlab"
+  type        = string
+  description = "Personal access token for Gitlab"
 }

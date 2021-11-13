@@ -1,3 +1,3 @@
 locals {
-	gitlab_project = "jamtartley-com"
+  gitlab_project_id = "23323066"
 }

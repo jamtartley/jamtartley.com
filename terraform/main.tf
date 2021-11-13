@@ -7,10 +7,10 @@ terraform {
       version = "~> 3.0"
     }
 
-		gitlab = {
-			      source = "gitlabhq/gitlab"
+    gitlab = {
+      source  = "gitlabhq/gitlab"
       version = "3.7.0"
-		}
+    }
   }
 
   backend "s3" {
@@ -32,7 +32,7 @@ provider "aws" {
 }
 
 provider "gitlab" {
-	token = var.gitlab_token
+  token = var.gitlab_token
 }
 
 module "main" {
@@ -115,16 +115,30 @@ resource "aws_route53_record" "www" {
   ttl      = 300
 }
 
-resource "gitlab_project_variable" "gitlab_cf_distro" {
-	project = local.gitlab_project
-	key = "AWS_CLOUDFRONT_DISTRIBUTION_ID"
-	value = module.main.cf_distribution_id
-	protected = true
+resource "gitlab_project_variable" "cf_distro" {
+  project   = local.gitlab_project_id
+  key       = "AWS_CLOUDFRONT_DISTRIBUTION_ID"
+  value     = module.main.cf_distribution_id
+  protected = true
 }
 
-resource "gitlab_project_variable" "gitlab_s3_bucket" {
-	project = local.gitlab_project
-	key = "AWS_BUCKET_NAME"
-	value = module.main.s3_bucket_id
-	protected = true
+resource "gitlab_project_variable" "s3_bucket" {
+  project   = local.gitlab_project_id
+  key       = "AWS_BUCKET_NAME"
+  value     = module.main.s3_bucket_id
+  protected = true
+}
+
+resource "gitlab_pipeline_trigger" "trigger" {
+  project     = local.gitlab_project_id
+  description = "Trigger jamtartley.com build + deploy"
+
+  depends_on = [
+    gitlab_project_variable.cf_distro,
+    gitlab_project_variable.s3_bucket
+  ]
+
+  provisioner "local-exec" {
+    command = "curl -X POST -F token=${gitlab_pipeline_trigger.trigger.token} -F ref=master https://gitlab.com/api/v4/projects/${local.gitlab_project_id}/trigger/pipeline"
+  }
 }
