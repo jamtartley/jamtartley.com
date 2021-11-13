@@ -6,6 +6,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.0"
     }
+
+		gitlab = {
+			      source = "gitlabhq/gitlab"
+      version = "3.7.0"
+		}
   }
 
   backend "s3" {
@@ -24,6 +29,10 @@ provider "aws" {
 provider "aws" {
   region = "us-east-1"
   alias  = "cloudfront"
+}
+
+provider "gitlab" {
+	token = var.gitlab_token
 }
 
 module "main" {
@@ -104,4 +113,18 @@ resource "aws_route53_record" "www" {
   type     = "CNAME"
   records  = ["${var.fqdn}"]
   ttl      = 300
+}
+
+resource "gitlab_project_variable" "gitlab_cf_distro" {
+	project = local.gitlab_project
+	key = "AWS_CLOUDFRONT_DISTRIBUTION_ID"
+	value = module.main.cf_distribution_id
+	protected = true
+}
+
+resource "gitlab_project_variable" "gitlab_s3_bucket" {
+	project = local.gitlab_project
+	key = "AWS_BUCKET_NAME"
+	value = module.main.s3_bucket_id
+	protected = true
 }

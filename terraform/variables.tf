@@ -4,7 +4,7 @@ variable "fqdn" {
 }
 
 variable "domain" {
-  description = "The domain name."
+  description = "The domain name"
   default     = "jamtartley.com"
 }
 
@@ -13,4 +13,9 @@ variable "allowed_ips" {
   default = [
     "0.0.0.0/0"
   ]
+}
+
+variable "gitlab_token" {
+	type = string
+	description = "Personal access token for Gitlab"
 }
