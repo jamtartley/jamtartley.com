@@ -49,6 +49,7 @@ module "main" {
   refer_secret = base64sha512("REFER-SECRET-19265125-${var.fqdn}-52865926")
 
   force_destroy = "true"
+  tags          = local.tags
 
   providers = {
     aws.main       = aws.main
@@ -61,6 +62,7 @@ resource "aws_acm_certificate" "cert" {
   domain_name               = var.fqdn
   subject_alternative_names = ["www.${var.fqdn}"]
   validation_method         = "DNS"
+  tags                      = local.tags
 }
 
 resource "aws_route53_record" "cert_validation" {
