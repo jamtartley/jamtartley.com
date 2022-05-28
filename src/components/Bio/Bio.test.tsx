@@ -14,7 +14,7 @@ describe("[Bio]", () => {
   });
 
   it("renders the city correctly", () => {
-    expect(screen.getByText(/Newcastle/)).toBeInTheDocument();
+    expect(screen.getByText(/London/)).toBeInTheDocument();
   });
 
   it("correctly links to the email", () => {

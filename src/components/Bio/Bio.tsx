@@ -26,9 +26,9 @@ export const Bio: FC = () => {
     { command: "whoami", text: "Sam Hartley" },
     {
       command: "cat bio/about",
-      text: "Software developer - mobile | web | games",
+      text: "Senior software developer @notonthehighstreet",
     },
-    { command: "find /earth -name $(whoami)", text: "/UK/Newcastle" },
+    { command: "find /earth -name $(whoami)", text: "/UK/London" },
     {
       command: "cat bio/tech",
       text: "Node | React (+Native) | GraphQL | C# | Unity3D | *nix | DevOps",
