@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 const OutputItemWrapper = styled.div`
   color: ${colours.FOREGROUND};
+  display: inline;
 `;
 
 interface ITextOutputItemProps {
