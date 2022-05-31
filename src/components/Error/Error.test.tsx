@@ -1,21 +1,20 @@
 import { render, screen } from "@testing-library/react";
 
 import { Error } from "./Error";
-import React from "react";
-import { Router } from "react-router-dom";
-import { createMemoryHistory } from "history";
+import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
+import {createBrowserHistory} from "history"
 
 describe("[TerminalPrompt]", () => {
   const invalidRoute = "/invalid";
 
   beforeEach(() => {
-    const history = createMemoryHistory();
+    const history = createBrowserHistory({window});
     history.push(invalidRoute);
 
     render(
-      <Router history={history}>
+      <HistoryRouter history={history}>
         <Error />
-      </Router>,
+      </HistoryRouter>,
     );
   });
 

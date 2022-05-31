@@ -1,4 +1,4 @@
-import { Web, WebItems } from "./Web";
+import { Web, webItems } from "./Web";
 import { render, screen } from "@testing-library/react";
 
 import { MemoryRouter } from "react-router-dom";
@@ -10,7 +10,7 @@ describe("[Web]", () => {
   });
 
   it("displays items for every app", () => {
-    for (const item of WebItems) {
+    for (const item of webItems) {
       expect(screen.getByText(item.title)).toBeInTheDocument();
     }
   });

@@ -1,4 +1,4 @@
-import { ITerminalPromptProps, TerminalPrompt } from "./TerminalPrompt";
+import { TerminalPromptProps, TerminalPrompt } from "./TerminalPrompt";
 import React, { FC } from "react";
 
 import styled from "styled-components";
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   margin-bottom: 30px;
 `;
 
-export const TerminalItem: FC<ITerminalPromptProps> = ({ command, children }) => {
+export function TerminalItem({ command, children }: TerminalPromptProps) {
   return (
     <Wrapper>
       <TerminalPrompt command={command} />
