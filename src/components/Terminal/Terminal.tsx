@@ -51,11 +51,11 @@ const Header: FC<IHeaderProps> = ({ backgroundColour, header }) => {
   return <HeaderWrapper backgroundColour={backgroundColour}>{header}</HeaderWrapper>;
 };
 
-export interface ITerminalProps {
+export type TerminalProps = React.PropsWithChildren<{
   header: string;
-}
+}>;
 
-export const Terminal: FC<ITerminalProps> = ({ header, children }) => {
+export function Terminal({ header, children }: TerminalProps) {
   const alphaChannel = "44";
   const borderColour = getRandomElement(Object.values(accentColours));
   const shadowColour = `${borderColour}${alphaChannel}`;
@@ -66,4 +66,4 @@ export const Terminal: FC<ITerminalProps> = ({ header, children }) => {
       <ChildWrapper>{children}</ChildWrapper>
     </Wrapper>
   );
-};
+}

@@ -13,7 +13,7 @@ interface IWebItem {
 }
 
 interface IWebItemLinks {
-  live: string;
+  live?: string;
   source: string;
 }
 
@@ -36,9 +36,11 @@ export const WebItem: FC<IWebItemProps> = ({
       {" | "}
       {tech}
       {" | "}
-      <LinkOutputWrapper href={live} target="_blank" rel="noreferrer">
-        [Link]
-      </LinkOutputWrapper>{" "}
+      {live && (
+        <LinkOutputWrapper href={live} target="_blank" rel="noreferrer">
+          [Link]
+        </LinkOutputWrapper>
+      )}{" "}
       <LinkOutputWrapper href={source} target="_blank" rel="noreferrer">
         [Source]{" "}
       </LinkOutputWrapper>
@@ -47,7 +49,7 @@ export const WebItem: FC<IWebItemProps> = ({
   );
 };
 
-export const WebItems: IWebItem[] = [
+export const webItems: IWebItem[] = [
   {
     title: "minions_js",
     description: "Boids simulation with quadtree spatial partitioning",
@@ -58,7 +60,7 @@ export const WebItems: IWebItem[] = [
     title: "jamtartley.com",
     description: "Personal webpage (you are here)",
     tech: "React",
-    links: { live: "https://jamtartley.com", source: "https://gitlab.com/jamtartley/jamtartley-com" },
+    links: { source: "https://gitlab.com/jamtartley/jamtartley-com" },
   },
 ];
 
@@ -66,7 +68,7 @@ export const Web: FC = () => {
   return (
     <Terminal header="web">
       <TerminalItem command="ls projects/web/"></TerminalItem>
-      {WebItems.map((item, idx) => (
+      {webItems.map((item, idx) => (
         <WebItem key={idx} item={item} />
       ))}
     </Terminal>
