@@ -6,49 +6,66 @@ import { TerminalItem } from "../Terminal/TerminalItem";
 
 interface IBioItem {
   command: string;
-  text: string;
-  link?: string;
-  shouldOpenNewWindow?: boolean;
+  textParts: {
+    text: string;
+    link?: string;
+    shouldOpenNewWindow?: boolean;
+  }[];
 }
 
-const BioItem: FC<IBioItem> = ({ command, text, link, shouldOpenNewWindow }) => {
-  const item = link ? <LinkOutputItem text={text} link={link} shouldOpenNewWindow={shouldOpenNewWindow} /> : <TextOutputItem text={text} />;
-
+const BioItem: FC<IBioItem> = ({ command, textParts }) => {
   return (
     <TerminalItem command={command} key={command}>
-      {item}
+      {textParts.map((t, i) => (t.link ? <LinkOutputItem {...t} key={i} /> : <TextOutputItem {...t} key={i} />))}
     </TerminalItem>
   );
 };
 
 export const Bio: FC = () => {
   const textItems: IBioItem[] = [
-    { command: "whoami", text: "Sam Hartley" },
+    { command: "whoami", textParts: [{ text: "Sam Hartley" }] },
     {
       command: "cat bio/about",
-      text: "Senior software developer @notonthehighstreet",
+      textParts: [
+        {
+          text: "Senior software engineer ",
+        },
+        {
+          text: "@notonthehighstreet",
+          link: "https://notonthehighstreet.com",
+          shouldOpenNewWindow: true,
+        },
+      ],
     },
-    { command: "find /earth -name $(whoami)", text: "/UK/London" },
+    { command: "find /earth -name $(whoami)", textParts: [{ text: "/UK/London" }] },
     {
       command: "cat bio/tech",
-      text: "Node | React (+Native) | GraphQL | C# | Unity3D | *nix | DevOps",
+      textParts: [{ text: "Node | React (+Native) | GraphQL | C# | Unity3D | *nix | DevOps" }],
     },
     {
       command: "cat bio/gitlab",
-      text: "Gitlab",
-      link: "https://gitlab.com/users/jamtartley/projects",
-      shouldOpenNewWindow: true,
+      textParts: [
+        {
+          text: "Gitlab",
+          link: "https://gitlab.com/users/jamtartley/projects",
+
+          shouldOpenNewWindow: true,
+        },
+      ],
     },
     {
       command: "history | grep cv",
-      text: "CV",
-      link: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf",
-      shouldOpenNewWindow: true,
+      textParts: [
+        {
+          text: "CV",
+          link: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf",
+          shouldOpenNewWindow: true,
+        },
+      ],
     },
     {
       command: "cat bio/email",
-      text: "sam@jamtartley.com",
-      link: `mailto:sam@jamtartley.com`,
+      textParts: [{ text: "sam@jamtartley.com", link: `mailto:sam@jamtartley.com` }],
     },
   ];
 
