@@ -1,4 +1,4 @@
-import { WebItem, WebItems } from "./Web";
+import { WebItem, webItems } from "./Web";
 import { render, screen } from "@testing-library/react";
 
 import { MemoryRouter } from "react-router-dom";
@@ -6,7 +6,7 @@ import React from "react";
 import { findInTextContent } from "../../utils/testUtils";
 
 describe("[WebItem]", () => {
-  const item = WebItems[0];
+  const item = webItems[0];
 
   beforeEach(() => {
     render(<WebItem item={item} />, { wrapper: MemoryRouter });

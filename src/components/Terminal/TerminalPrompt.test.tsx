@@ -1,9 +1,8 @@
-import { MemoryRouter, Router } from "react-router-dom";
+import { MemoryRouter, unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 
-import React from "react";
 import { TerminalPrompt } from "./TerminalPrompt";
-import { createMemoryHistory } from "history";
+import { createBrowserHistory } from "history";
 import { findInTextContent } from "../../utils/testUtils";
 
 describe("[TerminalPrompt]", () => {
@@ -29,13 +28,13 @@ describe("[TerminalPrompt]", () => {
     const invalidRoute = "/invalid";
 
     beforeEach(() => {
-      const history = createMemoryHistory();
+      const history = createBrowserHistory({window});
       history.push(invalidRoute);
 
       render(
-        <Router history={history}>
+        <HistoryRouter history={history}>
           <TerminalPrompt command="Test" />
-        </Router>,
+        </HistoryRouter>,
       );
     });
 

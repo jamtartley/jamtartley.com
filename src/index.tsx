@@ -1,7 +1,7 @@
 import "./index.css";
 
 import React, { FC } from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { HomePage } from "./pages/HomePage/HomePage";
@@ -20,14 +20,14 @@ const App: FC = () => {
   return (
     <Wrapper>
       <Router>
-        <Switch>
-          <Route exact path="/">
+        <Routes>
+          <Route path="/">
             <HomePage />
           </Route>
           <Route path="*">
             <ErrorPage />
           </Route>
-        </Switch>
+        </Routes>
       </Router>
     </Wrapper>
   );
