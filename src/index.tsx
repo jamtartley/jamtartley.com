@@ -2,10 +2,10 @@ import "./index.css";
 
 import React, { FC } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { createRoot } from "react-dom/client";
 
 import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { HomePage } from "./pages/HomePage/HomePage";
-import ReactDOM from "react-dom";
 import colours from "./colours";
 import reportWebVitals from "./reportWebVitals";
 import styled from "styled-components";
@@ -21,24 +21,16 @@ const App: FC = () => {
     <Wrapper>
       <Router>
         <Routes>
-          <Route path="/">
-            <HomePage />
-          </Route>
-          <Route path="*">
-            <ErrorPage />
-          </Route>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </Wrapper>
   );
 };
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root"),
-);
+const root = createRoot(document.getElementById("root")!);
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
