@@ -24,6 +24,7 @@ const BioItem: FC<IBioItem> = ({ command, textParts }) => {
 export const Bio: FC = () => {
   const textItems: IBioItem[] = [
     { command: "whoami", textParts: [{ text: "Sam Hartley" }] },
+    { command: "find /earth -name $(whoami)", textParts: [{ text: "/UK/London" }] },
     {
       command: "cat bio/about",
       textParts: [
@@ -37,7 +38,6 @@ export const Bio: FC = () => {
         },
       ],
     },
-    { command: "find /earth -name $(whoami)", textParts: [{ text: "/UK/London" }] },
     {
       command: "cat bio/tech",
       textParts: [{ text: "Node | React (+Native) | GraphQL | C# | Unity3D | *nix | DevOps" }],
@@ -84,7 +84,7 @@ export const Bio: FC = () => {
     <Terminal header="bio">
       {textItems.map(BioItem)}
       <TerminalItem command="sxiv sam.png">
-        <ImageOutputItem imageLocation="sam.png" />
+        <ImageOutputItem imageLocation="sam.jpg" />
       </TerminalItem>
     </Terminal>
   );
