@@ -1,5 +1,5 @@
 import { TerminalPromptProps, TerminalPrompt } from "./TerminalPrompt";
-import React, { FC } from "react";
+import React from "react";
 
 import styled from "styled-components";
 
@@ -15,4 +15,4 @@ export function TerminalItem({ command, children }: TerminalPromptProps) {
       {children}
     </Wrapper>
   );
-};
+}
