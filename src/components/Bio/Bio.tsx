@@ -54,6 +54,17 @@ export const Bio: FC = () => {
       ],
     },
     {
+      command: "cat bio/linkedin",
+      textParts: [
+        {
+          text: "Linkedin",
+          link: "https://uk.linkedin.com/in/sam-hartley-bb39a823a",
+
+          shouldOpenNewWindow: true,
+        },
+      ],
+    },
+    {
       command: "history | grep cv",
       textParts: [
         {
