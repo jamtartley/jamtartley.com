@@ -5,7 +5,7 @@ import { LinkOutputWrapper } from "../Terminal/TerminalOutputItem";
 import { Terminal } from "../Terminal/Terminal";
 import { TerminalItem } from "../Terminal/TerminalItem";
 
-interface IWebItem {
+export interface IWebItem {
   title: string;
   description: string;
   tech: string;
