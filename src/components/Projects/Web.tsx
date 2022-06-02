@@ -51,16 +51,16 @@ export const WebItem: FC<IWebItemProps> = ({
 
 export const webItems: IWebItem[] = [
   {
+    title: "jamtartley.com",
+    description: "Personal webpage",
+    tech: "TS/React",
+    links: { source: "https://gitlab.com/jamtartley/jamtartley-com" },
+  },
+  {
     title: "minions_js",
     description: "Boids simulation with quadtree spatial partitioning",
     tech: "JS/Webpack",
     links: { live: "https://minions.jamtartley.com", source: "https://gitlab.com/jamtartley/minions_js" },
-  },
-  {
-    title: "jamtartley.com",
-    description: "Personal webpage (you are here)",
-    tech: "React",
-    links: { source: "https://gitlab.com/jamtartley/jamtartley-com" },
   },
 ];
 
