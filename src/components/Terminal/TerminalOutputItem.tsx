@@ -37,8 +37,9 @@ export const LinkOutputItem: FC<ILinkOutputItemProps> = ({ text, link = text, sh
 };
 
 const ImageOutputWrapper = styled.img`
-  height: 300px;
-  width: auto;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
   margin: 10px 0;
 `;
 

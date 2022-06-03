@@ -83,7 +83,7 @@ export const Bio: FC = () => {
   return (
     <Terminal header="bio">
       {textItems.map(BioItem)}
-      <TerminalItem command="sxiv sam.png">
+      <TerminalItem command="xdg-open sam.png">
         <ImageOutputItem imageLocation="sam.jpg" />
       </TerminalItem>
     </Terminal>
