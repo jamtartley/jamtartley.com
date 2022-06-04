@@ -1,3 +1,3 @@
 export default {
-  TABLET: "992px",
+	TABLET: "992px",
 };

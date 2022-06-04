@@ -7,34 +7,34 @@ import sizes from "../../sizes";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  display: flex;
-  width: 100%;
+	display: flex;
+	width: 100%;
 
-  @media (max-width: ${sizes.TABLET}) {
-    flex-direction: column;
-  }
+	@media (max-width: ${sizes.TABLET}) {
+		flex-direction: column;
+	}
 `;
 
 interface ISectionGroupWrapperProps {
-  direction?: "row" | "column";
+	direction?: "row" | "column";
 }
 
 const SectionGroupWrapper = styled.div<ISectionGroupWrapperProps>`
-  display: flex;
-  flex: 1;
-  flex-direction: ${props => props.direction || "row"};
+	display: flex;
+	flex: 1;
+	flex-direction: ${props => props.direction || "row"};
 `;
 
 export const HomePage: FC = () => {
-  return (
-    <Wrapper>
-      <SectionGroupWrapper>
-        <Bio />
-      </SectionGroupWrapper>
-      <SectionGroupWrapper direction="column">
-        <Web />
-        <Misc />
-      </SectionGroupWrapper>
-    </Wrapper>
-  );
+	return (
+		<Wrapper>
+			<SectionGroupWrapper>
+				<Bio />
+			</SectionGroupWrapper>
+			<SectionGroupWrapper direction="column">
+				<Web />
+				<Misc />
+			</SectionGroupWrapper>
+		</Wrapper>
+	);
 };

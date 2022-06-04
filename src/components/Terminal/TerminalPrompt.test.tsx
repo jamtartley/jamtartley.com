@@ -6,40 +6,40 @@ import { createBrowserHistory } from "history";
 import { findInTextContent } from "../../utils/testUtils";
 
 describe("[TerminalPrompt]", () => {
-  describe("[homepage]", () => {
-    beforeEach(() => {
-      render(<TerminalPrompt command="Test" />, { wrapper: MemoryRouter });
-    });
+	describe("[homepage]", () => {
+		beforeEach(() => {
+			render(<TerminalPrompt command="Test" />, { wrapper: MemoryRouter });
+		});
 
-    it("renders prompt marker", () => {
-      findInTextContent("> $");
-    });
+		it("renders prompt marker", () => {
+			findInTextContent("> $");
+		});
 
-    it("renders given command text", () => {
-      screen.getByText(/Test/);
-    });
+		it("renders given command text", () => {
+			screen.getByText(/Test/);
+		});
 
-    it("renders root URL as home directory", () => {
-      screen.getByText("~");
-    });
-  });
+		it("renders root URL as home directory", () => {
+			screen.getByText("~");
+		});
+	});
 
-  describe("[invalid page]", () => {
-    const invalidRoute = "/invalid";
+	describe("[invalid page]", () => {
+		const invalidRoute = "/invalid";
 
-    beforeEach(() => {
-      const history = createBrowserHistory({window});
-      history.push(invalidRoute);
+		beforeEach(() => {
+			const history = createBrowserHistory({ window });
+			history.push(invalidRoute);
 
-      render(
-        <HistoryRouter history={history}>
-          <TerminalPrompt command="Test" />
-        </HistoryRouter>,
-      );
-    });
+			render(
+				<HistoryRouter history={history}>
+					<TerminalPrompt command="Test" />
+				</HistoryRouter>
+			);
+		});
 
-    it("renders other URL as nested directory", async () => {
-      screen.getByText(`~${invalidRoute}`);
-    });
-  });
+		it("renders other URL as nested directory", async () => {
+			screen.getByText(`~${invalidRoute}`);
+		});
+	});
 });

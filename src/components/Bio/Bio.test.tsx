@@ -5,20 +5,20 @@ import { MemoryRouter } from "react-router-dom";
 import React from "react";
 
 describe("[Bio]", () => {
-  beforeEach(() => {
-    render(<Bio />, { wrapper: MemoryRouter });
-  });
+	beforeEach(() => {
+		render(<Bio />, { wrapper: MemoryRouter });
+	});
 
-  it("capitalises the name correctly", () => {
-    expect(screen.getByText(/Sam Hartley/)).toBeInTheDocument();
-  });
+	it("capitalises the name correctly", () => {
+		expect(screen.getByText(/Sam Hartley/)).toBeInTheDocument();
+	});
 
-  it("renders the city correctly", () => {
-    expect(screen.getByText(/London/)).toBeInTheDocument();
-  });
+	it("renders the city correctly", () => {
+		expect(screen.getByText(/London/)).toBeInTheDocument();
+	});
 
-  it("correctly links to the email", () => {
-    const email = "sam@jamtartley.com";
-    expect(screen.getByText(email).closest("a")).toHaveAttribute("href", `mailto:${email}`);
-  });
+	it("correctly links to the email", () => {
+		const email = "sam@jamtartley.com";
+		expect(screen.getByText(email).closest("a")).toHaveAttribute("href", `mailto:${email}`);
+	});
 });
