@@ -11,22 +11,22 @@ import reportWebVitals from "./reportWebVitals";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  display: flex;
-  min-height: 100vh;
-  background: ${colours.BACKGROUND};
+	display: flex;
+	min-height: 100vh;
+	background: ${colours.BACKGROUND};
 `;
 
 const App: FC = () => {
-  return (
-    <Wrapper>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </Router>
-    </Wrapper>
-  );
+	return (
+		<Wrapper>
+			<Router>
+				<Routes>
+					<Route path="/" element={<HomePage />} />
+					<Route path="*" element={<ErrorPage />} />
+				</Routes>
+			</Router>
+		</Wrapper>
+	);
 };
 
 const root = createRoot(document.getElementById("root")!);

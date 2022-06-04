@@ -4,49 +4,49 @@ import colours from "../../colours";
 import styled from "styled-components";
 
 const OutputItemWrapper = styled.div`
-  color: ${colours.FOREGROUND};
-  display: inline;
+	color: ${colours.FOREGROUND};
+	display: inline;
 `;
 
 interface ITextOutputItemProps {
-  text: string;
+	text: string;
 }
 
 export const TextOutputItem: FC<ITextOutputItemProps> = ({ text }) => {
-  return <OutputItemWrapper>{text}</OutputItemWrapper>;
+	return <OutputItemWrapper>{text}</OutputItemWrapper>;
 };
 
 interface ILinkOutputItemProps {
-  text: string;
-  link?: string;
-  shouldOpenNewWindow?: boolean;
+	text: string;
+	link?: string;
+	shouldOpenNewWindow?: boolean;
 }
 
 export const LinkOutputWrapper = styled.a`
-  color: ${colours.PINK};
+	color: ${colours.PINK};
 `;
 
 export const LinkOutputItem: FC<ILinkOutputItemProps> = ({ text, link = text, shouldOpenNewWindow }) => {
-  return (
-    <OutputItemWrapper>
-      <LinkOutputWrapper href={link} target={`${shouldOpenNewWindow ? "_blank" : ""}`}>
-        {text}
-      </LinkOutputWrapper>
-    </OutputItemWrapper>
-  );
+	return (
+		<OutputItemWrapper>
+			<LinkOutputWrapper href={link} target={`${shouldOpenNewWindow ? "_blank" : ""}`}>
+				{text}
+			</LinkOutputWrapper>
+		</OutputItemWrapper>
+	);
 };
 
 const ImageOutputWrapper = styled.img`
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  margin: 10px 0;
+	width: 100%;
+	max-width: 300px;
+	height: auto;
+	margin: 10px 0;
 `;
 
 interface IImageOutputItemProps {
-  imageLocation: string;
+	imageLocation: string;
 }
 
 export const ImageOutputItem: FC<IImageOutputItemProps> = ({ imageLocation }) => {
-  return <ImageOutputWrapper src={imageLocation} />;
+	return <ImageOutputWrapper src={imageLocation} />;
 };
