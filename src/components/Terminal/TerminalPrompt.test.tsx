@@ -1,5 +1,5 @@
 import { MemoryRouter, unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
-import { render, screen } from "@testing-library/react";
+import React, { render, screen } from "@testing-library/react";
 
 import { TerminalPrompt } from "./TerminalPrompt";
 import { createBrowserHistory } from "history";
