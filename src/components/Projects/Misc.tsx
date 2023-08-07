@@ -47,7 +47,7 @@ export const MiscItems: IMiscItem[] = [
 	},
 	{
 		title: "dotfiles",
-		description: "Arch linux installation scripts",
+		description: "Arch linux/macOS installation scripts",
 		language: "Ansible/*sh",
 		source: "https://gitlab.com/jamtartley/dotfiles",
 	},

@@ -14,15 +14,11 @@ const Wrapper = styled.div<IWrapperProps>`
 	background: ${colours.TERMINAL_BACKGROUND};
 	color: ${colours.FOREGROUND};
 	border: 4px solid ${props => props.borderColour};
-	font-size: 25px;
+	font-size: 16px;
 	font-family: "Inconsolata", monospace;
 	box-shadow: -8px 8px 0 0 ${props => props.shadowColour};
 	margin: 20px;
 	flex: 1;
-
-	@media (max-width: ${sizes.TABLET}) {
-		font-size: 16px;
-	}
 `;
 
 const ChildWrapper = styled.div`
