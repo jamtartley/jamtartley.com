@@ -19,11 +19,11 @@ describe("[TerminalPrompt]", () => {
 	});
 
 	it("renders goto command", async () => {
-		screen.getByText(`goto ${invalidRoute}`);
+		screen.getByText(`.${invalidRoute}`);
 	});
 
 	it("renders help_me command", () => {
-		screen.getByText("help_me");
+		screen.getByText("help");
 	});
 
 	it("renders homepage link", () => {

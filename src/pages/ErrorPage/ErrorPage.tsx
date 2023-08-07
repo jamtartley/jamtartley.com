@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 export const ErrorPage: FC = () => {
 	return (
 		<Wrapper>
-			<Terminal header="404_not_found">
+			<Terminal header="404">
 				<Error />
 			</Terminal>
 		</Wrapper>

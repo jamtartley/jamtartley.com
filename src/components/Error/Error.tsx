@@ -9,10 +9,10 @@ export const Error: FC = () => {
 
 	return (
 		<>
-			<TerminalItem command={`goto ${location.pathname}`}>
+			<TerminalItem command={`.${location.pathname}`}>
 				<TextOutputItem text={`command not found: ${location.pathname.substr(1)}`} />
 			</TerminalItem>
-			<TerminalItem command="help_me">
+			<TerminalItem command="help">
 				<LinkOutputItem text="Click here to go home" link="/" />
 			</TerminalItem>
 		</>
