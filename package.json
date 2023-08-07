@@ -19,11 +19,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --verbose --watchAll",
-    "test:ci": "react-scripts test --ci --watchAll=false",
-    "eject": "react-scripts eject",
+    "ci:format": "prettier --check \"**/*.{json,ts,tsx,md}\"",
+    "ci:lint": "eslint ./src/**/*.{ts,tsx}",
+    "ci:build": "react-scripts build",
+    "ci:test": "react-scripts test --ci --watchAll=false",
+    "ci:typecheck": "tsc --noEmit",
+    "dev:format": "prettier --write \"**/*.{json,ts,tsx,md}\"",
+    "dev:start": "react-scripts start",
+    "dev:test": "react-scripts test --verbose --watchAll",
     "prepare": "husky install"
   },
   "browserslist": {

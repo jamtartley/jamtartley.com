@@ -1,29 +1,46 @@
 stages:
-  - build
-  - test
+  - preflight
   - deploy
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - ./node_modules
+.preflight: &preflight
+  image: node:18.16.0-alpine
+  stage: preflight
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+  before_script:
+    - npm install --prefer-offline
 
 build:
-  stage: build
-  image: node:13-alpine
-  before_script:
-    - npm i --loglevel=silent --prefer-offline
+  <<: *preflight
   script:
-    - npm run build
+    - npm run ci:build
   artifacts:
     paths:
       - ./build
 
-test:
-  stage: test
-  image: node:13-alpine
+format:
+  <<: *preflight
   script:
-    - npm run test:ci
+    - npm run ci:format
+
+lint:
+  <<: *preflight
+  script:
+    - npm run ci:lint
+
+test:
+  <<: *preflight
+  script:
+    - npm run ci:test
+
+typecheck:
+  <<: *preflight
+  script:
+    - npm run ci:typecheck
 
 deploy:
   stage: deploy
