@@ -2,7 +2,6 @@ import React, { FC } from "react";
 
 import colours from "../../colours";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
 
 export type TerminalPromptProps = React.PropsWithChildren<{
 	command: string;
@@ -23,13 +22,9 @@ const PromptMarker = styled.span`
 `;
 
 export const TerminalPrompt: FC<TerminalPromptProps> = ({ command }) => {
-	const location = useLocation();
-	const afterSlash = location.pathname.substr(1, location.pathname.length - 1);
-	const routeToDisplay = `~${afterSlash && `/${afterSlash}`}`;
-
 	return (
 		<Wrapper>
-			<PromptLocation>{routeToDisplay} </PromptLocation>
+			<PromptLocation>~ </PromptLocation>
 			<PromptArrow>&gt; </PromptArrow>
 			<PromptMarker>$ </PromptMarker>
 			{command}
