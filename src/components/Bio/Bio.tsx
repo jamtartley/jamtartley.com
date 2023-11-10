@@ -42,10 +42,20 @@ export const Bio: FC = () => {
 			],
 		},
 		{
-			command: "cat bio/tech",
+			command: "cat bio/skills",
 			textParts: [
 				{
-					text: "Node | React (+Native) | GraphQL | C# | Unity3D | *nix | DevOps",
+					text: "TS/JS | React (+Native) | REST/GraphQL | C# | *nix | AWS | Terraform",
+				},
+			],
+		},
+		{
+			command: "history | grep cv",
+			textParts: [
+				{
+					text: "CV",
+					link: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf",
+					shouldOpenNewWindow: true,
 				},
 			],
 		},
@@ -67,16 +77,6 @@ export const Bio: FC = () => {
 					text: "Linkedin",
 					link: "https://uk.linkedin.com/in/sam-hartley-bb39a823a",
 
-					shouldOpenNewWindow: true,
-				},
-			],
-		},
-		{
-			command: "history | grep cv",
-			textParts: [
-				{
-					text: "CV",
-					link: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf",
 					shouldOpenNewWindow: true,
 				},
 			],
