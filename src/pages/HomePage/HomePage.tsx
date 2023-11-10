@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
 import { Bio } from "../../components/Bio/Bio";
-import { Misc } from "../../components/Projects/Misc";
-import { Web } from "../../components/Projects/Web";
 import sizes from "../../sizes";
 import styled from "styled-components";
+import { ProjectItemProps } from "../../components/Projects/ProjectItem";
+import { Projects } from "../../components/Projects/Projects";
 
 const Wrapper = styled.div`
 	display: flex;
@@ -25,6 +25,60 @@ const SectionGroupWrapper = styled.div<ISectionGroupWrapperProps>`
 	flex-direction: ${props => props.direction || "row"};
 `;
 
+const app: ProjectItemProps[] = [
+	{
+		title: "sixfives",
+		description: "Mobile app which algorithmically generates a compilation video with a selection of user uploads",
+		tech: "TS/Terraform/AWS/Turborepo",
+		links: { source: "https://gitlab.com/jamtartley/sixfives" },
+	},
+];
+
+const web: ProjectItemProps[] = [
+	{
+		title: "jamtartley.com",
+		description: "Personal webpage",
+		tech: "TS/React",
+		links: { source: "https://gitlab.com/jamtartley/jamtartley-com" },
+	},
+	{
+		title: "minions_js",
+		description: "Boids simulation with quadtree spatial partitioning",
+		tech: "JS/Webpack",
+		links: {
+			live: "https://minions.jamtartley.com",
+			source: "https://gitlab.com/jamtartley/minions_js",
+		},
+	},
+];
+
+const misc: ProjectItemProps[] = [
+	{
+		title: "taggregator",
+		description: "Tag lines of code with prioritised issues and quickly display them for a ready-made TODO list",
+		tech: "Python",
+		links: {
+			source: "https://gitlab.com/jamtartley/taggregator",
+		},
+	},
+	{
+		title: "SHEL",
+		description: "Simple interpreted programming language",
+		tech: "C++",
+		links: {
+			source: "https://gitlab.com/jamtartley/SHEL",
+		},
+	},
+	{
+		title: "dotfiles",
+		description: "Arch linux/macOS installation scripts",
+		tech: "Ansible/*sh",
+		links: {
+			source: "https://gitlab.com/jamtartley/dotfiles",
+		},
+	},
+];
+
 export const HomePage: FC = () => {
 	return (
 		<Wrapper>
@@ -32,8 +86,9 @@ export const HomePage: FC = () => {
 				<Bio />
 			</SectionGroupWrapper>
 			<SectionGroupWrapper direction="column">
-				<Web />
-				<Misc />
+				<Projects header="apps" items={app} />
+				<Projects header="web" items={web} />
+				<Projects header="misc" items={misc} />
 			</SectionGroupWrapper>
 		</Wrapper>
 	);
