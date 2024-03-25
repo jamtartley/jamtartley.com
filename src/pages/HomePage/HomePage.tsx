@@ -54,27 +54,27 @@ const web: ProjectItemProps[] = [
 
 const misc: ProjectItemProps[] = [
 	{
-		title: "taggregator",
-		description: "Tag lines of code with prioritised issues and quickly display them for a ready-made TODO list",
-		tech: "Python",
+		title: "flam",
+		description: "Compiled templating language",
+		tech: "TS",
 		links: {
-			source: "https://gitlab.com/jamtartley/taggregator",
-		},
-	},
-	{
-		title: "SHEL",
-		description: "Simple interpreted programming language",
-		tech: "C++",
-		links: {
-			source: "https://gitlab.com/jamtartley/SHEL",
+			source: "https://gitlab.com/jamtartley/flam",
 		},
 	},
 	{
 		title: "dotfiles",
 		description: "Arch linux/macOS installation scripts",
-		tech: "Ansible/*sh",
+		tech: "Ansible/*sh/Lua",
 		links: {
 			source: "https://gitlab.com/jamtartley/dotfiles",
+		},
+	},
+	{
+		title: "taggregator",
+		description: "Tag lines of code with prioritised issues and quickly display them for a ready-made TODO list",
+		tech: "Python",
+		links: {
+			source: "https://gitlab.com/jamtartley/taggregator",
 		},
 	},
 ];
@@ -86,9 +86,9 @@ export const HomePage: FC = () => {
 				<Bio />
 			</SectionGroupWrapper>
 			<SectionGroupWrapper direction="column">
-				<Projects header="apps" items={app} />
-				<Projects header="web" items={web} />
 				<Projects header="misc" items={misc} />
+				<Projects header="web" items={web} />
+				<Projects header="apps" items={app} />
 			</SectionGroupWrapper>
 		</Wrapper>
 	);
