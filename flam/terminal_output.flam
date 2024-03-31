@@ -1,8 +1,11 @@
-<div>
-	<p>{= item.command =}</p>
+<div class="max-h-full mb-4">
+	{! include "./terminal_prompt.flam", command: item.command !}
 	{! if item -> has("link") !}
-	<a href="{= item.link =}">{= item.output =}</a>
+	<a class="block text-pink-500 underline" href="{= item.link =}" target="_blank">{= item.output =}</a>
 	{! else !}
-	<p>{= item.output =}</p>
+	<p class="text-white text-base">{= item.output =}</p>
+	{! fi !}
+	{! if item -> has("image") !}
+	<img class="w-full h-auto my-3" src="{= item.image =}" />
 	{! fi !}
 </div>
