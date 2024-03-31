@@ -13,7 +13,7 @@
     "ci:test": "react-scripts test --ci --watchAll=false",
     "ci:typecheck": "tsc --noEmit",
     "dev:format": "prettier --write \"**/*.{json,ts,tsx,md}\"",
-    "dev:start": "nodemon -e ts,flam,html src/index.ts",
+    "dev:start": "nodemon -e flam,ts src/index.ts",
     "dev:test": "react-scripts test --verbose --watchAll",
     "prepare": "husky install"
   },

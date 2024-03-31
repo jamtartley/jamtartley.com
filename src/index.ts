@@ -19,6 +19,20 @@ const output = compile(entryFile, {
 		{ command: "cat bio/email", output: "sam@jamtartley.com", link: "mailto:sam@jamtartley.com" },
 		{ command: "xdg-open sam.jpg", image: "sam.jpg" },
 	],
+	project_groups: [
+		{
+			category: "misc",
+			color: "cyan",
+			projects: [
+				{
+					name: "flam",
+					description: "Compiled templating language",
+					tech: ["Typescript"],
+					source: "https://gitlab.com/jamtartley/flam",
+				},
+			],
+		},
+	],
 });
 
 writeFileSync(path.join(process.cwd(), "public", "index.html"), output);
