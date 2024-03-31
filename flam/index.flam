@@ -41,7 +41,14 @@
 		}
 		</style>
 	</head>
-	<body class="h-full bg-background p-8">
-		{! include "./bio.flam", bio !}
+	<body class="h-full bg-background p-2">
+		<div class="flex flex-row">
+			<div class="flex-1">
+			{! include "./bio.flam", bio, color: "pink" !}
+			</div>
+			<div class="flex flex-col flex-1">
+				{! include "./project_group.flam", project_groups  !}
+			</div>
+		</div>
 	</body>
 </html>

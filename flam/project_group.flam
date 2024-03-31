@@ -1,0 +1,16 @@
+{! for group in project_groups !}
+
+{! make category become group.category !}
+{! make color become group.color !}
+{! make prompt become "ls projects/" -> concat(category, "/") !}
+
+<div class="bg-terminal m-4 shadow-sharp-{= color =} border-4 border-{= color =}">
+	{! include "./terminal_header.flam", header: category, color !}
+	<div class="p-4">
+		{! include "./terminal_prompt.flam", command: prompt !}
+		{! for project in group.projects !}
+		{! include "./project.flam", project !}
+		{! rof !}
+	</div>
+</div>
+{! rof !}

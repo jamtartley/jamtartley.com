@@ -1,0 +1,1 @@
+<a class="text-pink underline" target="_blank" href="{= href =}">[{= text =}]</a>
