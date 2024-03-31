@@ -30,7 +30,7 @@ module "website" {
   allowed_ips         = var.allowed_ips
 
   index_document = "index.html"
-  error_document = "index.html"
+  error_document = "error.html"
 
   refer_secret = base64sha512("REFER-SECRET-19265125-${var.fqdn}-52865926")
 
