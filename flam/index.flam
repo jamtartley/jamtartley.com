@@ -17,7 +17,7 @@
 			theme: {
 				extend: {
 					boxShadow: {
-						"sharp-pink": "rgba(255, 121, 198, 0.267) -8px 8px 0px 0px",
+						"sharp": "-8px 8px 0px 0px",
 					},
 					colors: {
 						cyan: "#8be9fd",
@@ -42,12 +42,12 @@
 		</style>
 	</head>
 	<body class="h-full bg-background p-2">
-		<div class="flex flex-row">
+		<div class="flex flex-col lg:flex-row">
 			<div class="flex-1">
 			{! include "./bio.flam", bio, color: "pink" !}
 			</div>
 			<div class="flex flex-col flex-1">
-				{! include "./project_group.flam", project_groups  !}
+				{! include "./project_group.flam", project_groups !}
 			</div>
 		</div>
 	</body>
