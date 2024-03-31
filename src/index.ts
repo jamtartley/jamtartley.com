@@ -28,7 +28,59 @@ const output = compile(entryFile, {
 					name: "flam",
 					description: "Compiled templating language",
 					tech: ["Typescript"],
-					source: "https://gitlab.com/jamtartley/flam",
+					links: {
+						source: "https://gitlab.com/jamtartley/flam",
+					},
+				},
+				{
+					name: "dotfiles",
+					description: "Arch linux/macOS installation scripts",
+					tech: ["Ansible", "*sh", "Lua"],
+					links: {
+						source: "https://gitlab.com/jamtartley/dotfiles",
+					},
+				},
+				{
+					name: "taggregator",
+					description: "Tag lines of code with prioritised issues and quickly display them for a ready-made TODO list",
+					tech: ["Python"],
+					links: {
+						source: "https://gitlab.com/jamtartley/taggregator",
+					},
+				},
+			],
+		},
+		{
+			category: "web",
+			color: "yellow",
+			projects: [
+				{
+					name: "jamtartley.com",
+					description: "Personal webpage",
+					tech: ["flam"],
+					links: { source: "https://gitlab.com/jamtartley/jamtartley-com" },
+				},
+				{
+					name: "minions_js",
+					description: "Boids simulation with quadtree spatial partitioning",
+					tech: ["Javascript"],
+					links: {
+						live: "https://minions.jamtartley.com",
+						source: "https://gitlab.com/jamtartley/minions_js",
+					},
+				},
+			],
+		},
+		{
+			category: "apps",
+			color: "green",
+			projects: [
+				{
+					name: "sixfives",
+					description:
+						"Mobile app which algorithmically generates a compilation video with a selection of user uploads",
+					tech: ["Typescript", "AWS", "Turborepo"],
+					links: { source: "https://gitlab.com/jamtartley/sixfives" },
 				},
 			],
 		},
