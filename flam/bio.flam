@@ -1,4 +1,4 @@
-<div class="bg-terminal m-4 shadow-sharp-{= color =} border-4 border-{= color =}">
+<div class="bg-terminal m-4 shadow-sharp shadow-{= color =}/50 border-4 border-{= color =}">
 	{! include "./terminal_header.flam", header: "bio", color !}
 	<div class="p-4">
 		{! for item in bio !}

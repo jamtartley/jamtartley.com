@@ -1,8 +1,8 @@
-import { compile } from "@flam/compiler";
-import { writeFileSync } from "node:fs";
-import path from "node:path";
+const { compile } = require("@flam/compiler");
+const { writeFileSync } = require("node:fs");
+const path = require("node:path");
 
-const entryFile = "flam/index.flam";
+const entryFile = path.join(__dirname, "flam/index.flam");
 const output = compile(entryFile, {
 	bio: [
 		{ command: "whoami", output: [{ text: "Sam Hartley" }] },
@@ -109,4 +109,4 @@ const output = compile(entryFile, {
 	],
 });
 
-writeFileSync(path.join(process.cwd(), "public", "index.html"), output);
+writeFileSync(path.join(__dirname, "public", "index.html"), output);

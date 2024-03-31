@@ -1,54 +1,13 @@
 {
   "name": "jamtartley-com",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@flam/compiler": "0.0.1",
-    "typescript": "^4.7.2"
-  },
   "scripts": {
-    "ci:format": "prettier --check \"**/*.{json,ts,tsx,md}\"",
-    "ci:lint": "eslint ./src/**/*.{ts,tsx}",
-    "ci:build": "react-scripts build",
-    "ci:test": "react-scripts test --ci --watchAll=false",
-    "ci:typecheck": "tsc --noEmit",
-    "dev:format": "prettier --write \"**/*.{json,ts,tsx,md}\"",
-    "dev:start": "nodemon -e flam,ts src/index.ts",
-    "dev:test": "react-scripts test --verbose --watchAll",
-    "prepare": "husky install"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+		"build": "node ./build.js",
+    "dev": "nodemon -e flam,ts ./build.js"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.27.0",
-    "eslint": "^8.16.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.4.6",
-    "eslint-plugin-json": "^3.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.30.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^12.4.3",
-    "nodemon": "^3.1.0",
-    "prettier": "^2.6.2",
-    "prettier-eslint": "^15.0.1",
-    "ts-node": "^10.9.2"
-  },
-  "lint-staged": {
-    "*.{ts, tsx}": [
-      "eslint --cache --fix",
-      "prettier --write"
-    ]
+    "@flam/compiler": "^0.0.1",
+    "nodemon": "^3.1.0"
   }
 }
