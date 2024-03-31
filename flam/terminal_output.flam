@@ -1,7 +1,7 @@
 <div class="max-h-full mb-4">
 	{! include "./terminal_prompt.flam", command: item.command !}
 	{! if item -> has("link") !}
-	<a class="block text-pink-500 underline" href="{= item.link =}" target="_blank">{= item.output =}</a>
+	<a class="block text-pink underline" href="{= item.link =}" target="_blank">{= item.output =}</a>
 	{! else !}
 	<p class="text-white text-base">{= item.output =}</p>
 	{! fi !}

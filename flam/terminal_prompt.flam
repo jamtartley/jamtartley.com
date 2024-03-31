@@ -1,4 +1,4 @@
-<span class="text-blue-500">~</span>
-<span class="text-blue-500">></span>
-<span class="text-green-500">$</span>
+<span class="text-cyan">~</span>
+<span class="text-cyan">></span>
+<span class="text-green">$</span>
 <span class="text-white">{= command =}</span>
