@@ -2,7 +2,25 @@
 	{! include "./terminal_header.flam", header: "bio", color !}
 	<div class="p-4">
 		{! for item in bio !}
-		{! include "./terminal_output.flam", item !}
+		<div class="max-h-full mb-4">
+			{! include "./terminal_prompt.flam", command: item.command !}
+			<div>
+			{! for part in item.output !}
+				{! if part -> has("text") !}
+					<span class="text-white">{= part.text =}</span>
+				{! fi !}
+				{! if part -> has("link") !}
+					{! include "./link.flam", href: part.link.href, text: part.link.text !}
+				{! fi !}
+				{! if part -> has("list") !}
+					<span class="text-white">{= part.list -> join(" | ") =}</span>
+				{! fi !}
+				{! if part -> has("image") !}
+					<img class="w-full h-auto my-3" src="{= part.image =}" />
+				{! fi !}
+			{! rof !}
+			</div>
+		</div>
 		{! rof !}
 	</div>
 </div>
