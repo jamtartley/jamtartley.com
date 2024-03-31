@@ -1,5 +1,6 @@
 import { compile } from "@flam/compiler";
 import { writeFileSync } from "node:fs";
+import path from "node:path";
 
 const entryFile = "flam/index.flam";
 const output = compile(entryFile, {
@@ -16,7 +17,8 @@ const output = compile(entryFile, {
 		{ command: "cat bio/gitlab", output: "Gitlab", link: "https://gitlab.com/jamtartley" },
 		{ command: "cat bio/linkedin", output: "Linkedin", link: "https://uk.linkedin.com/in/sam-hartley-bb39a823a" },
 		{ command: "cat bio/email", output: "sam@jamtartley.com", link: "mailto:sam@jamtartley.com" },
+		{ command: "xdg-open sam.jpg", image: "sam.jpg" },
 	],
 });
 
-writeFileSync("public/index.html", output);
+writeFileSync(path.join(process.cwd(), "public", "index.html"), output);

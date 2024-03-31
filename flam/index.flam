@@ -10,7 +10,7 @@
 		<title>Sam Hartley - London-based developer</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
-	<body>
+	<body class="h-full bg-black">
 		{! include "./bio.flam", bio !}
 	</body>
 </html>
