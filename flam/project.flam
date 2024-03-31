@@ -1,14 +1,18 @@
-<div class="my-2">
+{! make links become project.links !}
+<div class="my-2 flex-1">
 	<hr class="border border-white opacity-10"/>
 	<div class="py-2">
-		<span class="text-white font-bold">[{= project.name =}] | </span>
-		<span class="text-white">{= project.description =} | </span>
-		<span class="text-white">{= project.tech -> join("/") =} | </span>
-		{! if project -> has("source") !}
-			{! include "./link.flam", text: "Source", href: project.source !}
+		<span class="text-white font-bold">[{= project.name =}]</span>
+		<span class="text-white font-bold"> | </span>
+		<span class="text-white">{= project.description =}</span>
+		<span class="text-white font-bold"> | </span>
+		<span class="text-white">{= project.tech -> join("/") =}</span>
+		<span class="text-white font-bold"> | </span>
+		{! if links -> has("source") !}
+			{! include "./link.flam", text: "Source", href: links.source !}
 		{! fi !}
-		{! if project -> has("live") !}
-			{! include "./link.flam", text: "Live", href: project.live !}
+		{! if links -> has("live") !}
+			{! include "./link.flam", text: "Live", href: links.live !}
 		{! fi !}
 	</div>
 	<hr class="border border-white opacity-10"/>
