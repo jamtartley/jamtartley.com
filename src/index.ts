@@ -5,19 +5,41 @@ import path from "node:path";
 const entryFile = "flam/index.flam";
 const output = compile(entryFile, {
 	bio: [
-		{ command: "whoami", output: "Sam Hartley" },
-		{ command: "find /earth -name $(whoami)", output: "/UK/London" },
-		{ command: "cat bio/about", output: "Senior software engineer @humaans.io" },
-		{ command: "cat bio/skills", output: "TS/JS | React (+Native) | REST/GraphQL | C# | *nix | AWS | Terraform" },
+		{ command: "whoami", output: [{ text: "Sam Hartley" }] },
+		{ command: "find /earth -name $(whoami)", output: [{ text: "/UK/London" }] },
+		{
+			command: "cat bio/about",
+			output: [
+				{ text: "Senior software engineer" },
+				{
+					link: {
+						href: "https://humaans.io",
+						text: "@humaans.io",
+					},
+				},
+			],
+		},
+		{
+			command: "cat bio/skills",
+			output: [{ list: ["TS/JS", "React (+Native)", "REST/GraphQL", "C#", "*nix", "AWS", "Terraform"] }],
+		},
 		{
 			command: "history | grep cv",
-			output: "CV",
-			link: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf",
+			output: [{ link: { href: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf", text: "CV" } }],
 		},
-		{ command: "cat bio/gitlab", output: "Gitlab", link: "https://gitlab.com/jamtartley" },
-		{ command: "cat bio/linkedin", output: "Linkedin", link: "https://uk.linkedin.com/in/sam-hartley-bb39a823a" },
-		{ command: "cat bio/email", output: "sam@jamtartley.com", link: "mailto:sam@jamtartley.com" },
-		{ command: "xdg-open sam.jpg", image: "sam.jpg" },
+		{
+			command: "cat bio/gitlab",
+			output: [{ link: { href: "https://gitlab.com/jamtartley", text: "Gitlab" } }],
+		},
+		{
+			command: "cat bio/linkedin",
+			output: [{ link: { href: "https://uk.linkedin.com/in/sam-hartley-bb39a823a", text: "Linkedin" } }],
+		},
+		{
+			command: "cat bio/email",
+			output: [{ link: { href: "mailto:sam@jamtartley.com", text: "sam@jamtartley.com" } }],
+		},
+		{ command: "xdg-open sam.jpg", output: [{ image: "sam.jpg" }] },
 	],
 	project_groups: [
 		{
