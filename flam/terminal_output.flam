@@ -1,0 +1,8 @@
+<div>
+	<p>{= item.command =}</p>
+	{! if item -> has("link") !}
+	<a href="{= item.link =}">{= item.output =}</a>
+	{! else !}
+	<p>{= item.output =}</p>
+	{! fi !}
+</div>

@@ -1,0 +1,3 @@
+{! for item in bio !}
+{! include "./terminal_output.flam", item !}
+{! rof !}
