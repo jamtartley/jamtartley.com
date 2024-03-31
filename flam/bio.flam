@@ -1,6 +1,6 @@
 <div class="bg-terminal shadow-sharp-pink border-4 border-pink">
 	{! include "./terminal_header.flam", header: "bio" !}
-	<div class="p-2">
+	<div class="p-4">
 		{! for item in bio !}
 		{! include "./terminal_output.flam", item !}
 		{! rof !}
