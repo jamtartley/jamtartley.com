@@ -27,15 +27,7 @@ function writeIndexPage() {
         command: "cat bio/skills",
         output: [
           {
-            list: [
-              "TS/JS",
-              "React (+Native)",
-              "REST/GraphQL",
-              "C#",
-              "*nix",
-              "AWS",
-              "Terraform",
-            ],
+            list: ["Typescript", "C#", "Go", "*nix", "AWS", "Terraform"],
           },
         ],
       },
@@ -87,7 +79,7 @@ function writeIndexPage() {
         projects: [
           {
             name: "flam",
-            description: "Compiled templating language",
+            description: "Templating language",
             tech: ["Typescript"],
             links: {
               source: "https://gitlab.com/jamtartley/flam",
@@ -139,9 +131,8 @@ function writeIndexPage() {
         projects: [
           {
             name: "sixfives",
-            description:
-              "Mobile app which algorithmically generates a compilation video with a selection of user uploads",
-            tech: ["React Native", "AWS", "Turborepo"],
+            description: "Generate a compilation video from user uploads",
+            tech: ["Typescript", "React Native", "AWS"],
             links: { source: "https://gitlab.com/jamtartley/sixfives" },
           },
         ],

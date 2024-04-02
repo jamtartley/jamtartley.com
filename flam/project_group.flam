@@ -9,7 +9,9 @@
 	<div class="p-4">
 		{! include "./terminal_prompt.flam", command: prompt !}
 		{! for project in group.projects !}
+		<div class="mt-4">
 			{! include "./project.flam", project !}
+		</div>
 		{! rof !}
 	</div>
 </div>
