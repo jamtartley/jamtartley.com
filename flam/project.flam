@@ -1,8 +1,7 @@
 {! make links become project.links !}
 <div class="my-2 flex-1">
-	<hr class="border border-white opacity-10"/>
-	<div class="py-4">
-		<span class="text-white font-bold">[{= project.name =}]</span>
+	<div>
+		<span class="bg-{= color =} text-black px-3"><strong>{= project.name =}</strong></span>
 		<span class="text-white font-bold"> | </span>
 		<span class="text-white">{= project.description =}</span>
 		<span class="text-white font-bold"> | </span>
@@ -15,5 +14,4 @@
 			{! include "./link.flam", text: "Live", href: links.live !}
 		{! fi !}
 	</div>
-	<hr class="border border-white opacity-10"/>
 </div>
