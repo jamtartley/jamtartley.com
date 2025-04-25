@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "build": "node ./build.js",
-    "dev": "nodemon -e flam,js --exec \"npm run build && npm run serve\" --ignore public/",
+    "dev": "nodemon -e flam,js --exec \"npm run build\" --ignore public/ & browser-sync start --server public --files \"public/**/*.html\" --port 3000",
     "serve": "serve -s public -p 3000"
   },
   "devDependencies": {
     "@flam/compiler": "^0.0.1",
+    "browser-sync": "^3.0.4",
     "nodemon": "^3.1.0",
     "serve": "^14.2.4"
   }
