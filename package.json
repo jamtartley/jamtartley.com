@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "build": "node ./build.js",
-    "dev": "nodemon -e flam,js ./build.js"
+    "dev": "nodemon -e flam,js --exec \"npm run build && npm run serve\" --ignore public/",
+    "serve": "serve -s public -p 3000"
   },
   "devDependencies": {
     "@flam/compiler": "^0.0.1",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "serve": "^14.2.4"
   }
 }
