@@ -8,20 +8,20 @@ function writeIndexPage() {
     bio: [
       { command: "whoami", output: [{ text: "Sam Hartley" }] },
       {
-        command: "find /earth -name $(whoami)",
-        output: [{ text: "/UK/London" }],
-      },
-      {
         command: "cat bio/about",
         output: [
-          { text: "Senior software engineer" },
+          { text: "Co-Founder" },
           {
             link: {
-              href: "https://humaans.io",
-              text: "@humaans.io",
+              href: "https://addbuttr.com",
+              text: "addbuttr",
             },
           },
         ],
+      },
+      {
+        command: "find /earth -name $(whoami)",
+        output: [{ text: "/UK/London" }],
       },
       {
         command: "cat bio/skills",
