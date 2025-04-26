@@ -13,7 +13,7 @@ function writeIndexPage() {
           { text: "Co-Founder" },
           {
             link: {
-              href: "https://addbuttr.com",
+              href: "https://addbuttr.com/?utm_source=jamtartley-com&utm_medium=referral&utm_campaign=homepage",
               text: "addbuttr",
             },
           },
