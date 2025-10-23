@@ -2,7 +2,10 @@
   "name": "jamtartley-com",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.19.0",
+  "engines": {
+    "node": "24.10.0"
+  },
   "scripts": {
     "build": "node ./build.js",
     "dev": "concurrently \"pnpm run dev:assets\" \"pnpm run dev:wrangler\"",

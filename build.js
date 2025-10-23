@@ -9,15 +9,7 @@ function writeIndexPage() {
       { command: "whoami", output: [{ text: "Sam Hartley" }] },
       {
         command: "cat bio/about",
-        output: [
-          { text: "Co-Founder" },
-          {
-            link: {
-              href: "https://addbuttr.com/?utm_source=jamtartley-com&utm_medium=referral&utm_campaign=homepage",
-              text: "addbuttr",
-            },
-          },
-        ],
+        output: [{ text: "Senior software engineer" }],
       },
       {
         command: "find /earth -name $(whoami)",
@@ -43,9 +35,9 @@ function writeIndexPage() {
         ],
       },
       {
-        command: "cat bio/gitlab",
+        command: "cat bio/github",
         output: [
-          { link: { href: "https://gitlab.com/jamtartley", text: "Gitlab" } },
+          { link: { href: "https://github.com/jamtartley", text: "Github" } },
         ],
       },
       {
