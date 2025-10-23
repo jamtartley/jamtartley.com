@@ -1,0 +1,21 @@
+{
+  "name": "jamtartley-com",
+  "compatibility_date": "2024-10-01",
+  "dev": {
+    "port": 3000,
+  },
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page",
+  },
+  "routes": [
+    {
+      "pattern": "jamtartley.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "www.jamtartley.com",
+      "custom_domain": true,
+    },
+  ],
+}

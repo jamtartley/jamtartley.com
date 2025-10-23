@@ -1,4 +1,4 @@
-const { compile } = require("@flam/compiler");
+const { compile } = require("@jamtartley/flam");
 const { writeFileSync } = require("node:fs");
 const path = require("node:path");
 
@@ -143,12 +143,12 @@ function writeIndexPage() {
   writeFileSync(path.join(__dirname, "public", "index.html"), output);
 }
 
-function writeErrorPage() {
-  const entryFile = path.join(__dirname, "flam/error.flam");
+function write404Page() {
+  const entryFile = path.join(__dirname, "flam/404.flam");
   const output = compile(entryFile, {});
 
-  writeFileSync(path.join(__dirname, "public", "error.html"), output);
+  writeFileSync(path.join(__dirname, "public", "404.html"), output);
 }
 
 writeIndexPage();
-writeErrorPage();
+write404Page();

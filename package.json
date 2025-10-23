@@ -2,15 +2,16 @@
   "name": "jamtartley-com",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.17.1",
   "scripts": {
     "build": "node ./build.js",
-    "dev": "nodemon -e flam,js --exec \"npm run build\" --ignore public/ & browser-sync start --server public --files \"public/**/*.html\" --port 3000",
-    "serve": "serve -s public -p 3000"
+    "dev": "concurrently \"pnpm run dev:assets\" \"pnpm run dev:wrangler\"",
+    "dev:assets": "pnpm run build",
+    "dev:wrangler": "wrangler dev"
   },
   "devDependencies": {
-    "@flam/compiler": "^0.0.1",
-    "browser-sync": "^3.0.4",
-    "nodemon": "^3.1.0",
-    "serve": "^14.2.4"
+    "@jamtartley/flam": "^0.0.2",
+    "concurrently": "^9.2.1",
+    "wrangler": "^4.40.3"
   }
 }
