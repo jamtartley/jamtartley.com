@@ -25,3 +25,4 @@ jobs:
           node-version-file: .tool-versions
       - run: pnpm install
       - run: pnpm run build
+      - run: pnpm wrangler deploy --outdir dist
