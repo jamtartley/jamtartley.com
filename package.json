@@ -15,6 +15,6 @@
   "devDependencies": {
     "@jamtartley/flam": "^0.0.2",
     "concurrently": "^9.2.1",
-    "wrangler": "^4.40.3"
+    "wrangler": "^4.44.0"
   }
 }

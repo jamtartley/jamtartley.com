@@ -1,0 +1,27 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  FORCE_COLOR: 1
+  NODE_ENV: production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          cache-dependency-path: pnpm-lock.yaml
+          cache: "pnpm"
+          node-version-file: .tool-versions
+      - run: pnpm install
+      - run: pnpm run build
