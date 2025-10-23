@@ -74,7 +74,7 @@ function writeIndexPage() {
             description: "Templating language",
             tech: ["Typescript"],
             links: {
-              source: "https://gitlab.com/jamtartley/flam",
+              source: "https://github.com/jamtartley/flam",
             },
           },
           {
@@ -82,16 +82,7 @@ function writeIndexPage() {
             description: "Arch linux/macOS installation scripts",
             tech: ["Ansible", "*sh", "Lua"],
             links: {
-              source: "https://gitlab.com/jamtartley/dotfiles",
-            },
-          },
-          {
-            name: "taggregator",
-            description:
-              "Tag lines of code with prioritised issues and quickly display them for a ready-made TODO list",
-            tech: ["Python"],
-            links: {
-              source: "https://gitlab.com/jamtartley/taggregator",
+              source: "https://github.com/jamtartley/dotfiles",
             },
           },
         ],
@@ -104,16 +95,7 @@ function writeIndexPage() {
             name: "jamtartley.com",
             description: "Personal webpage",
             tech: ["flam"],
-            links: { source: "https://gitlab.com/jamtartley/jamtartley-com" },
-          },
-          {
-            name: "minions_js",
-            description: "Boids simulation with quadtree spatial partitioning",
-            tech: ["Javascript"],
-            links: {
-              live: "https://minions.jamtartley.com",
-              source: "https://gitlab.com/jamtartley/minions_js",
-            },
+            links: { source: "https://github.com/jamtartley/jamtartley.com" },
           },
         ],
       },
@@ -125,7 +107,7 @@ function writeIndexPage() {
             name: "sixfives",
             description: "Generate a compilation video from user uploads",
             tech: ["Typescript", "React Native", "AWS"],
-            links: { source: "https://gitlab.com/jamtartley/sixfives" },
+            links: { source: "https://github.com/jamtartley/sixfives" },
           },
         ],
       },
