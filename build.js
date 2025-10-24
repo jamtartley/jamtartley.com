@@ -109,6 +109,12 @@ function writeIndexPage() {
             tech: ["Typescript", "React Native", "AWS"],
             links: { source: "https://github.com/jamtartley/sixfives" },
           },
+          {
+            name: "solace",
+            description: "IRC-like chat implementation over TCP",
+            tech: ["Rust"],
+            links: { source: "https://github.com/jamtartley/solace" },
+          },
         ],
       },
     ],
