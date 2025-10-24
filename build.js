@@ -19,7 +19,7 @@ function writeIndexPage() {
         command: "cat bio/skills",
         output: [
           {
-            list: ["Typescript", "C#", "Go", "*nix", "AWS", "Terraform"],
+            list: ["Web", "Infra", "*nix", "Gamedev"],
           },
         ],
       },
@@ -66,6 +66,24 @@ function writeIndexPage() {
     ],
     project_groups: [
       {
+        category: "apps",
+        color: "green",
+        projects: [
+          {
+            name: "sixfives",
+            description: "Generate a compilation video from user uploads",
+            tech: ["Typescript", "React Native", "AWS"],
+            links: { source: "https://github.com/jamtartley/sixfives" },
+          },
+          {
+            name: "solace",
+            description: "IRC-like chat implementation over TCP",
+            tech: ["Rust"],
+            links: { source: "https://github.com/jamtartley/solace" },
+          },
+        ],
+      },
+      {
         category: "tools",
         color: "cyan",
         projects: [
@@ -96,24 +114,6 @@ function writeIndexPage() {
             description: "Personal webpage",
             tech: ["flam"],
             links: { source: "https://github.com/jamtartley/jamtartley.com" },
-          },
-        ],
-      },
-      {
-        category: "apps",
-        color: "green",
-        projects: [
-          {
-            name: "sixfives",
-            description: "Generate a compilation video from user uploads",
-            tech: ["Typescript", "React Native", "AWS"],
-            links: { source: "https://github.com/jamtartley/sixfives" },
-          },
-          {
-            name: "solace",
-            description: "IRC-like chat implementation over TCP",
-            tech: ["Rust"],
-            links: { source: "https://github.com/jamtartley/solace" },
           },
         ],
       },
