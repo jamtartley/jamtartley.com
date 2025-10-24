@@ -28,7 +28,7 @@ function writeIndexPage() {
         output: [
           {
             link: {
-              href: "https://cv-sam-hartley.s3.eu-west-2.amazonaws.com/cv.pdf",
+              href: "https://cv.jamtartley.com/Sam_Hartley_Senior_Software_Engineer_CV.pdf",
               text: "CV",
             },
           },
