@@ -2,6 +2,9 @@ const { compile } = require("@jamtartley/flam");
 const { writeFileSync } = require("node:fs");
 const path = require("node:path");
 
+const description =
+  "Sam Hartley - Senior Software Engineer - Full-Stack & Infra";
+
 function writeIndexPage() {
   const entryFile = path.join(__dirname, "flam/index.flam");
   const output = compile(entryFile, {
@@ -64,6 +67,7 @@ function writeIndexPage() {
       },
       { command: "xdg-open sam.jpg", output: [{ image: "sam.jpg" }] },
     ],
+    description,
     project_groups: [
       {
         category: "apps",
@@ -125,7 +129,9 @@ function writeIndexPage() {
 
 function write404Page() {
   const entryFile = path.join(__dirname, "flam/404.flam");
-  const output = compile(entryFile, {});
+  const output = compile(entryFile, {
+    description,
+  });
 
   writeFileSync(path.join(__dirname, "public", "404.html"), output);
 }
