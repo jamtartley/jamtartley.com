@@ -1,47 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-screen">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="{= description =}" />
-		<link rel="apple-touch-icon" href="logo192.png" />
-		<link rel="manifest" href="manifest.json" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
-		<title>{= description =}</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-		tailwind.config = {
-			theme: {
-				extend: {
-					boxShadow: {
-						"sharp": "-8px 8px 0px 0px",
-					},
-					colors: {
-						cyan: "#8be9fd",
-						green: "#50fa7b",
-						orange: "#ffb86c",
-						pink: "#ff79c6",
-						purple: "#bd93f9",
-						red: "#ff5555",
-						yellow: "#f1fa8c",
-						foreground: "#f8f8f2",
-						background: "#44475a",
-						terminal: "#282a36",
-					}
-				}
-			}
-		}
-		</script>
-		<style>
-		* {
-		font-family: 'JetBrains Mono', monospace;
-		}
-		</style>
-	</head>
-	<body class="flex h-full bg-background p-2">
+	{! include "./layout_head.flam", description !}
+	<body class="h-full bg-background p-2">
 			{! make color become "red" !}
 			<div class="bg-terminal flex-1 m-4 shadow-sharp shadow-{= color =}/50 border-4 border-{= color =}">
 				{! include "./terminal_header.flam", header: "404", color !}
